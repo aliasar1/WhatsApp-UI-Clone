@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/constants.dart';
 import 'package:whatsapp_clone/models/Chat.dart';
+import 'package:whatsapp_clone/screens/status_screen/status_screen.dart';
 
 import 'components/chats_card.dart';
 
@@ -18,14 +19,18 @@ class _ChatScreenState extends State<ChatScreen>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 4, vsync: this, initialIndex: 1);
+    _tabController = TabController(length: 4, vsync: this, initialIndex: 1)
+      ..addListener(() {
+        setState(() {});
+      });
+    ;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: kSecondaryColor,
+        backgroundColor: kPrimaryColor,
         elevation: 0,
         title: const Text(
           'WhatsApp',
@@ -77,19 +82,27 @@ class _ChatScreenState extends State<ChatScreen>
           indicatorWeight: 4,
         ),
       ),
-      body: ListView.builder(
-        itemCount: chatsData.length,
-        itemBuilder: ((context, index) => ChatCard(
-              chat: chatsData[index],
-              press: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const ChatScreen()),
-              ),
-            )),
+      body: TabBarView(
+        controller: _tabController,
+        children: [
+          const Text(""),
+          ListView.builder(
+            itemCount: chatsData.length,
+            itemBuilder: ((context, index) => ChatCard(
+                  chat: chatsData[index],
+                  press: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const ChatScreen()),
+                  ),
+                )),
+          ),
+          const StatusScreen(),
+          Text("a"),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        backgroundColor: kSecondaryColor,
+        backgroundColor: kPrimaryColor,
         child: const Icon(Icons.chat),
       ),
     );
