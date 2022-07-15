@@ -1,2 +1,3 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+*.cpp linguist-detectable=false
+*.cmake.in linguist-detectable=false
+*.Dart linguist-detectable=true
