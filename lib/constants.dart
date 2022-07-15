@@ -5,12 +5,15 @@ const kBackgroundColor = Color.fromRGBO(241, 241, 242, 1);
 const kPrimaryColor = Color.fromARGB(255, 9, 102, 91);
 const kSecondaryColor = Color.fromRGBO(37, 211, 102, 1);
 const kTextColor = Color.fromRGBO(19, 28, 33, 1);
+const kShadeColor = Color.fromARGB(255, 223, 232, 235);
+const kSeenColor = Color.fromARGB(255, 174, 186, 192);
+const kIconColor = Color.fromARGB(255, 146, 155, 160);
 
 const kSmallPadding = 8.0;
 const kMedPadding = 12.0;
 const kLargePadding = 16.0;
 
-const backgroundColor = Color.fromRGBO(19, 28, 33, 1);
+const backgroundColor = Color.fromARGB(255, 146, 155, 160);
 const textColor = Color.fromRGBO(241, 241, 242, 1);
 const appBarColor = Color.fromRGBO(31, 44, 52, 1);
 const webAppBarColor = Color.fromRGBO(42, 47, 50, 1);

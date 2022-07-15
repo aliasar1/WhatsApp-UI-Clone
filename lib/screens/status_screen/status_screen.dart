@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/constants.dart';
-import 'package:whatsapp_clone/models/Chat.dart';
-import 'package:whatsapp_clone/models/Profile.dart';
+
+import '../../models/Status.dart';
+import 'components/profile_card.dart';
 
 class StatusScreen extends StatefulWidget {
   const StatusScreen({Key? key}) : super(key: key);
@@ -13,11 +14,104 @@ class StatusScreen extends StatefulWidget {
 class _StatusScreenState extends State<StatusScreen> {
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: profileData.length,
-      itemBuilder: ((context, index) => StatusBuilder(
-            profile: profileData[index],
-          )),
+    return Column(
+      children: [
+        const ProfileCard(),
+        const StatusBuilder(
+          text: 'Recent updates',
+        ),
+        SizedBox(
+          height: 125,
+          child: ListView.builder(
+            itemCount: statusData.length,
+            itemBuilder: ((context, index) => statusData[index].isSeen == true
+                ? PublicStatusCard(
+                    status: statusData[index],
+                  )
+                : Container()),
+          ),
+        ),
+        const StatusBuilder(
+          text: 'Viewed updates',
+        ),
+        SizedBox(
+          height: 250,
+          child: ListView.builder(
+            itemCount: statusData.length,
+            itemBuilder: ((context, index) => statusData[index].isSeen == false
+                ? PublicStatusCard(
+                    status: statusData[index],
+                  )
+                : Container()),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class PublicStatusCard extends StatelessWidget {
+  const PublicStatusCard({
+    Key? key,
+    required this.status,
+  }) : super(key: key);
+
+  final Status status;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+          horizontal: kSmallPadding, vertical: kSmallPadding * 0.7),
+      child: Row(
+        children: [
+          Container(
+            height: 50,
+            width: 50,
+            decoration: status.isSeen == true
+                ? BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: kSecondaryColor,
+                      width: 3,
+                    ))
+                : BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: kSeenColor,
+                      width: 3,
+                    )),
+            child: CircleAvatar(
+              radius: 26,
+              backgroundImage: AssetImage(status.image),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+                horizontal: kSmallPadding, vertical: kSmallPadding * 0.7),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  status.name,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.w500, fontSize: 16),
+                ),
+                const SizedBox(
+                  height: 4,
+                ),
+                Opacity(
+                  opacity: 0.6,
+                  child: Text(
+                    status.time,
+                    maxLines: 1,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -25,46 +119,31 @@ class _StatusScreenState extends State<StatusScreen> {
 class StatusBuilder extends StatelessWidget {
   const StatusBuilder({
     Key? key,
-    required this.profile,
+    required this.text,
   }) : super(key: key);
 
-  final Profile profile;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-          horizontal: kSmallPadding * 2, vertical: kMedPadding * 1.5),
-      child: Row(
-        children: [
-          Stack(
-            children: [
-              CircleAvatar(
-                radius: 26,
-                backgroundImage: AssetImage(profile.image),
-              ),
-              Positioned(
-                right: 0,
-                bottom: 0,
-                child: Container(
-                  height: 20,
-                  width: 20,
-                  decoration: BoxDecoration(
-                      color: kPrimaryColor,
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: kBackgroundColor,
-                        width: 2,
-                      )),
-                  child: const Center(
-                    child: Icon(Icons.add, color: kBackgroundColor, size: 16),
-                  ),
-                ),
-              )
-            ],
+    return Column(
+      children: [
+        Container(
+          alignment: Alignment.centerLeft,
+          width: double.infinity,
+          height: 35,
+          color: kShadeColor,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: kSmallPadding * 1.5,
+            ),
+            child: Text(
+              text,
+              style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 15),
+            ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

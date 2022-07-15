@@ -29,82 +29,105 @@ class _ChatScreenState extends State<ChatScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: kPrimaryColor,
-        elevation: 0,
-        title: const Text(
-          'WhatsApp',
-          style: TextStyle(
-            fontSize: 20,
-            color: kBackgroundColor,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.search, color: kBackgroundColor),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: const Icon(Icons.more_vert, color: kBackgroundColor),
-            onPressed: () {},
-          ),
-        ],
-        bottom: TabBar(
-          controller: _tabController,
-          isScrollable: true,
-          tabs: <Widget>[
-            Tab(
-              icon: Icon(Icons.camera_alt,
-                  color: kBackgroundColor.withOpacity(0.7)),
+        appBar: AppBar(
+          backgroundColor: kPrimaryColor,
+          elevation: 0,
+          title: const Text(
+            'WhatsApp',
+            style: TextStyle(
+              fontSize: 20,
+              color: kBackgroundColor,
+              fontWeight: FontWeight.bold,
             ),
-            const SizedBox(
-              width: 86,
-              child: Tab(
-                text: 'CHATS',
-              ),
+          ),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.search, color: kBackgroundColor),
+              onPressed: () {},
             ),
-            const SizedBox(
-              width: 86,
-              child: Tab(
-                text: 'STATUS',
-              ),
-            ),
-            const SizedBox(
-              width: 86,
-              child: Tab(
-                text: 'CALLS',
-              ),
+            IconButton(
+              icon: const Icon(Icons.more_vert, color: kBackgroundColor),
+              onPressed: () {},
             ),
           ],
-          labelColor: kBackgroundColor,
-          indicatorColor: kBackgroundColor,
-          indicatorWeight: 4,
-        ),
-      ),
-      body: TabBarView(
-        controller: _tabController,
-        children: [
-          const Text(""),
-          ListView.builder(
-            itemCount: chatsData.length,
-            itemBuilder: ((context, index) => ChatCard(
-                  chat: chatsData[index],
-                  press: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const ChatScreen()),
-                  ),
-                )),
+          bottom: TabBar(
+            controller: _tabController,
+            isScrollable: true,
+            tabs: <Widget>[
+              Tab(
+                icon: Icon(Icons.camera_alt,
+                    color: kBackgroundColor.withOpacity(0.7)),
+              ),
+              const SizedBox(
+                width: 86,
+                child: Tab(
+                  text: 'CHATS',
+                ),
+              ),
+              const SizedBox(
+                width: 86,
+                child: Tab(
+                  text: 'STATUS',
+                ),
+              ),
+              const SizedBox(
+                width: 86,
+                child: Tab(
+                  text: 'CALLS',
+                ),
+              ),
+            ],
+            labelColor: kBackgroundColor,
+            indicatorColor: kBackgroundColor,
+            indicatorWeight: 4,
           ),
-          const StatusScreen(),
-          Text("a"),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: kPrimaryColor,
-        child: const Icon(Icons.chat),
-      ),
-    );
+        ),
+        body: TabBarView(
+          controller: _tabController,
+          children: [
+            const Text(""),
+            ListView.builder(
+              itemCount: chatsData.length,
+              itemBuilder: ((context, index) => ChatCard(
+                    chat: chatsData[index],
+                    press: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ChatScreen()),
+                    ),
+                  )),
+            ),
+            const StatusScreen(),
+            Text("a"),
+          ],
+        ),
+        floatingActionButton: _tabController.index == 1
+            ? FloatingActionButton(
+                onPressed: () {},
+                backgroundColor: kPrimaryColor,
+                child: const Icon(Icons.chat),
+              )
+            : Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  FloatingActionButton(
+                    onPressed: () {},
+                    mini: true,
+                    backgroundColor: kShadeColor,
+                    child: const Icon(
+                      Icons.edit,
+                      color: kIconColor,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  FloatingActionButton(
+                    onPressed: () {},
+                    backgroundColor: kPrimaryColor,
+                    child: const Icon(Icons.camera_alt),
+                  ),
+                ],
+              ));
   }
 }
