@@ -1,3 +1,5 @@
 # Auto detect text files and perform LF normalization
 * text=auto
-.C++ linguist-detectable=false
+* linguist-vendored
+*.C++ linguist-detectable=false
+*.CMake linguist-detectable=false
