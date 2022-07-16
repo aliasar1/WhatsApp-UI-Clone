@@ -1,6 +1,6 @@
 class Chat {
   final String name, lastMessage, image, time;
-  final bool isActive;
+  final bool isActive, isSeen;
   final int msgTotal;
 
   Chat({
@@ -9,6 +9,7 @@ class Chat {
     this.image = '',
     this.time = '',
     this.isActive = false,
+    this.isSeen = false,
     this.msgTotal = 0,
   });
 }
@@ -16,11 +17,11 @@ class Chat {
 List chatsData = [
   Chat(
     name: "Jenny Wilson",
-    lastMessage:
-        "Hope you are doing well. I wanted to inform you about the internship...",
+    lastMessage: "Hope you are doing well.",
     image: "assets/images/user.png",
     time: "3m ago",
     isActive: false,
+    isSeen: false,
     msgTotal: 0,
   ),
   Chat(
@@ -28,15 +29,17 @@ List chatsData = [
     lastMessage: "Hello Ali!",
     image: "assets/images/user_2.png",
     time: "8m ago",
-    isActive: true,
+    isActive: false,
+    isSeen: true,
     msgTotal: 3,
   ),
   Chat(
     name: "Ralph Edwards",
-    lastMessage: "Do you have update about the project report we submitted?",
+    lastMessage: "Do you have update about the project?",
     image: "assets/images/user_3.png",
     time: "5d ago",
     isActive: false,
+    isSeen: true,
     msgTotal: 0,
   ),
   Chat(
@@ -44,7 +47,8 @@ List chatsData = [
     lastMessage: "You’re welcome :)",
     image: "assets/images/user_4.png",
     time: "5d ago",
-    isActive: true,
+    isActive: false,
+    isSeen: true,
     msgTotal: 2,
   ),
   Chat(
@@ -53,6 +57,7 @@ List chatsData = [
     image: "assets/images/user_5.png",
     time: "6d ago",
     isActive: false,
+    isSeen: true,
     msgTotal: 1,
   ),
   Chat(
@@ -61,22 +66,25 @@ List chatsData = [
     image: "assets/images/user.png",
     time: "3m ago",
     isActive: false,
+    isSeen: true,
     msgTotal: 0,
   ),
   Chat(
     name: "Usama Khan",
-    lastMessage: "Hello Ali! Usama here.",
+    lastMessage: "Hello! Ali here.",
     image: "assets/images/user_2.png",
     time: "8m ago",
     isActive: true,
+    isSeen: false,
     msgTotal: 0,
   ),
   Chat(
     name: "Ralph Edwards",
-    lastMessage: "Do remind me about the meeting before calling the clients.",
+    lastMessage: "Do remind me about the meeting.",
     image: "assets/images/user_3.png",
     time: "5d ago",
     isActive: false,
+    isSeen: true,
     msgTotal: 1,
   ),
 ];

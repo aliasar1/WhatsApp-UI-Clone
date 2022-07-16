@@ -41,13 +41,35 @@ class ChatCard extends StatelessWidget {
                     const SizedBox(
                       height: 4,
                     ),
-                    Opacity(
-                      opacity: 0.6,
-                      child: Text(
-                        chat.lastMessage,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
+                    Row(
+                      children: [
+                        if (chat.isSeen == true && chat.msgTotal == 0)
+                          const Icon(
+                            Icons.done_all_sharp,
+                            color: kReceivedColor,
+                            size: 18,
+                          )
+                        else if (chat.isSeen == false && chat.msgTotal > 0)
+                          const Icon(
+                            Icons.done_all_sharp,
+                            color: kIconColor,
+                            size: 18,
+                          )
+                        else if (chat.isSeen == false && chat.msgTotal == 0)
+                          const Icon(
+                            Icons.done_all_sharp,
+                            color: kIconColor,
+                            size: 18,
+                          ),
+                        Opacity(
+                          opacity: 0.6,
+                          child: Text(
+                            ' ${chat.lastMessage}',
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),

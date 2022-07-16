@@ -36,7 +36,7 @@ class CallBuilder extends StatelessWidget {
                   color: kRedColor,
                 ),
           Opacity(
-            opacity: 0.7,
+            opacity: 0.8,
             child: Text(
               ' ${callLog.date}',
               maxLines: 1,
