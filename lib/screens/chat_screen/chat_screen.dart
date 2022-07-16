@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/constants.dart';
 import 'package:whatsapp_clone/models/Chat.dart';
+import 'package:whatsapp_clone/screens/call_screen/components/call_screen.dart';
 import 'package:whatsapp_clone/screens/status_screen/status_screen.dart';
 
 import 'components/chats_card.dart';
@@ -98,7 +99,7 @@ class _ChatScreenState extends State<ChatScreen>
                   )),
             ),
             const StatusScreen(),
-            Text("a"),
+            const CallScreen(),
           ],
         ),
         floatingActionButton: _tabController.index == 1
