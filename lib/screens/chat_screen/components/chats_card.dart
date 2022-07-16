@@ -15,71 +15,75 @@ class ChatCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-          horizontal: kSmallPadding * 1.5, vertical: kMedPadding),
-      child: Row(
-        children: [
-          CircleAvatar(
-            backgroundImage: AssetImage(chat.image),
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: kSmallPadding, vertical: kSmallPadding * 0.7),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    chat.name,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w500, fontSize: 16),
-                  ),
-                  const SizedBox(
-                    height: 4,
-                  ),
-                  Opacity(
-                    opacity: 0.6,
-                    child: Text(
-                      chat.lastMessage,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
+    return InkWell(
+      onTap: () {},
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+            horizontal: kSmallPadding * 1.5, vertical: kMedPadding),
+        child: Row(
+          children: [
+            CircleAvatar(
+              backgroundImage: AssetImage(chat.image),
+            ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: kSmallPadding, vertical: kSmallPadding * 0.7),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      chat.name,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.w500, fontSize: 16),
                     ),
-                  ),
-                ],
+                    const SizedBox(
+                      height: 4,
+                    ),
+                    Opacity(
+                      opacity: 0.6,
+                      child: Text(
+                        chat.lastMessage,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Opacity(
-                opacity: 0.5,
-                child: Text(
-                  '${chat.time}\n',
-                  style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w500,
-                      color: chat.msgTotal == 0 ? kTextColor : kSecondaryColor),
-                ),
-              ),
-              if (chat.msgTotal != 0)
-                SizedBox(
-                  height: 20,
-                  width: 29,
-                  child: CircleAvatar(
-                    backgroundColor: kSecondaryColor,
-                    radius: 12,
-                    child: Text(
-                      chat.msgTotal.toString(),
-                      style: const TextStyle(
-                          color: kBackgroundColor, fontSize: 14),
-                    ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Opacity(
+                  opacity: 0.5,
+                  child: Text(
+                    '${chat.time}\n',
+                    style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w500,
+                        color:
+                            chat.msgTotal == 0 ? kTextColor : kSecondaryColor),
                   ),
                 ),
-            ],
-          ),
-        ],
+                if (chat.msgTotal != 0)
+                  SizedBox(
+                    height: 20,
+                    width: 29,
+                    child: CircleAvatar(
+                      backgroundColor: kSecondaryColor,
+                      radius: 12,
+                      child: Text(
+                        chat.msgTotal.toString(),
+                        style: const TextStyle(
+                            color: kBackgroundColor, fontSize: 14),
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
