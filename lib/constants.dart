@@ -8,6 +8,8 @@ const kTextColor = Color.fromRGBO(19, 28, 33, 1);
 const kShadeColor = Color.fromARGB(255, 223, 232, 235);
 const kSeenColor = Color.fromARGB(255, 174, 186, 192);
 const kIconColor = Color.fromARGB(255, 146, 155, 160);
+const kGreenColor = Color.fromARGB(255, 24, 177, 57);
+const kRedColor = Color.fromARGB(255, 216, 49, 49);
 
 const kSmallPadding = 8.0;
 const kMedPadding = 12.0;

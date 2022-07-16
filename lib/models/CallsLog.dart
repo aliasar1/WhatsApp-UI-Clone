@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
-
 class CallLog {
-  final String date, callStatus, name, image;
+  final String date, callStatus, name;
+  final String image;
   final bool isVideoCall;
 
   CallLog({

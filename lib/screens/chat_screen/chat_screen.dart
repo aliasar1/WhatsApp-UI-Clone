@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/constants.dart';
 import 'package:whatsapp_clone/models/Chat.dart';
-import 'package:whatsapp_clone/screens/call_screen/components/call_screen.dart';
 import 'package:whatsapp_clone/screens/status_screen/status_screen.dart';
 
+import '../call_screen/call_screen.dart';
 import 'components/chats_card.dart';
 
 class ChatScreen extends StatefulWidget {
