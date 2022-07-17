@@ -102,13 +102,8 @@ class _ChatScreenState extends State<ChatScreen>
             const CallScreen(),
           ],
         ),
-        floatingActionButton: _tabController.index == 1
-            ? FloatingActionButton(
-                onPressed: () {},
-                backgroundColor: kPrimaryColor,
-                child: const Icon(Icons.chat),
-              )
-            : Column(
+        floatingActionButton: _tabController.index == 2
+            ? Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   FloatingActionButton(
@@ -129,6 +124,11 @@ class _ChatScreenState extends State<ChatScreen>
                     child: const Icon(Icons.camera_alt),
                   ),
                 ],
+              )
+            : FloatingActionButton(
+                onPressed: () {},
+                backgroundColor: kPrimaryColor,
+                child: const Icon(Icons.chat),
               ));
   }
 }
