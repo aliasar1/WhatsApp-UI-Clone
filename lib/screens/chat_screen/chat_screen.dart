@@ -108,6 +108,6 @@ class _ChatScreenState extends State<ChatScreen>
                 backgroundColor: kPrimaryColor,
                 child: const Icon(Icons.chat),
               )
-            : Container());
+            : null);
   }
 }

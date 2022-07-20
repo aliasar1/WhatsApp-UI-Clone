@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clone/screens/messages_screen/components/messages_screen.dart';
 
 import '../../../constants.dart';
 import '../../../models/Chat.dart';
@@ -16,7 +17,16 @@ class ChatCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => MessagesScreen(
+                    image: chat.image,
+                    name: chat.name,
+                  )),
+        );
+      },
       child: Padding(
         padding: const EdgeInsets.symmetric(
             horizontal: kSmallPadding * 1.5, vertical: kMedPadding),
