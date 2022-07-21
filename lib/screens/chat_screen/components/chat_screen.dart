@@ -44,7 +44,7 @@ class _ChatScreenState extends State<ChatScreen> {
             Text(
               widget.name,
               style: const TextStyle(
-                fontSize: 16,
+                fontSize: 17,
                 color: kBackgroundColor,
                 fontWeight: FontWeight.w600,
               ),
@@ -55,8 +55,8 @@ class _ChatScreenState extends State<ChatScreen> {
             Opacity(
               opacity: 0.7,
               child: Text(
-                widget.status == true ? "active" : "last seen today at 3:31 pm",
-                style: const TextStyle(color: kBackgroundColor, fontSize: 12),
+                widget.status == true ? "online" : "last seen today at 3:31 pm",
+                style: const TextStyle(color: kBackgroundColor, fontSize: 13),
               ),
             ),
           ],
@@ -76,6 +76,86 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
         ],
       ),
+      body: Container(
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/images/backgorund.png'),
+                fit: BoxFit.cover)),
+        child: Stack(
+          children: [
+            ListView.builder(
+              itemCount: chatMessagesData.length,
+              itemBuilder: ((context, index) => ChatMessageCard(
+                    message: chatMessagesData[index],
+                  )),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ChatMessageCard extends StatelessWidget {
+  const ChatMessageCard({
+    Key? key,
+    required this.message,
+  }) : super(key: key);
+
+  final ChatMessage message;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment:
+          message.isSender ? MainAxisAlignment.end : MainAxisAlignment.start,
+      children: [
+        Container(
+          margin: const EdgeInsets.only(
+              top: kMedPadding,
+              right: kMedPadding * 0.8,
+              left: kMedPadding * 0.8),
+          decoration: BoxDecoration(
+            color:
+                message.isSender ? kReceiverMessageColor : kSenderMessageColor,
+            borderRadius: BorderRadius.circular(30),
+          ),
+          child: Stack(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 10, right: 80, top: 5, bottom: 20),
+                child: Text(
+                  message.text,
+                  style: const TextStyle(fontSize: 16),
+                ),
+              ),
+              Positioned(
+                bottom: 5,
+                right: 10,
+                child: Row(
+                  children: [
+                    Text(
+                      message.time,
+                      style: const TextStyle(fontSize: 12),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8),
+                      child: message.isSender
+                          ? const Icon(
+                              Icons.done_all,
+                              size: 18,
+                              color: kReceivedColor,
+                            )
+                          : null,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
