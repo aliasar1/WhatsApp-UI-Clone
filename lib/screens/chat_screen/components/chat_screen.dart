@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/constants.dart';
 import 'package:whatsapp_clone/models/ChatMessage.dart';
+import 'dart:math' as math;
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen(
@@ -16,6 +17,7 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         toolbarHeight: 60,
         leadingWidth: 75,
@@ -76,21 +78,107 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
         ],
       ),
-      body: Container(
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('assets/images/backgorund.png'),
-                fit: BoxFit.cover)),
-        child: Stack(
-          children: [
-            ListView.builder(
+      body: Stack(
+        children: [
+          Container(
+            height: MediaQuery.of(context).size.height,
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/images/backgorund.png'),
+                    fit: BoxFit.cover)),
+            child: ListView.builder(
               itemCount: chatMessagesData.length,
               itemBuilder: ((context, index) => ChatMessageCard(
                     message: chatMessagesData[index],
                   )),
             ),
-          ],
-        ),
+          ),
+          Positioned(
+            bottom: 10,
+            left: 4,
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Row(
+                children: [
+                  Container(
+                    height: MediaQuery.of(context).size.height * 0.06,
+                    width: MediaQuery.of(context).size.height * 0.52,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: kSenderMessageColor,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          left: kSmallPadding, right: kSmallPadding),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.mood,
+                            color: kIconColor.withOpacity(0.7),
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                  left: kSmallPadding, right: kSmallPadding),
+                              child: TextField(
+                                cursorColor: kPrimaryColor,
+                                autocorrect: false,
+                                decoration: InputDecoration(
+                                  hintText: "Message",
+                                  hintStyle: TextStyle(
+                                      color: kIconColor.withOpacity(0.9)),
+                                  enabledBorder: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                  fillColor: kIconColor.withOpacity(0.9),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Transform.rotate(
+                                angle: -2.3,
+                                child: IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(Icons.attachment, size: 26),
+                                  color: kIconColor.withOpacity(0.9),
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: () {},
+                                icon: const Icon(Icons.camera_alt, size: 24),
+                                color: kIconColor.withOpacity(0.9),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: kSmallPadding * 0.4),
+                    child: Container(
+                      height: MediaQuery.of(context).size.height * 0.06,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: kPrimaryColor,
+                      ),
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.mic,
+                          size: 22,
+                          color: kBackgroundColor,
+                        ),
+                        color: kIconColor.withOpacity(0.9),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
