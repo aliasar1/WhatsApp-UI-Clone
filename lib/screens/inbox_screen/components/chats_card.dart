@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone/screens/messages_screen/components/messages_screen.dart';
 
 import '../../../constants.dart';
 import '../../../models/Chat.dart';
+import '../../chat_screen/components/chat_screen.dart';
 
 class ChatCard extends StatelessWidget {
   const ChatCard({
@@ -21,7 +21,7 @@ class ChatCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => MessagesScreen(
+              builder: (context) => ChatScreen(
                     image: chat.image,
                     name: chat.name,
                   )),

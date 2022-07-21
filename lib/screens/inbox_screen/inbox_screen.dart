@@ -6,14 +6,14 @@ import 'package:whatsapp_clone/screens/status_screen/status_screen.dart';
 import '../call_screen/call_screen.dart';
 import 'components/chats_card.dart';
 
-class ChatScreen extends StatefulWidget {
-  const ChatScreen({Key? key}) : super(key: key);
+class InboxScreen extends StatefulWidget {
+  const InboxScreen({Key? key}) : super(key: key);
 
   @override
-  State<ChatScreen> createState() => _ChatScreenState();
+  State<InboxScreen> createState() => _InboxScreenState();
 }
 
-class _ChatScreenState extends State<ChatScreen>
+class _InboxScreenState extends State<InboxScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
@@ -94,7 +94,7 @@ class _ChatScreenState extends State<ChatScreen>
                     press: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const ChatScreen()),
+                          builder: (context) => const InboxScreen()),
                     ),
                   )),
             ),

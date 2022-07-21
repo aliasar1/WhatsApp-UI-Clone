@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/constants.dart';
-import 'package:whatsapp_clone/screens/chat_screen/chat_screen.dart';
+import 'package:whatsapp_clone/screens/inbox_screen/inbox_screen.dart';
 
 import 'components/splash_body.dart';
 
@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(
         const Duration(seconds: 2),
         () => Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const ChatScreen())));
+            MaterialPageRoute(builder: (context) => const InboxScreen())));
   }
 
   @override

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/constants.dart';
 
-class MessagesScreen extends StatefulWidget {
-  const MessagesScreen({Key? key, required String image, required String name})
+class ChatScreen extends StatefulWidget {
+  const ChatScreen({Key? key, required String image, required String name})
       : super(key: key);
 
   @override
-  State<MessagesScreen> createState() => _MessagesScreenState();
+  State<ChatScreen> createState() => _ChatScreenState();
 }
 
-class _MessagesScreenState extends State<MessagesScreen> {
+class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
