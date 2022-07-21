@@ -35,11 +35,6 @@ class _InboxScreenState extends State<InboxScreen>
           elevation: 0,
           title: const Text(
             'WhatsApp',
-            style: TextStyle(
-              fontSize: 20,
-              color: kBackgroundColor,
-              fontWeight: FontWeight.bold,
-            ),
           ),
           actions: [
             IconButton(
