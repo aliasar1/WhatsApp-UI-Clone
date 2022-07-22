@@ -25,6 +25,7 @@ class _ChatScreenState extends State<ChatScreen> {
         backgroundColor: Colors.transparent,
         resizeToAvoidBottomInset: true,
         appBar: AppBar(
+          elevation: 0,
           toolbarHeight: 60,
           leadingWidth: 75,
           titleSpacing: 5,
