@@ -7,7 +7,10 @@ import 'chat_card.dart';
 class ChatBody extends StatelessWidget {
   const ChatBody({
     Key? key,
+    required this.image,
   }) : super(key: key);
+
+  final String image;
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +24,7 @@ class ChatBody extends StatelessWidget {
               itemCount: chatMessagesData.length,
               itemBuilder: ((context, index) => ChatMessageCard(
                     message: chatMessagesData[index],
+                    image: image,
                   )),
             ),
           ),

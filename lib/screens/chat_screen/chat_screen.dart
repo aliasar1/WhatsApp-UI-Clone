@@ -87,7 +87,9 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
           ],
         ),
-        body: const ChatBody(),
+        body: ChatBody(
+          image: widget.image,
+        ),
       ),
     );
   }

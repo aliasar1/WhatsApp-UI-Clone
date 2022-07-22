@@ -8,20 +8,19 @@ import 'text_message.dart';
 import 'video_message.dart';
 
 class ChatMessageCard extends StatelessWidget {
-  const ChatMessageCard({
-    Key? key,
-    required this.message,
-  }) : super(key: key);
+  const ChatMessageCard({Key? key, required this.message, required this.image})
+      : super(key: key);
 
   final ChatMessage message;
+  final String image;
 
   @override
   Widget build(BuildContext context) {
-    Widget messageType(ChatMessage message) {
+    Widget messageType(ChatMessage message, String image) {
       if (message.messageType == ChatMessageType.text) {
         return TextMessage(message: message);
       } else if (message.messageType == ChatMessageType.audio) {
-        return AudioMessage(message: message);
+        return AudioMessage(message: message, image: image);
       } else if (message.messageType == ChatMessageType.video) {
         return VideoMessage(message: message);
       } else if (message.messageType == ChatMessageType.image) {
@@ -46,7 +45,10 @@ class ChatMessageCard extends StatelessWidget {
                 message.isSender ? kReceiverMessageColor : kSenderMessageColor,
             borderRadius: BorderRadius.circular(15),
           ),
-          child: messageType(message),
+          child: messageType(
+            message,
+            image,
+          ),
         ),
       ],
     );

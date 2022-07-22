@@ -17,3 +17,9 @@ const kReceiverMessageColor = Color.fromARGB(255, 205, 241, 198);
 const kSmallPadding = 8.0;
 const kMedPadding = 12.0;
 const kLargePadding = 16.0;
+
+const kSmallSize = 8.0;
+const kMedSize = 12.0;
+const kLargeSize = 24.0;
+
+const kAudioContainerWidth = 200.0;
