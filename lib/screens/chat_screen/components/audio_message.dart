@@ -5,7 +5,7 @@ import '../../../models/ChatMessage.dart';
 
 enum AuidoStatus { play, pause }
 
-class AudioMessage extends StatelessWidget {
+class AudioMessage extends StatefulWidget {
   const AudioMessage({
     Key? key,
     required this.message,
@@ -16,17 +16,22 @@ class AudioMessage extends StatelessWidget {
   final String image;
 
   @override
+  State<AudioMessage> createState() => _AudioMessageState();
+}
+
+class _AudioMessageState extends State<AudioMessage> {
+  @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: kLargeSize * 2,
       width: kAudioContainerWidth * 1.2,
-      child: message.isSender
+      child: widget.message.isSender
           ? Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                PersonAvatarCard(message: message, image: image),
-                AudioCardBuilder(message: message),
-                SizedBox(
+                PersonAvatarCard(message: widget.message, image: widget.image),
+                AudioCardBuilder(message: widget.message),
+                const SizedBox(
                   width: 5,
                 )
               ],
@@ -34,15 +39,15 @@ class AudioMessage extends StatelessWidget {
           : Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                AudioCardBuilder(message: message),
-                PersonAvatarCard(message: message, image: image),
+                AudioCardBuilder(message: widget.message),
+                PersonAvatarCard(message: widget.message, image: widget.image),
               ],
             ),
     );
   }
 }
 
-class AudioCardBuilder extends StatelessWidget {
+class AudioCardBuilder extends StatefulWidget {
   const AudioCardBuilder({
     Key? key,
     required this.message,
@@ -51,12 +56,19 @@ class AudioCardBuilder extends StatelessWidget {
   final ChatMessage message;
 
   @override
+  State<AudioCardBuilder> createState() => _AudioCardBuilderState();
+}
+
+class _AudioCardBuilderState extends State<AudioCardBuilder> {
+  bool isPlaying = false;
+  @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: message.isSender
+      padding: widget.message.isSender
           ? const EdgeInsets.only(right: 6)
           : const EdgeInsets.only(),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Padding(
             padding: const EdgeInsets.only(
@@ -65,7 +77,15 @@ class AudioCardBuilder extends StatelessWidget {
             child: SizedBox(
               width: 1,
               child: IconButton(
-                  onPressed: () {}, icon: const Icon(Icons.play_arrow)),
+                icon: Icon(
+                  isPlaying ? Icons.pause : Icons.play_arrow,
+                ),
+                onPressed: () {
+                  setState(() {
+                    isPlaying = !isPlaying;
+                  });
+                },
+              ),
             ),
           ),
           Stack(
@@ -74,10 +94,28 @@ class AudioCardBuilder extends StatelessWidget {
                 alignment: Alignment.center,
                 child: Padding(
                   padding: const EdgeInsets.only(left: kMedPadding * 2),
-                  child: Container(
-                    width: 150,
-                    height: 3,
-                    color: kIconColor,
+                  child: Stack(
+                    children: [
+                      Align(
+                        alignment: Alignment.center,
+                        child: Container(
+                          width: 150,
+                          height: 3,
+                          color: kIconColor,
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.center,
+                        child: Container(
+                          width: 10,
+                          height: 10,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: kReceivedColor,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -85,16 +123,16 @@ class AudioCardBuilder extends StatelessWidget {
                 bottom: 3,
                 left: 25,
                 child: Text(
-                  message.duration,
+                  widget.message.duration,
                   style: const TextStyle(fontSize: 11),
                 ),
               ),
-              !message.isSender
+              !widget.message.isSender
                   ? Positioned(
                       bottom: 3,
                       right: -1,
                       child: Text(
-                        message.time,
+                        widget.message.time,
                         style: const TextStyle(fontSize: 12),
                       ),
                     )
@@ -103,18 +141,20 @@ class AudioCardBuilder extends StatelessWidget {
                       right: 4,
                       child: SizedBox(
                         height: 14,
-                        width: 65,
+                        width: 70,
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              message.time,
+                              widget.message.time,
                               style: const TextStyle(fontSize: 12),
                             ),
-                            const Icon(
-                              Icons.done_all,
-                              size: 18,
-                              color: kReceivedColor,
+                            const Padding(
+                              padding: EdgeInsets.only(left: 8),
+                              child: Icon(
+                                Icons.done_all,
+                                size: 18,
+                                color: kReceivedColor,
+                              ),
                             ),
                           ],
                         ),
@@ -165,7 +205,7 @@ class PersonAvatarCard extends StatelessWidget {
                     right: -3.7,
                     child: Icon(
                       Icons.mic,
-                      color: kHighlightColor,
+                      color: kReceivedColor,
                       size: 17,
                     ),
                   )
@@ -174,7 +214,7 @@ class PersonAvatarCard extends StatelessWidget {
                     left: -3.7,
                     child: Icon(
                       Icons.mic,
-                      color: kHighlightColor,
+                      color: kReceivedColor,
                       size: 17,
                     ),
                   ),
