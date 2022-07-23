@@ -16,6 +16,42 @@ class ChatMessageCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment:
+          message.isSender ? MainAxisAlignment.end : MainAxisAlignment.start,
+      children: [
+        message.messageType == ChatMessageType.image
+            ? message.isSender
+                ? Row(
+                    children: [
+                      const ForwardButtonBuilder(),
+                      ChatBubbleBuilder(message: message, image: image),
+                    ],
+                  )
+                : Row(
+                    children: [
+                      ChatBubbleBuilder(message: message, image: image),
+                      const ForwardButtonBuilder(),
+                    ],
+                  )
+            : ChatBubbleBuilder(message: message, image: image),
+      ],
+    );
+  }
+}
+
+class ChatBubbleBuilder extends StatelessWidget {
+  const ChatBubbleBuilder({
+    Key? key,
+    required this.message,
+    required this.image,
+  }) : super(key: key);
+
+  final ChatMessage message;
+  final String image;
+
+  @override
+  Widget build(BuildContext context) {
     Widget messageType(ChatMessage message, String image) {
       if (message.messageType == ChatMessageType.text) {
         return TextMessage(message: message);
@@ -51,6 +87,28 @@ class ChatMessageCard extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class ForwardButtonBuilder extends StatelessWidget {
+  const ForwardButtonBuilder({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 45.0,
+      width: 45.0,
+      decoration: BoxDecoration(
+        color: kTextColor.withOpacity(0.1),
+        image: const DecorationImage(
+          image: AssetImage("assets/images/arrow.png"),
+          invertColors: true,
+        ),
+        shape: BoxShape.circle,
+      ),
     );
   }
 }
