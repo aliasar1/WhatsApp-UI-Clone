@@ -41,9 +41,34 @@ class _InboxScreenState extends State<InboxScreen>
               icon: const Icon(Icons.search, color: kBackgroundColor),
               onPressed: () {},
             ),
-            IconButton(
-              icon: const Icon(Icons.more_vert, color: kBackgroundColor),
-              onPressed: () {},
+            PopupMenuButton<String>(
+              onSelected: (value) {
+                // TO-DO
+              },
+              itemBuilder: (BuildContext contesxt) {
+                return [
+                  const PopupMenuItem(
+                    value: "New group",
+                    child: Text("New group"),
+                  ),
+                  const PopupMenuItem(
+                    value: "New broadcast",
+                    child: Text("New broadcast"),
+                  ),
+                  const PopupMenuItem(
+                    value: "Linked Devices",
+                    child: Text("Linked devices"),
+                  ),
+                  const PopupMenuItem(
+                    value: "Starred messages",
+                    child: Text("Starred messages"),
+                  ),
+                  const PopupMenuItem(
+                    value: "Settings",
+                    child: Text("Settings"),
+                  ),
+                ];
+              },
             ),
           ],
           bottom: TabBar(
