@@ -39,7 +39,9 @@ class _InboxScreenState extends State<InboxScreen>
           actions: [
             IconButton(
               icon: const Icon(Icons.search, color: kBackgroundColor),
-              onPressed: () {},
+              onPressed: () {
+                showSearch(context: context, delegate: CustomSearch());
+              },
             ),
             PopupMenuButton<String>(
               onSelected: (value) {
@@ -129,5 +131,70 @@ class _InboxScreenState extends State<InboxScreen>
                 child: const Icon(Icons.chat),
               )
             : null);
+  }
+}
+
+class CustomSearch extends SearchDelegate {
+  List<String> data = [
+    'Jenny Wilson',
+    'Esther Howard',
+    'Ralph Edwards',
+    'Jacob Jones',
+    'Albert Flores'
+  ];
+  @override
+  List<Widget>? buildActions(BuildContext context) {
+    return [
+      IconButton(
+          onPressed: () {
+            query = '';
+          },
+          icon: const Icon(Icons.clear))
+    ];
+  }
+
+  @override
+  Widget? buildLeading(BuildContext context) {
+    return IconButton(
+        onPressed: () {
+          close(context, null);
+        },
+        icon: const Icon(Icons.arrow_back));
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    List<String> results = [];
+    for (var item in data) {
+      if (item.toLowerCase().contains(query.toLowerCase())) {
+        results.add(item);
+      }
+    }
+    return ListView.builder(
+        itemCount: results.length,
+        itemBuilder: (context, index) {
+          var show = results[index];
+          return ListTile(
+            title: Text(show),
+          );
+        });
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    List<String> results = [];
+    for (var item in data) {
+      if (item.toLowerCase().contains(query.toLowerCase())) {
+        results.add(item);
+      }
+    }
+    return ListView.builder(
+        itemCount: results.length,
+        itemBuilder: (context, index) {
+          var show = results[index];
+          return ListTile(
+            title: Text(show),
+          );
+        });
   }
 }
