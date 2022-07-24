@@ -20,7 +20,8 @@ class ChatMessageCard extends StatelessWidget {
       mainAxisAlignment:
           message.isSender ? MainAxisAlignment.end : MainAxisAlignment.start,
       children: [
-        message.messageType == ChatMessageType.image
+        message.messageType == ChatMessageType.image ||
+                message.messageType == ChatMessageType.video
             ? message.isSender
                 ? Row(
                     children: [
