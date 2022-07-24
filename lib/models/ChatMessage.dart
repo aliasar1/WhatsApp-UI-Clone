@@ -94,13 +94,6 @@ List chatMessagesData = [
   ),
   ChatMessage(
     text: "",
-    time: "6:25 pm",
-    messageType: ChatMessageType.video,
-    messageStatus: MessageStatus.viewed,
-    isSender: true,
-  ),
-  ChatMessage(
-    text: "",
     time: "6:32 pm",
     messageType: ChatMessageType.image,
     messageStatus: MessageStatus.not_sent,
@@ -112,6 +105,13 @@ List chatMessagesData = [
     messageType: ChatMessageType.text,
     messageStatus: MessageStatus.viewed,
     isSender: false,
+  ),
+  ChatMessage(
+    text: "",
+    time: "6:25 pm",
+    messageType: ChatMessageType.video,
+    messageStatus: MessageStatus.viewed,
+    isSender: true,
   ),
   ChatMessage(
     text: "Glad you like it",
@@ -193,9 +193,9 @@ List chatMessagesData = [
     isSender: true,
   ),
   ChatMessage(
-    text: "",
+    text: "Good going!",
     time: "6:25 pm",
-    messageType: ChatMessageType.video,
+    messageType: ChatMessageType.text,
     messageStatus: MessageStatus.viewed,
     isSender: true,
   ),
