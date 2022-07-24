@@ -5,15 +5,21 @@ class ImageViewer extends StatelessWidget {
   final String image;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(image),
-          fit: BoxFit.cover,
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      body: Align(
+        alignment: Alignment.center,
+        child: AspectRatio(
+          aspectRatio: 4 / 3,
+          child: Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(image),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
         ),
-      ),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
       ),
     );
   }
