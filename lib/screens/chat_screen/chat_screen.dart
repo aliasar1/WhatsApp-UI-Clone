@@ -92,6 +92,7 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
           body: ChatBody(
             image: widget.image,
+            name: widget.name,
           ),
         ),
       ),

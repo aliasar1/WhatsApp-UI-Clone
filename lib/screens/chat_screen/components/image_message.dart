@@ -5,13 +5,18 @@ import 'package:whatsapp_clone/screens/chat_screen/components/image_preview.dart
 import '../../../models/ChatMessage.dart';
 
 class ImageMessage extends StatelessWidget {
-  const ImageMessage({Key? key, required this.message}) : super(key: key);
+  const ImageMessage({Key? key, required this.message, required this.name})
+      : super(key: key);
   final ChatMessage message;
+  final String name;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(kSmallPadding),
-      child: ImageBuilder(message: message),
+      child: ImageBuilder(
+        message: message,
+        name: name,
+      ),
     );
   }
 }
@@ -20,9 +25,11 @@ class ImageBuilder extends StatelessWidget {
   const ImageBuilder({
     Key? key,
     required this.message,
+    required this.name,
   }) : super(key: key);
 
   final ChatMessage message;
+  final String name;
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +41,9 @@ class ImageBuilder extends StatelessWidget {
             image: message.isSender
                 ? "assets/images/sea3.jpg"
                 : "assets/images/sea2.jpg",
+            isSender: message.isSender,
+            name: name,
+            time: message.time,
           ),
         ),
       ),

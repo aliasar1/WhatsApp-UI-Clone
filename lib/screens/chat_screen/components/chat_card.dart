@@ -8,11 +8,15 @@ import 'text_message.dart';
 import 'video_message.dart';
 
 class ChatMessageCard extends StatelessWidget {
-  const ChatMessageCard({Key? key, required this.message, required this.image})
+  const ChatMessageCard(
+      {Key? key,
+      required this.message,
+      required this.image,
+      required this.name})
       : super(key: key);
 
   final ChatMessage message;
-  final String image;
+  final String image, name;
 
   @override
   Widget build(BuildContext context) {
@@ -26,16 +30,28 @@ class ChatMessageCard extends StatelessWidget {
                 ? Row(
                     children: [
                       const ForwardButtonBuilder(),
-                      ChatBubbleBuilder(message: message, image: image),
+                      ChatBubbleBuilder(
+                        message: message,
+                        image: image,
+                        name: name,
+                      ),
                     ],
                   )
                 : Row(
                     children: [
-                      ChatBubbleBuilder(message: message, image: image),
+                      ChatBubbleBuilder(
+                        message: message,
+                        image: image,
+                        name: name,
+                      ),
                       const ForwardButtonBuilder(),
                     ],
                   )
-            : ChatBubbleBuilder(message: message, image: image),
+            : ChatBubbleBuilder(
+                message: message,
+                image: image,
+                name: name,
+              ),
       ],
     );
   }
@@ -46,10 +62,11 @@ class ChatBubbleBuilder extends StatelessWidget {
     Key? key,
     required this.message,
     required this.image,
+    required this.name,
   }) : super(key: key);
 
   final ChatMessage message;
-  final String image;
+  final String image, name;
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +78,10 @@ class ChatBubbleBuilder extends StatelessWidget {
       } else if (message.messageType == ChatMessageType.video) {
         return VideoMessage(message: message);
       } else if (message.messageType == ChatMessageType.image) {
-        return ImageMessage(message: message);
+        return ImageMessage(
+          message: message,
+          name: name,
+        );
       } else {
         return Container();
       }

@@ -8,9 +8,10 @@ class ChatBody extends StatelessWidget {
   const ChatBody({
     Key? key,
     required this.image,
+    required this.name,
   }) : super(key: key);
 
-  final String image;
+  final String image, name;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +26,7 @@ class ChatBody extends StatelessWidget {
               itemBuilder: ((context, index) => ChatMessageCard(
                     message: chatMessagesData[index],
                     image: image,
+                    name: name,
                   )),
             ),
           ),
