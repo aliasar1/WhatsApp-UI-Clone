@@ -34,9 +34,12 @@ class PublicStatusCard extends StatelessWidget {
                       color: kSeenColor,
                       width: 3,
                     )),
-            child: CircleAvatar(
-              radius: 26,
-              backgroundImage: AssetImage(status.image),
+            child: Container(
+              padding: const EdgeInsets.all(1.5),
+              child: CircleAvatar(
+                radius: 26,
+                backgroundImage: AssetImage(status.image),
+              ),
             ),
           ),
           Padding(
