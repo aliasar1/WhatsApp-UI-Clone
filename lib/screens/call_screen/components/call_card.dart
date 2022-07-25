@@ -15,12 +15,12 @@ class CallBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: CircleAvatar(
-        radius: 20,
+        radius: 25,
         backgroundImage: AssetImage(callLog.image),
       ),
       title: Text(
         callLog.name,
-        style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 15),
+        style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
       ),
       subtitle: Row(
         children: [
@@ -40,7 +40,7 @@ class CallBuilder extends StatelessWidget {
             child: Text(
               ' ${callLog.date}',
               maxLines: 1,
-              style: const TextStyle(fontSize: 13),
+              style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
             ),
           ),
         ],

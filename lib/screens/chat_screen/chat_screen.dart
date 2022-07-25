@@ -84,9 +84,34 @@ class _ChatScreenState extends State<ChatScreen> {
                 onPressed: () {},
                 icon: const Icon(Icons.call_rounded, size: 24),
               ),
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.more_vert, size: 24),
+              PopupMenuButton<String>(
+                onSelected: (value) {
+                  // TO-DO
+                },
+                itemBuilder: (BuildContext contesxt) {
+                  return [
+                    const PopupMenuItem(
+                      value: "New group",
+                      child: Text("New group"),
+                    ),
+                    const PopupMenuItem(
+                      value: "New broadcast",
+                      child: Text("New broadcast"),
+                    ),
+                    const PopupMenuItem(
+                      value: "Linked Devices",
+                      child: Text("Linked devices"),
+                    ),
+                    const PopupMenuItem(
+                      value: "Starred messages",
+                      child: Text("Starred messages"),
+                    ),
+                    const PopupMenuItem(
+                      value: "Settings",
+                      child: Text("Settings"),
+                    ),
+                  ];
+                },
               ),
             ],
           ),
