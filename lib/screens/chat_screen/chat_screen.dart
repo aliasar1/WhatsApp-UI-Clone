@@ -91,24 +91,42 @@ class _ChatScreenState extends State<ChatScreen> {
                 itemBuilder: (BuildContext contesxt) {
                   return [
                     const PopupMenuItem(
-                      value: "New group",
-                      child: Text("New group"),
+                      value: "View contact",
+                      child: Text("View contact"),
                     ),
                     const PopupMenuItem(
-                      value: "New broadcast",
-                      child: Text("New broadcast"),
+                      value: "Media, links, and docs",
+                      child: Text("Media, links, and docs"),
                     ),
                     const PopupMenuItem(
-                      value: "Linked Devices",
-                      child: Text("Linked devices"),
+                      value: "Search",
+                      child: Text("Search"),
                     ),
                     const PopupMenuItem(
-                      value: "Starred messages",
-                      child: Text("Starred messages"),
+                      value: "Mute notifications",
+                      child: Text("Mute notifications"),
                     ),
                     const PopupMenuItem(
-                      value: "Settings",
-                      child: Text("Settings"),
+                      value: "Disappearing messages",
+                      child: Text("Disappearing messages"),
+                    ),
+                    const PopupMenuItem(
+                      value: "Wallpaper",
+                      child: Text("Wallpaper"),
+                    ),
+                    PopupMenuItem(
+                      value: "More",
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+                          Text("More"),
+                          Icon(
+                            Icons.arrow_right,
+                            color: kTextColor,
+                            size: 30,
+                          ),
+                        ],
+                      ),
                     ),
                   ];
                 },
