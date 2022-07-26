@@ -57,7 +57,7 @@ class VideoTemplate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(kSmallPadding),
+      padding: const EdgeInsets.all(kSmallPadding * 0.6),
       child: VideoBuilder(message: message),
     );
   }
@@ -79,7 +79,7 @@ class VideoBuilder extends StatelessWidget {
           height: 140,
           width: 200,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(kSmallSize),
+            borderRadius: BorderRadius.circular(kMedSize),
             image: DecorationImage(
               fit: BoxFit.cover,
               image: message.isSender

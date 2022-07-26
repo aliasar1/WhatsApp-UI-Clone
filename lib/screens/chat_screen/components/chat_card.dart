@@ -100,7 +100,7 @@ class ChatBubbleBuilder extends StatelessWidget {
           decoration: BoxDecoration(
             color:
                 message.isSender ? kReceiverMessageColor : kSenderMessageColor,
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(kMedSize * 1.4),
           ),
           child: messageType(
             message,

@@ -1,5 +1,5 @@
 class Chat {
-  final String name, lastMessage, image, time;
+  final String name, lastMessage, image, time, status;
   final bool isActive, isSeen;
   final int msgTotal;
 
@@ -11,6 +11,7 @@ class Chat {
     this.isActive = false,
     this.isSeen = false,
     this.msgTotal = 0,
+    this.status = '',
   });
 }
 
@@ -23,6 +24,7 @@ List chatsData = [
     isActive: true,
     isSeen: false,
     msgTotal: 0,
+    status: 'Available',
   ),
   Chat(
     name: "Esther Howard",
@@ -32,6 +34,7 @@ List chatsData = [
     isActive: false,
     isSeen: true,
     msgTotal: 3,
+    status: 'Hey there! I am using WhatsApp.',
   ),
   Chat(
     name: "Ralph Edwards",
@@ -41,6 +44,7 @@ List chatsData = [
     isActive: true,
     isSeen: false,
     msgTotal: 0,
+    status: 'In a meeting',
   ),
   Chat(
     name: "Jacob Jones",
@@ -50,6 +54,7 @@ List chatsData = [
     isActive: false,
     isSeen: true,
     msgTotal: 2,
+    status: 'Urgent calls only.',
   ),
   Chat(
     name: "Albert Flores",
@@ -59,6 +64,7 @@ List chatsData = [
     isActive: false,
     isSeen: true,
     msgTotal: 1,
+    status: 'Available',
   ),
   Chat(
     name: "Jenny Wilson",
@@ -68,6 +74,7 @@ List chatsData = [
     isActive: false,
     isSeen: true,
     msgTotal: 0,
+    status: 'Busy',
   ),
   Chat(
     name: "Usama Khan",
@@ -77,6 +84,7 @@ List chatsData = [
     isActive: true,
     isSeen: false,
     msgTotal: 0,
+    status: 'Away',
   ),
   Chat(
     name: "Ralph Edwards",
@@ -86,5 +94,6 @@ List chatsData = [
     isActive: false,
     isSeen: true,
     msgTotal: 1,
+    status: 'Hey there! I am using WhatsApp.',
   ),
 ];
