@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/constants.dart';
 import 'package:whatsapp_clone/models/Chat.dart';
+import 'package:whatsapp_clone/screens/contact_screen/components/contact_screen.dart';
 import 'package:whatsapp_clone/screens/status_screen/status_screen.dart';
 
 import '../call_screen/call_screen.dart';
@@ -126,7 +127,12 @@ class _InboxScreenState extends State<InboxScreen>
         ),
         floatingActionButton: _tabController.index == 1
             ? FloatingActionButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ContactScreen()),
+                  );
+                },
                 backgroundColor: kPrimaryColor,
                 child: const Icon(Icons.chat),
               )
