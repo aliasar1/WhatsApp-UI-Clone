@@ -39,8 +39,8 @@ class ImageBuilder extends StatelessWidget {
         MaterialPageRoute(
           builder: (context) => ImageViewer(
             image: message.isSender
-                ? "assets/images/sea3.jpg"
-                : "assets/images/sea2.jpg",
+                ? "assets/images/sea3.jpeg"
+                : "assets/images/sea2.jpeg",
             isSender: message.isSender,
             name: name,
             time: message.time,
@@ -57,8 +57,8 @@ class ImageBuilder extends StatelessWidget {
               image: DecorationImage(
                 fit: BoxFit.cover,
                 image: message.isSender
-                    ? const AssetImage("assets/images/sea3.jpg")
-                    : const AssetImage("assets/images/sea2.jpg"),
+                    ? const AssetImage("assets/images/sea3.jpeg")
+                    : const AssetImage("assets/images/sea2.jpeg"),
               ),
             ),
           ),

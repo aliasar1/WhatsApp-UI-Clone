@@ -55,6 +55,7 @@ class _StatusScreenState extends State<StatusScreen> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           FloatingActionButton(
+            heroTag: 'Edit',
             onPressed: () {},
             mini: true,
             backgroundColor: kShadeColor,
@@ -67,6 +68,7 @@ class _StatusScreenState extends State<StatusScreen> {
             height: 10,
           ),
           FloatingActionButton(
+            heroTag: 'Camera',
             onPressed: () {},
             backgroundColor: kPrimaryColor,
             child: const Icon(Icons.camera_alt),
