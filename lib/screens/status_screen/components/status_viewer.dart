@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
@@ -24,7 +22,10 @@ class _StatusViewerState extends State<StatusViewer>
       duration: const Duration(seconds: 5),
     )..addListener(() {
         setState(() {
-          //Navigator.pop(context);
+          if (controller.value.toStringAsFixed(2) == '0.99' ||
+              controller.value.toStringAsFixed(2) == '0.98') {
+            Navigator.of(context).maybePop();
+          }
         });
       });
     controller.repeat(reverse: false);
