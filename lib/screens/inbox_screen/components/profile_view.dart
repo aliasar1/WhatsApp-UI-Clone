@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clone/screens/chat_screen/chat_screen.dart';
 
 import '../../../constants.dart';
 import '../../../models/Chat.dart';
@@ -60,20 +61,32 @@ class ProfileView extends StatelessWidget {
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: const [
-                            Icon(
-                              Icons.chat,
-                              color: kPrimaryColor,
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ChatScreen(
+                                          image: chat.image,
+                                          name: chat.name,
+                                          status: chat.isActive)),
+                                );
+                              },
+                              child: const Icon(
+                                Icons.chat,
+                                color: kPrimaryColor,
+                              ),
                             ),
-                            Icon(
+                            const Icon(
                               Icons.call,
                               color: kPrimaryColor,
                             ),
-                            Icon(
+                            const Icon(
                               Icons.videocam_rounded,
                               color: kPrimaryColor,
                             ),
-                            Icon(
+                            const Icon(
                               Icons.info,
                               color: kPrimaryColor,
                             ),

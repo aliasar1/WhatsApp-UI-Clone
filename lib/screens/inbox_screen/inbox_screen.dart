@@ -111,15 +111,28 @@ class _InboxScreenState extends State<InboxScreen>
           children: [
             const Text(""),
             ListView.builder(
-              itemCount: chatsData.length,
-              itemBuilder: ((context, index) => ChatCard(
-                    chat: chatsData[index],
-                    press: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const InboxScreen()),
-                    ),
-                  )),
+              itemCount: chatsData.length + 1,
+              itemBuilder: ((context, index) => (index != chatsData.length)
+                  ? ChatCard(
+                      chat: chatsData[index],
+                      press: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const InboxScreen()),
+                      ),
+                    )
+                  : const Padding(
+                      padding: EdgeInsets.only(
+                          top: kMedPadding, bottom: kLargePadding * 5),
+                      child: Text(
+                        "Tap and hold on a chat for more options",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 12,
+                            color: kIconColor),
+                      ),
+                    )),
             ),
             const StatusScreen(),
             const CallScreen(),
