@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/screens/chat_screen/chat_screen.dart';
+import 'package:whatsapp_clone/screens/info_screen/info_screen.dart';
 
 import '../../../constants.dart';
 import '../../../models/Chat.dart';
@@ -86,9 +87,20 @@ class ProfileView extends StatelessWidget {
                               Icons.videocam_rounded,
                               color: kPrimaryColor,
                             ),
-                            const Icon(
-                              Icons.info,
-                              color: kPrimaryColor,
+                            InkWell(
+                              onTap: () {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => InfoScreen(
+                                            chat: chat,
+                                          )),
+                                );
+                              },
+                              child: const Icon(
+                                Icons.info,
+                                color: kPrimaryColor,
+                              ),
                             ),
                           ],
                         ),

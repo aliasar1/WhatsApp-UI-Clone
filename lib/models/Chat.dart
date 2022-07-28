@@ -1,5 +1,5 @@
 class Chat {
-  final String name, lastMessage, image, time, status;
+  final String name, lastMessage, image, time, status, number;
   final bool isActive, isSeen;
   final int msgTotal;
 
@@ -12,6 +12,7 @@ class Chat {
     this.isSeen = false,
     this.msgTotal = 0,
     this.status = '',
+    this.number = '',
   });
 }
 
@@ -25,6 +26,7 @@ List chatsData = [
     isSeen: false,
     msgTotal: 0,
     status: 'Available',
+    number: '+92 331 2198312',
   ),
   Chat(
     name: "Esther Howard",
@@ -35,6 +37,7 @@ List chatsData = [
     isSeen: true,
     msgTotal: 3,
     status: 'Hey there! I am using WhatsApp.',
+    number: '+92 336 2198909',
   ),
   Chat(
     name: "Ralph Edwards",
@@ -45,6 +48,7 @@ List chatsData = [
     isSeen: false,
     msgTotal: 0,
     status: 'In a meeting',
+    number: '+92 332 2198707',
   ),
   Chat(
     name: "Jacob Jones",
@@ -55,6 +59,7 @@ List chatsData = [
     isSeen: true,
     msgTotal: 2,
     status: 'Urgent calls only.',
+    number: '+92 334 3243127',
   ),
   Chat(
     name: "Albert Flores",
@@ -65,6 +70,7 @@ List chatsData = [
     isSeen: true,
     msgTotal: 1,
     status: 'Available',
+    number: '+92 332 2138913',
   ),
   Chat(
     name: "Jenny Wilson",
@@ -75,6 +81,7 @@ List chatsData = [
     isSeen: true,
     msgTotal: 0,
     status: 'Busy',
+    number: '+92 331 1298213',
   ),
   Chat(
     name: "Usama Khan",
@@ -85,6 +92,7 @@ List chatsData = [
     isSeen: false,
     msgTotal: 0,
     status: 'Away',
+    number: '+92 331 2198312',
   ),
   Chat(
     name: "Ralph Edwards",
@@ -95,5 +103,6 @@ List chatsData = [
     isSeen: true,
     msgTotal: 1,
     status: 'Hey there! I am using WhatsApp.',
+    number: '+92 335 9918125',
   ),
 ];
