@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/constants.dart';
 
 import '../../models/Chat.dart';
+import 'components/transition_bar.dart';
 
 class InfoScreen extends StatelessWidget {
-  InfoScreen({Key? key, required this.chat}) : super(key: key);
+  const InfoScreen({Key? key, required this.chat}) : super(key: key);
   final Chat chat;
 
-  double top = 0.0;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -16,42 +16,31 @@ class InfoScreen extends StatelessWidget {
         resizeToAvoidBottomInset: false,
         body: CustomScrollView(
           slivers: <Widget>[
-            SliverAppBar(
-                automaticallyImplyLeading: false,
-                pinned: true,
-                backgroundColor: kPrimaryColor,
-                expandedHeight: MediaQuery.of(context).size.height * 0.45,
-                title: Visibility(
-                  visible: top < 57.0 ? true : false,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(1.5),
-                        child: CircleAvatar(
-                          radius: 22,
-                          backgroundImage: AssetImage(chat.image),
-                        ),
-                      ),
-                      Text(
-                        chat.name,
-                        style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: kBackgroundColor),
-                      ),
-                    ],
-                  ),
-                ),
-                flexibleSpace: LayoutBuilder(
-                  builder: ((context, constraints) {
-                    top = constraints.biggest.height;
-                    print(top);
-                    return FlexibleSpaceBar(
-                      background: AnimatedOpacity(
-                        duration: const Duration(milliseconds: 300),
-                        opacity: top <= 50 ? 0.0 : 1.0,
-                        child: Container(
+            TransitionAppBar(
+              extent: MediaQuery.of(context).size.height * 0.4,
+              avatar: CircleAvatar(
+                radius: 70,
+                backgroundImage: AssetImage(chat.image),
+              ),
+              chat: chat,
+            ),
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (context, index) => const Text("HAHAH"),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
+/*
+Container(
                           color: kBackgroundColor,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -100,49 +89,32 @@ class InfoScreen extends StatelessWidget {
                             ],
                           ),
                         ),
-                      ),
-                    );
-                  }),
-                )),
-            SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (context, index) => const Text("HAHAH"),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+ */
 
-  InkWell buildButton(IconData icon, String text) {
-    return InkWell(
-      onTap: () {},
-      child: Container(
-        width: 70,
-        height: 60,
-        color: Colors.transparent,
-        child: Column(
-          children: [
-            Icon(
-              icon,
-              color: kPrimaryColor,
-              size: 26,
-            ),
-            Text(
-              text,
-              style: const TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 14,
-                color: kPrimaryColor,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+/*
+Visibility(
+                  visible: top < 57.0 ? true : false,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(1.5),
+                        child: CircleAvatar(
+                          radius: 22,
+                          backgroundImage: AssetImage(chat.image),
+                        ),
+                      ),
+                      Text(
+                        chat.name,
+                        style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            color: kBackgroundColor),
+                      ),
+                    ],
+                  ),
+                ),
+*/
 
 
 /*

@@ -1,0 +1,243 @@
+import 'package:flutter/material.dart';
+import 'package:whatsapp_clone/constants.dart';
+
+import '../../../models/Chat.dart';
+
+class TransitionAppBar extends StatelessWidget {
+  final Widget avatar;
+  final Chat chat;
+  final double extent;
+
+  const TransitionAppBar({
+    required this.avatar,
+    this.extent = 250,
+    Key? key,
+    required this.chat,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverPersistentHeader(
+      pinned: true,
+      delegate: _TransitionAppBarDelegate(
+          chat: chat, avatar: avatar, extent: extent > 200 ? extent : 200),
+    );
+  }
+}
+
+class _TransitionAppBarDelegate extends SliverPersistentHeaderDelegate {
+  final _avatarMarginTween = EdgeInsetsTween(
+    begin: const EdgeInsets.only(top: kLargePadding * 1.2),
+    end: const EdgeInsets.only(
+        left: kLargePadding * 2.5, top: kLargePadding * 0.5),
+  );
+
+  final _avatarAlignTween =
+      AlignmentTween(begin: Alignment.topCenter, end: Alignment.topLeft);
+
+  final Widget avatar;
+  final double extent;
+  final Chat chat;
+
+  var top = 0.0;
+
+  _TransitionAppBarDelegate(
+      {required this.avatar, this.extent = 250, required this.chat})
+      : assert(avatar != null),
+        assert(extent == null || extent >= 200);
+
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    double tempVal = 72 * maxExtent / 100;
+    final progress = shrinkOffset > tempVal ? 1.0 : shrinkOffset / tempVal;
+    final avatarMargin = _avatarMarginTween.lerp(progress);
+
+    final avatarAlign = _avatarAlignTween.lerp(progress);
+
+    final avatarSize = (1 - progress / 1.2) * 80 + 32;
+
+    return LayoutBuilder(
+      builder: ((context, constraints) {
+        top = constraints.biggest.height;
+        print(top);
+        return Container(
+          color: kBackgroundColor,
+          child: Stack(
+            children: <Widget>[
+              AnimatedContainer(
+                duration: const Duration(milliseconds: 100),
+                height: 60,
+                constraints: BoxConstraints(maxHeight: minExtent),
+                color: top <= 140 ? kPrimaryColor : kBackgroundColor,
+              ),
+              Align(
+                alignment: Alignment.topLeft,
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                      left: kMedPadding * 0.8, top: kMedPadding * 1.6),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Icon(
+                      Icons.arrow_back,
+                      color: top <= 140 ? kBackgroundColor : kIconColor,
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: avatarMargin,
+                child: Align(
+                  alignment: avatarAlign,
+                  child: SizedBox(
+                    height: avatarSize,
+                    width: avatarSize,
+                    child: avatar,
+                  ),
+                ),
+              ),
+              top <= 88
+                  ? Padding(
+                      padding: const EdgeInsets.only(left: kLargePadding * 5.7),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          chat.name,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 17,
+                            color: kBackgroundColor,
+                          ),
+                        ),
+                      ),
+                    )
+                  : const Text(""),
+              Visibility(
+                visible: top <= 190 ? false : true,
+                child: Positioned(
+                  bottom: 110,
+                  right: 140,
+                  child: Text(
+                    chat.name,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 20,
+                        color: kTextColor),
+                  ),
+                ),
+              ),
+              Visibility(
+                visible: top <= 165 ? false : true,
+                child: Positioned(
+                  bottom: 90,
+                  right: 150,
+                  child: Opacity(
+                    opacity: 0.7,
+                    child: Text(
+                      chat.number,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 14,
+                          color: kTextColor),
+                    ),
+                  ),
+                ),
+              ),
+              Visibility(
+                visible: top <= 126 ? false : true,
+                child: Positioned(
+                  bottom: 10,
+                  right: 100,
+                  child: Row(
+                    children: [
+                      buildButton(Icons.chat, 'Message'),
+                      buildButton(Icons.call, 'Audio'),
+                      buildButton(Icons.videocam_rounded, 'Video'),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    right: kSmallPadding * 0.1, top: kSmallPadding),
+                child: Align(
+                  alignment: Alignment.topRight,
+                  child: PopupMenuButton<String>(
+                    onSelected: (value) {
+                      // TO-DO
+                    },
+                    icon: Icon(
+                      Icons.more_vert,
+                      color: top <= 140 ? kBackgroundColor : kIconColor,
+                    ),
+                    itemBuilder: (BuildContext contesxt) {
+                      return [
+                        const PopupMenuItem(
+                          value: "Share",
+                          child: Text("Share"),
+                        ),
+                        const PopupMenuItem(
+                          value: "Edit",
+                          child: Text("Edit"),
+                        ),
+                        const PopupMenuItem(
+                          value: "View in address book",
+                          child: Text("View in address book"),
+                        ),
+                        const PopupMenuItem(
+                          value: "Verify security code",
+                          child: Text("Verify security code"),
+                        ),
+                      ];
+                    },
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      }),
+    );
+  }
+
+  @override
+  double get maxExtent => extent;
+
+  @override
+  double get minExtent => 60;
+
+  @override
+  bool shouldRebuild(_TransitionAppBarDelegate oldDelegate) {
+    return avatar != oldDelegate.avatar;
+  }
+
+  InkWell buildButton(IconData icon, String text) {
+    return InkWell(
+      onTap: () {},
+      child: Container(
+        width: 70,
+        height: 60,
+        color: Colors.transparent,
+        child: Column(
+          children: [
+            Icon(
+              icon,
+              color: kPrimaryColor,
+              size: 26,
+            ),
+            Text(
+              text,
+              style: const TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 14,
+                color: kPrimaryColor,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
