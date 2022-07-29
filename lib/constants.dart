@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:ui';
 
 const kBackgroundColor = Color.fromRGBO(241, 241, 242, 1);
-const kAppBarColor = Color.fromARGB(255, 25, 32, 37);
+const kAppBarColor = Color.fromARGB(255, 12, 17, 20);
 const kPrimaryColor = Color.fromARGB(255, 9, 102, 91);
 const kSecondaryColor = Color.fromRGBO(37, 211, 102, 1);
 const kTextColor = Color.fromRGBO(19, 28, 33, 1);

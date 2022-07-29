@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:whatsapp_clone/constants.dart';
 import 'package:whatsapp_clone/screens/chat_screen/chat_screen.dart';
+import 'package:whatsapp_clone/screens/chat_screen/components/image_preview.dart';
 
 import '../../models/Chat.dart';
 import 'components/transition_bar.dart';
@@ -156,28 +157,40 @@ class _InfoScreenState extends State<InfoScreen> {
                                 shrinkWrap: true,
                                 itemCount: widget.chat.images.length + 1,
                                 itemBuilder: (BuildContext context, int i) {
-                                  return Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: kSmallPadding / 1.5),
-                                    child: ClipRRect(
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(10)),
-                                      child: (i != widget.chat.images.length)
-                                          ? Image.asset(
-                                              widget.chat.images[i],
-                                              fit: BoxFit.fitWidth,
-                                            )
-                                          : const Padding(
-                                              padding: EdgeInsets.only(
-                                                  top: kLargePadding,
-                                                  right: kLargePadding * 2.5,
-                                                  left: kLargePadding * 2.5,
-                                                  bottom: kLargePadding),
-                                              child: Icon(
-                                                Icons.arrow_forward_ios,
-                                                size: 22,
+                                  return InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => ImageViewer(
+                                                  image: widget.chat.images[i],
+                                                  name: widget.chat.name,
+                                                  isSender: false,
+                                                  time: widget.chat.time)));
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: kSmallPadding / 1.5),
+                                      child: ClipRRect(
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(10)),
+                                        child: (i != widget.chat.images.length)
+                                            ? Image.asset(
+                                                widget.chat.images[i],
+                                                fit: BoxFit.fitWidth,
+                                              )
+                                            : const Padding(
+                                                padding: EdgeInsets.only(
+                                                    top: kLargePadding,
+                                                    right: kLargePadding * 2.5,
+                                                    left: kLargePadding * 2.5,
+                                                    bottom: kLargePadding),
+                                                child: Icon(
+                                                  Icons.arrow_forward_ios,
+                                                  size: 22,
+                                                ),
                                               ),
-                                            ),
+                                      ),
                                     ),
                                   );
                                 },

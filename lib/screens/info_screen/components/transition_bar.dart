@@ -61,6 +61,7 @@ class _TransitionAppBarDelegate extends SliverPersistentHeaderDelegate {
     return LayoutBuilder(
       builder: ((context, constraints) {
         top = constraints.biggest.height;
+        print(top);
         return Container(
           decoration: BoxDecoration(
             color: kBackgroundColor,
@@ -129,12 +130,15 @@ class _TransitionAppBarDelegate extends SliverPersistentHeaderDelegate {
                 child: Positioned(
                   bottom: 110,
                   right: 140,
-                  child: Text(
-                    chat.name,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 20,
-                        color: kTextColor),
+                  child: Opacity(
+                    opacity: top <= 244 ? 0.2 : 1.0,
+                    child: Text(
+                      chat.name,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 20,
+                          color: kTextColor),
+                    ),
                   ),
                 ),
               ),
@@ -144,7 +148,7 @@ class _TransitionAppBarDelegate extends SliverPersistentHeaderDelegate {
                   bottom: 90,
                   right: 150,
                   child: Opacity(
-                    opacity: 0.7,
+                    opacity: top <= 204 ? 0.2 : 0.7,
                     child: Text(
                       chat.number,
                       style: const TextStyle(
