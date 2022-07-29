@@ -60,9 +60,19 @@ class _TransitionAppBarDelegate extends SliverPersistentHeaderDelegate {
     return LayoutBuilder(
       builder: ((context, constraints) {
         top = constraints.biggest.height;
-        print(top);
+
         return Container(
-          color: kBackgroundColor,
+          decoration: BoxDecoration(
+            color: kBackgroundColor,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 1,
+                blurRadius: 1,
+                offset: const Offset(0, 3),
+              ),
+            ],
+          ),
           child: Stack(
             children: <Widget>[
               AnimatedContainer(
@@ -146,7 +156,7 @@ class _TransitionAppBarDelegate extends SliverPersistentHeaderDelegate {
                 ),
               ),
               Visibility(
-                visible: top <= 126 ? false : true,
+                visible: top <= 80 ? false : true,
                 child: Positioned(
                   bottom: 10,
                   right: 100,

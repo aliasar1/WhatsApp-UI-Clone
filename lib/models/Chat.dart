@@ -1,7 +1,8 @@
 class Chat {
-  final String name, lastMessage, image, time, status, number;
+  final String name, lastMessage, image, time, status, number, joinDate;
   final bool isActive, isSeen;
   final int msgTotal;
+  final List<String> images;
 
   Chat({
     this.name = '',
@@ -13,6 +14,8 @@ class Chat {
     this.msgTotal = 0,
     this.status = '',
     this.number = '',
+    this.joinDate = '',
+    required this.images,
   });
 }
 
@@ -27,6 +30,14 @@ List chatsData = [
     msgTotal: 0,
     status: 'Available',
     number: '+92 331 2198312',
+    joinDate: '10 August 2021',
+    images: [
+      "assets/images/mount1.jpg",
+      "assets/images/sea1.jpg",
+      "assets/images/mount2.jpg",
+      "assets/images/sea2.jpeg",
+      "assets/images/sea3.jpeg",
+    ],
   ),
   Chat(
     name: "Esther Howard",
@@ -38,6 +49,14 @@ List chatsData = [
     msgTotal: 3,
     status: 'Hey there! I am using WhatsApp.',
     number: '+92 336 2198909',
+    joinDate: '19 May 2021',
+    images: [
+      "assets/images/mount1.jpg",
+      "assets/images/sea1.jpg",
+      "assets/images/mount2.jpg",
+      "assets/images/sea2.jpeg",
+      "assets/images/sea3.jpeg",
+    ],
   ),
   Chat(
     name: "Ralph Edwards",
@@ -49,6 +68,14 @@ List chatsData = [
     msgTotal: 0,
     status: 'In a meeting',
     number: '+92 332 2198707',
+    joinDate: '22 March 2021',
+    images: [
+      "assets/images/mount1.jpg",
+      "assets/images/sea1.jpg",
+      "assets/images/mount2.jpg",
+      "assets/images/sea2.jpeg",
+      "assets/images/sea3.jpeg",
+    ],
   ),
   Chat(
     name: "Jacob Jones",
@@ -60,6 +87,14 @@ List chatsData = [
     msgTotal: 2,
     status: 'Urgent calls only.',
     number: '+92 334 3243127',
+    joinDate: '22 October 2021',
+    images: [
+      "assets/images/mount1.jpg",
+      "assets/images/sea1.jpg",
+      "assets/images/mount2.jpg",
+      "assets/images/sea2.jpeg",
+      "assets/images/sea3.jpeg",
+    ],
   ),
   Chat(
     name: "Albert Flores",
@@ -71,6 +106,14 @@ List chatsData = [
     msgTotal: 1,
     status: 'Available',
     number: '+92 332 2138913',
+    joinDate: '19 September 2021',
+    images: [
+      "assets/images/mount1.jpg",
+      "assets/images/sea1.jpg",
+      "assets/images/mount2.jpg",
+      "assets/images/sea2.jpeg",
+      "assets/images/sea3.jpeg",
+    ],
   ),
   Chat(
     name: "Jenny Wilson",
@@ -82,6 +125,14 @@ List chatsData = [
     msgTotal: 0,
     status: 'Busy',
     number: '+92 331 1298213',
+    joinDate: '11 December 2021',
+    images: [
+      "assets/images/mount1.jpg",
+      "assets/images/sea1.jpg",
+      "assets/images/mount2.jpg",
+      "assets/images/sea2.jpeg",
+      "assets/images/sea3.jpeg",
+    ],
   ),
   Chat(
     name: "Usama Khan",
@@ -93,6 +144,14 @@ List chatsData = [
     msgTotal: 0,
     status: 'Away',
     number: '+92 331 2198312',
+    joinDate: '25 January 2021',
+    images: [
+      "assets/images/mount1.jpg",
+      "assets/images/sea1.jpg",
+      "assets/images/mount2.jpg",
+      "assets/images/sea2.jpeg",
+      "assets/images/sea3.jpeg",
+    ],
   ),
   Chat(
     name: "Ralph Edwards",
@@ -104,5 +163,13 @@ List chatsData = [
     msgTotal: 1,
     status: 'Hey there! I am using WhatsApp.',
     number: '+92 335 9918125',
+    joinDate: '12 April 2021',
+    images: [
+      "assets/images/mount1.jpg",
+      "assets/images/sea1.jpg",
+      "assets/images/mount2.jpg",
+      "assets/images/sea2.jpeg",
+      "assets/images/sea3.jpeg",
+    ],
   ),
 ];
