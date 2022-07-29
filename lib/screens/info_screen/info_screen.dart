@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:whatsapp_clone/constants.dart';
+import 'package:whatsapp_clone/screens/chat_screen/chat_screen.dart';
 
 import '../../models/Chat.dart';
 import 'components/transition_bar.dart';
@@ -442,10 +443,22 @@ class _InfoScreenState extends State<InfoScreen> {
                                   const SizedBox(
                                     width: 150,
                                   ),
-                                  const Icon(
-                                    Icons.chat,
-                                    size: 23,
-                                    color: kPrimaryColor,
+                                  InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => ChatScreen(
+                                                  image: widget.chat.image,
+                                                  name: widget.chat.name,
+                                                  status:
+                                                      widget.chat.isActive)));
+                                    },
+                                    child: const Icon(
+                                      Icons.chat,
+                                      size: 23,
+                                      color: kPrimaryColor,
+                                    ),
                                   ),
                                   const SizedBox(
                                     width: 16,

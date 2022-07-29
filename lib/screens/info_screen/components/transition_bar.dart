@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/constants.dart';
 
 import '../../../models/Chat.dart';
+import '../../chat_screen/chat_screen.dart';
 
 class TransitionAppBar extends StatelessWidget {
   final Widget avatar;
@@ -60,7 +61,6 @@ class _TransitionAppBarDelegate extends SliverPersistentHeaderDelegate {
     return LayoutBuilder(
       builder: ((context, constraints) {
         top = constraints.biggest.height;
-
         return Container(
           decoration: BoxDecoration(
             color: kBackgroundColor,
@@ -156,15 +156,15 @@ class _TransitionAppBarDelegate extends SliverPersistentHeaderDelegate {
                 ),
               ),
               Visibility(
-                visible: top <= 80 ? false : true,
+                visible: top <= 90 ? false : true,
                 child: Positioned(
                   bottom: 10,
                   right: 100,
                   child: Row(
                     children: [
-                      buildButton(Icons.chat, 'Message'),
-                      buildButton(Icons.call, 'Audio'),
-                      buildButton(Icons.videocam_rounded, 'Video'),
+                      buildButton(Icons.chat, 'Message', context),
+                      buildButton(Icons.call, 'Audio', context),
+                      buildButton(Icons.videocam_rounded, 'Video', context),
                     ],
                   ),
                 ),
@@ -180,7 +180,7 @@ class _TransitionAppBarDelegate extends SliverPersistentHeaderDelegate {
                     },
                     icon: Icon(
                       Icons.more_vert,
-                      color: top <= 140 ? kBackgroundColor : kIconColor,
+                      color: top <= 90 ? kBackgroundColor : kIconColor,
                     ),
                     itemBuilder: (BuildContext contesxt) {
                       return [
@@ -223,9 +223,17 @@ class _TransitionAppBarDelegate extends SliverPersistentHeaderDelegate {
     return avatar != oldDelegate.avatar;
   }
 
-  InkWell buildButton(IconData icon, String text) {
+  InkWell buildButton(IconData icon, String text, BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ChatScreen(
+                    image: chat.image,
+                    name: chat.name,
+                    status: chat.isActive)));
+      },
       child: Container(
         width: 70,
         height: 60,
