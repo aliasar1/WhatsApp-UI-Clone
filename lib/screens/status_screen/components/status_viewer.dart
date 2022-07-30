@@ -44,6 +44,12 @@ class _StatusViewerState extends State<StatusViewer>
   Widget build(BuildContext context) {
     return SafeArea(
       child: GestureDetector(
+        onLongPress: () {
+          controller.stop();
+        },
+        onLongPressEnd: (_) {
+          controller.repeat();
+        },
         onTap: () {
           Navigator.of(context).maybePop();
         },

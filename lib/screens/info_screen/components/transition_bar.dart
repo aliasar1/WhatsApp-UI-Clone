@@ -61,7 +61,7 @@ class _TransitionAppBarDelegate extends SliverPersistentHeaderDelegate {
     return LayoutBuilder(
       builder: ((context, constraints) {
         top = constraints.biggest.height;
-        print(top);
+
         return Container(
           decoration: BoxDecoration(
             color: kBackgroundColor,

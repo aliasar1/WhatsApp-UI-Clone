@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/models/CallsLog.dart';
+import 'package:whatsapp_clone/screens/contact_screen/contact_screen.dart';
 
 import '../../constants.dart';
 import 'components/call_card.dart';
@@ -22,7 +23,10 @@ class _CallScreenState extends State<CallScreen> {
             )),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const ContactScreen()));
+        },
         backgroundColor: kPrimaryColor,
         child: const Icon(Icons.add_call),
       ),
