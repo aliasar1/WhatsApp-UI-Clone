@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/constants.dart';
+import 'package:whatsapp_clone/models/Chat.dart';
 import 'package:whatsapp_clone/screens/chat_screen/components/chat_body.dart';
+import 'package:whatsapp_clone/screens/info_screen/info_screen.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen(
-      {Key? key, required this.image, required this.name, required this.status})
+      {Key? key,
+      required this.image,
+      required this.name,
+      required this.status,
+      required this.chat})
       : super(key: key);
   final String image, name;
+  final Chat chat;
   final bool status;
   @override
   State<ChatScreen> createState() => _ChatScreenState();
@@ -49,31 +56,41 @@ class _ChatScreenState extends State<ChatScreen> {
                 ],
               ),
             ),
-            title: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  widget.name,
-                  style: const TextStyle(
-                    fontSize: 17,
-                    color: kBackgroundColor,
-                    fontWeight: FontWeight.w600,
+            title: InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => InfoScreen(chat: widget.chat),
                   ),
-                ),
-                const SizedBox(
-                  height: 2,
-                ),
-                Opacity(
-                  opacity: 0.7,
-                  child: Text(
-                    widget.status == true
-                        ? "online"
-                        : "last seen today at 3:31 pm",
-                    style:
-                        const TextStyle(color: kBackgroundColor, fontSize: 13),
+                );
+              },
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    widget.name,
+                    style: const TextStyle(
+                      fontSize: 17,
+                      color: kBackgroundColor,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
-                ),
-              ],
+                  const SizedBox(
+                    height: 2,
+                  ),
+                  Opacity(
+                    opacity: 0.7,
+                    child: Text(
+                      widget.status == true
+                          ? "online"
+                          : "last seen today at 3:31 pm",
+                      style: const TextStyle(
+                          color: kBackgroundColor, fontSize: 13),
+                    ),
+                  ),
+                ],
+              ),
             ),
             actions: [
               IconButton(

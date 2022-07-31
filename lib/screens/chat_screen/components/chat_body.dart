@@ -4,7 +4,7 @@ import '../../../constants.dart';
 import '../../../models/ChatMessage.dart';
 import 'chat_card.dart';
 
-class ChatBody extends StatelessWidget {
+class ChatBody extends StatefulWidget {
   const ChatBody({
     Key? key,
     required this.image,
@@ -13,6 +13,11 @@ class ChatBody extends StatelessWidget {
 
   final String image, name;
 
+  @override
+  State<ChatBody> createState() => _ChatBodyState();
+}
+
+class _ChatBodyState extends State<ChatBody> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -25,8 +30,8 @@ class ChatBody extends StatelessWidget {
               itemCount: chatMessagesData.length,
               itemBuilder: ((context, index) => ChatMessageCard(
                     message: chatMessagesData[index],
-                    image: image,
-                    name: name,
+                    image: widget.image,
+                    name: widget.name,
                   )),
             ),
           ),
@@ -49,9 +54,12 @@ class ChatBody extends StatelessWidget {
                           left: kSmallPadding, right: kSmallPadding),
                       child: Row(
                         children: [
-                          Icon(
-                            Icons.mood,
-                            color: kIconColor.withOpacity(0.7),
+                          InkWell(
+                            onTap: () {},
+                            child: Icon(
+                              Icons.mood,
+                              color: kIconColor.withOpacity(0.7),
+                            ),
                           ),
                           Expanded(
                             child: Padding(

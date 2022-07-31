@@ -68,8 +68,8 @@ class _TransitionAppBarDelegate extends SliverPersistentHeaderDelegate {
             boxShadow: [
               BoxShadow(
                 color: Colors.grey.withOpacity(0.5),
-                spreadRadius: 1,
-                blurRadius: 1,
+                spreadRadius: 0.2,
+                blurRadius: 6,
                 offset: const Offset(0, 3),
               ),
             ],
@@ -166,7 +166,19 @@ class _TransitionAppBarDelegate extends SliverPersistentHeaderDelegate {
                   right: 100,
                   child: Row(
                     children: [
-                      buildButton(Icons.chat, 'Message', context),
+                      InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ChatScreen(
+                                          image: chat.image,
+                                          name: chat.name,
+                                          status: chat.isActive,
+                                          chat: chat,
+                                        )));
+                          },
+                          child: buildButton(Icons.chat, 'Message', context)),
                       buildButton(Icons.call, 'Audio', context),
                       buildButton(Icons.videocam_rounded, 'Video', context),
                     ],
@@ -227,38 +239,27 @@ class _TransitionAppBarDelegate extends SliverPersistentHeaderDelegate {
     return avatar != oldDelegate.avatar;
   }
 
-  InkWell buildButton(IconData icon, String text, BuildContext context) {
-    return InkWell(
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => ChatScreen(
-                    image: chat.image,
-                    name: chat.name,
-                    status: chat.isActive)));
-      },
-      child: Container(
-        width: 70,
-        height: 60,
-        color: Colors.transparent,
-        child: Column(
-          children: [
-            Icon(
-              icon,
+  Container buildButton(IconData icon, String text, BuildContext context) {
+    return Container(
+      width: 70,
+      height: 60,
+      color: Colors.transparent,
+      child: Column(
+        children: [
+          Icon(
+            icon,
+            color: kPrimaryColor,
+            size: 26,
+          ),
+          Text(
+            text,
+            style: const TextStyle(
+              fontWeight: FontWeight.w500,
+              fontSize: 14,
               color: kPrimaryColor,
-              size: 26,
             ),
-            Text(
-              text,
-              style: const TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 14,
-                color: kPrimaryColor,
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

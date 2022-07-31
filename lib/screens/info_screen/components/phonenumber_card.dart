@@ -71,9 +71,11 @@ class PhoneNumberCard extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => ChatScreen(
-                                    image: widget.chat.image,
-                                    name: widget.chat.name,
-                                    status: widget.chat.isActive)));
+                                      image: widget.chat.image,
+                                      name: widget.chat.name,
+                                      status: widget.chat.isActive,
+                                      chat: widget.chat,
+                                    )));
                       },
                       child: const Icon(
                         Icons.chat,

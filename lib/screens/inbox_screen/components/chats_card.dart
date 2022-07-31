@@ -24,7 +24,11 @@ class ChatCard extends StatelessWidget {
           context,
           MaterialPageRoute(
               builder: (context) => ChatScreen(
-                  image: chat.image, name: chat.name, status: chat.isActive)),
+                    image: chat.image,
+                    name: chat.name,
+                    status: chat.isActive,
+                    chat: chat,
+                  )),
         );
       },
       child: Padding(

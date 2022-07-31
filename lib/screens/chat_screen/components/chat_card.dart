@@ -119,17 +119,30 @@ class ForwardButtonBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 45.0,
-      width: 45.0,
-      decoration: BoxDecoration(
-        color: kTextColor.withOpacity(0.1),
-        image: const DecorationImage(
-          image: AssetImage("assets/images/arrow.png"),
-          invertColors: true,
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        Container(
+          width: 40,
+          height: 40,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: kTextColor.withOpacity(0.1),
+          ),
         ),
-        shape: BoxShape.circle,
-      ),
+        Container(
+          height: 23.0,
+          width: 23.0,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/arrow.png"),
+              fit: BoxFit.scaleDown,
+              invertColors: true,
+            ),
+            shape: BoxShape.circle,
+          ),
+        ),
+      ],
     );
   }
 }
