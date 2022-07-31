@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/constants.dart';
 import 'package:whatsapp_clone/models/Chat.dart';
+import 'package:whatsapp_clone/screens/setting_screen/components/setting_screen.dart';
 import 'package:whatsapp_clone/screens/status_screen/status_screen.dart';
 
 import '../call_screen/call_screen.dart';
@@ -46,7 +47,13 @@ class _InboxScreenState extends State<InboxScreen>
             ),
             PopupMenuButton<String>(
               onSelected: (value) {
-                // TO-DO
+                if (value == "Settings") {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SettingScreen()),
+                  );
+                }
               },
               itemBuilder: (BuildContext contesxt) {
                 return [
