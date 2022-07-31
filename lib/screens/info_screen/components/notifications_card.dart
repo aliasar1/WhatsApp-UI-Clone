@@ -13,6 +13,7 @@ class NotificationsCard extends StatefulWidget {
 
 class _NotificationsCardState extends State<NotificationsCard> {
   bool isSwitched = false;
+  final List<String> _notificationsOptions = ['8 hours', '1 week', 'Always'];
 
   void toggleSwitch(bool value) {
     if (isSwitched == false) {
@@ -24,6 +25,29 @@ class _NotificationsCardState extends State<NotificationsCard> {
         isSwitched = false;
       });
     }
+  }
+
+  _buildAlert(BuildContext context) {
+    return AlertDialog(
+      title: const Text(
+        'Mute notifications for...',
+        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+      ),
+      actions: [
+        TextButton(
+          child: const Text('CANCEL'),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+        TextButton(
+          child: const Text('OK'),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      ],
+    );
   }
 
   @override
