@@ -18,9 +18,8 @@ class _CallScreenState extends State<CallScreen> {
     return Scaffold(
       body: ListView.builder(
         itemCount: callsData.length,
-        itemBuilder: ((context, index) => CallBuilder(
-              callLog: callsData[index],
-            )),
+        itemBuilder: ((context, index) =>
+            CallBuilder(callLog: callsData[index])),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

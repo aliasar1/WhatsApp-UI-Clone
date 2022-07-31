@@ -14,9 +14,12 @@ class CallBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: CircleAvatar(
-        radius: 25,
-        backgroundImage: AssetImage(callLog.image),
+      leading: InkWell(
+        onTap: () {},
+        child: CircleAvatar(
+          radius: 25,
+          backgroundImage: AssetImage(callLog.image),
+        ),
       ),
       title: Text(
         callLog.name,
