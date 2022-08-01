@@ -66,13 +66,19 @@ class CallBuilder extends StatelessWidget {
           ],
         ),
         trailing: callLog.isVideoCall
-            ? const Icon(
-                Icons.videocam_rounded,
-                color: kPrimaryColor,
+            ? InkWell(
+                onTap: () {},
+                child: const Icon(
+                  Icons.videocam_rounded,
+                  color: kPrimaryColor,
+                ),
               )
-            : const Icon(
-                Icons.call_sharp,
-                color: kPrimaryColor,
+            : InkWell(
+                onTap: () {},
+                child: const Icon(
+                  Icons.call_sharp,
+                  color: kPrimaryColor,
+                ),
               ),
       ),
     );
