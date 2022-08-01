@@ -28,11 +28,51 @@ class _ChatBodyState extends State<ChatBody> {
             child: ListView.builder(
               reverse: true,
               itemCount: chatMessagesData.length,
-              itemBuilder: ((context, index) => ChatMessageCard(
-                    message: chatMessagesData[index],
-                    image: widget.image,
-                    name: widget.name,
-                  )),
+              itemBuilder: ((context, index) => (index ==
+                      chatMessagesData.length - 1)
+                  ? Padding(
+                      padding: const EdgeInsets.only(top: kLargePadding),
+                      child: Center(
+                        child: Container(
+                          color: kYellowColor,
+                          height: MediaQuery.of(context).size.height * 0.1,
+                          width: MediaQuery.of(context).size.width * 0.8,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: const [
+                                    Icon(
+                                      Icons.lock,
+                                      size: 15,
+                                      color: kDarkGreyColor,
+                                    ),
+                                    Text(
+                                      ' Messages and calls are end-to-end encrypted.',
+                                      style: TextStyle(color: kDarkGreyColor),
+                                    ),
+                                  ],
+                                ),
+                                const Text(
+                                  'No one outside of this chat, not even WhatsApp,',
+                                  style: TextStyle(color: kDarkGreyColor),
+                                ),
+                                const Text(
+                                  'can read or listen to them. Tap to learn more.',
+                                  style: TextStyle(color: kDarkGreyColor),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    )
+                  : ChatMessageCard(
+                      message: chatMessagesData[index],
+                      image: widget.image,
+                      name: widget.name,
+                    )),
             ),
           ),
           Padding(
