@@ -14,40 +14,12 @@ class NotificationsCard extends StatefulWidget {
 class _NotificationsCardState extends State<NotificationsCard> {
   bool isSwitched = false;
   final List<String> _notificationsOptions = ['8 hours', '1 week', 'Always'];
+  String selected = 'Always';
 
-  void toggleSwitch(bool value) {
-    if (isSwitched == false) {
-      setState(() {
-        isSwitched = true;
-      });
-    } else {
-      setState(() {
-        isSwitched = false;
-      });
-    }
-  }
-
-  _buildAlert(BuildContext context) {
-    return AlertDialog(
-      title: const Text(
-        'Mute notifications for...',
-        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-      ),
-      actions: [
-        TextButton(
-          child: const Text('CANCEL'),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-        TextButton(
-          child: const Text('OK'),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-      ],
-    );
+  setSelectedUser(String option) {
+    setState(() {
+      selected = option;
+    });
   }
 
   @override
@@ -93,7 +65,7 @@ class _NotificationsCardState extends State<NotificationsCard> {
                   Transform.scale(
                     scale: 1,
                     child: Switch(
-                      onChanged: toggleSwitch,
+                      onChanged: (value) {},
                       value: isSwitched,
                       activeColor: kPrimaryColor,
                       activeTrackColor: kPrimaryColor.withOpacity(0.5),
