@@ -13,13 +13,17 @@ class NotificationsCard extends StatefulWidget {
 
 class _NotificationsCardState extends State<NotificationsCard> {
   bool isSwitched = false;
-  final List<String> _notificationsOptions = ['8 hours', '1 week', 'Always'];
-  String selected = 'Always';
 
-  setSelectedUser(String option) {
-    setState(() {
-      selected = option;
-    });
+  void toggleSwitch(bool value) {
+    if (isSwitched == false) {
+      setState(() {
+        isSwitched = true;
+      });
+    } else {
+      setState(() {
+        isSwitched = false;
+      });
+    }
   }
 
   @override
@@ -65,7 +69,7 @@ class _NotificationsCardState extends State<NotificationsCard> {
                   Transform.scale(
                     scale: 1,
                     child: Switch(
-                      onChanged: (value) {},
+                      onChanged: toggleSwitch,
                       value: isSwitched,
                       activeColor: kPrimaryColor,
                       activeTrackColor: kPrimaryColor.withOpacity(0.5),
