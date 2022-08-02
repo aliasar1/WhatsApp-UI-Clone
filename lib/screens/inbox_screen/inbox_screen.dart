@@ -49,65 +49,98 @@ class _InboxScreenState extends State<InboxScreen>
                 showSearch(context: context, delegate: CustomSearch());
               },
             ),
-            PopupMenuButton<String>(
-              onSelected: (value) {
-                if (value == "Settings") {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const SettingScreen()),
-                  );
-                } else if (value == "New group") {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const NewGroupScreen()),
-                  );
-                } else if (value == "New broadcast") {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const BroadcastScreen()),
-                  );
-                } else if (value == "Linked Devices") {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const LinkDeviceScreen()),
-                  );
-                } else if (value == "Starred messages") {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const StarredMessagesScreen()),
-                  );
-                }
-              },
-              itemBuilder: (BuildContext contesxt) {
-                return [
-                  const PopupMenuItem(
-                    value: "New group",
-                    child: Text("New group"),
-                  ),
-                  const PopupMenuItem(
-                    value: "New broadcast",
-                    child: Text("New broadcast"),
-                  ),
-                  const PopupMenuItem(
-                    value: "Linked Devices",
-                    child: Text("Linked devices"),
-                  ),
-                  const PopupMenuItem(
-                    value: "Starred messages",
-                    child: Text("Starred messages"),
-                  ),
-                  const PopupMenuItem(
-                    value: "Settings",
-                    child: Text("Settings"),
-                  ),
-                ];
-              },
-            ),
+            if (_tabController.index == 1)
+              PopupMenuButton<String>(
+                onSelected: (value) {
+                  if (value == "Settings") {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SettingScreen()),
+                    );
+                  } else if (value == "New group") {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const NewGroupScreen()),
+                    );
+                  } else if (value == "New broadcast") {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const BroadcastScreen()),
+                    );
+                  } else if (value == "Linked Devices") {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LinkDeviceScreen()),
+                    );
+                  } else if (value == "Starred messages") {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const StarredMessagesScreen()),
+                    );
+                  }
+                },
+                itemBuilder: (BuildContext context) {
+                  return [
+                    const PopupMenuItem(
+                      value: "New group",
+                      child: Text("New group"),
+                    ),
+                    const PopupMenuItem(
+                      value: "New broadcast",
+                      child: Text("New broadcast"),
+                    ),
+                    const PopupMenuItem(
+                      value: "Linked Devices",
+                      child: Text("Linked devices"),
+                    ),
+                    const PopupMenuItem(
+                      value: "Starred messages",
+                      child: Text("Starred messages"),
+                    ),
+                    const PopupMenuItem(
+                      value: "Settings",
+                      child: Text("Settings"),
+                    ),
+                  ];
+                },
+              )
+            else if (_tabController.index == 2)
+              PopupMenuButton<String>(
+                onSelected: (value) {},
+                itemBuilder: (BuildContext context) {
+                  return [
+                    const PopupMenuItem(
+                      value: "Status privacy",
+                      child: Text("Status privacy"),
+                    ),
+                    const PopupMenuItem(
+                      value: "Settings",
+                      child: Text("Settings"),
+                    ),
+                  ];
+                },
+              )
+            else
+              PopupMenuButton<String>(
+                onSelected: (value) {},
+                itemBuilder: (BuildContext context) {
+                  return [
+                    const PopupMenuItem(
+                      value: "Clear call log",
+                      child: Text("Clear call log"),
+                    ),
+                    const PopupMenuItem(
+                      value: "Settings",
+                      child: Text("Settings"),
+                    ),
+                  ];
+                },
+              ),
           ],
           bottom: TabBar(
             controller: _tabController,
