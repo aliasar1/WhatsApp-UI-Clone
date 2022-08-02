@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/constants.dart';
 import 'package:whatsapp_clone/models/Chat.dart';
+import 'package:whatsapp_clone/screens/inbox_screen/components/broadcast_screen.dart';
 import 'package:whatsapp_clone/screens/status_screen/status_screen.dart';
 
 import '../call_screen/call_screen.dart';
@@ -59,6 +60,12 @@ class _InboxScreenState extends State<InboxScreen>
                     context,
                     MaterialPageRoute(
                         builder: (context) => const NewGroupScreen()),
+                  );
+                } else if (value == "New broadcast") {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const BroadcastScreen()),
                   );
                 }
               },
