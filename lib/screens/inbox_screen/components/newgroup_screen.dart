@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/constants.dart';
 
 import '../../../models/Chat.dart';
-import 'contact_builder.dart';
+import '../../contact_screen/components/contact_builder.dart';
 
 class NewGroupScreen extends StatelessWidget {
   const NewGroupScreen({Key? key}) : super(key: key);
