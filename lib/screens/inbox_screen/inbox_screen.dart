@@ -4,6 +4,7 @@ import 'package:whatsapp_clone/models/Chat.dart';
 import 'package:whatsapp_clone/screens/status_screen/status_screen.dart';
 
 import '../call_screen/call_screen.dart';
+import '../contact_screen/components/newgroup_screen.dart';
 import '../contact_screen/contact_screen.dart';
 import '../setting_screen/setting_screen.dart';
 import 'components/chats_card.dart';
@@ -52,6 +53,12 @@ class _InboxScreenState extends State<InboxScreen>
                     context,
                     MaterialPageRoute(
                         builder: (context) => const SettingScreen()),
+                  );
+                } else if (value == "New group") {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const NewGroupScreen()),
                   );
                 }
               },
