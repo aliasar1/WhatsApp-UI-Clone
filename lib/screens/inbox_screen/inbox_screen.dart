@@ -3,6 +3,7 @@ import 'package:whatsapp_clone/constants.dart';
 import 'package:whatsapp_clone/models/Chat.dart';
 import 'package:whatsapp_clone/screens/inbox_screen/components/broadcast_screen.dart';
 import 'package:whatsapp_clone/screens/inbox_screen/components/linkdevice_screen.dart';
+import 'package:whatsapp_clone/screens/inbox_screen/components/starred_messages.dart';
 import 'package:whatsapp_clone/screens/status_screen/status_screen.dart';
 
 import '../call_screen/call_screen.dart';
@@ -73,6 +74,12 @@ class _InboxScreenState extends State<InboxScreen>
                     context,
                     MaterialPageRoute(
                         builder: (context) => const LinkDeviceScreen()),
+                  );
+                } else if (value == "Starred messages") {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const StarredMessagesScreen()),
                   );
                 }
               },
