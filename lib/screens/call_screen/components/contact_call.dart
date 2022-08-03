@@ -75,13 +75,13 @@ class _ContactCallScreenState extends State<ContactCallScreen> {
           ),
         ],
       ),
-      body: const ContactBody(),
+      body: const CallContactBody(),
     );
   }
 }
 
-class ContactBody extends StatelessWidget {
-  const ContactBody({
+class CallContactBody extends StatelessWidget {
+  const CallContactBody({
     Key? key,
   }) : super(key: key);
 
@@ -159,7 +159,7 @@ class ContactBody extends StatelessWidget {
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: chatsData.length,
-                itemBuilder: ((context, index) => ContactBuilder(
+                itemBuilder: ((context, index) => CallContactBuilder(
                       chat: chatsData[index],
                     )),
               ),
@@ -231,8 +231,8 @@ class ContactBody extends StatelessWidget {
   }
 }
 
-class ContactBuilder extends StatelessWidget {
-  const ContactBuilder({
+class CallContactBuilder extends StatelessWidget {
+  const CallContactBuilder({
     Key? key,
     required this.chat,
   }) : super(key: key);
@@ -281,70 +281,3 @@ class ContactBuilder extends StatelessWidget {
     );
   }
 }
-
-/*
-Padding(
-      padding: const EdgeInsets.only(top: kLargePadding),
-      child: Row(
-        children: [
-          CircleAvatar(
-            radius: 20,
-            backgroundImage: AssetImage(chat.image),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: kMedPadding),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      chat.name,
-                      style: const TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    Opacity(
-                      opacity: 0.7,
-                      child: Text(
-                        chat.status,
-                        style: const TextStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: SizedBox(
-                    height: 40,
-                    width: 80,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: const [
-                        Icon(
-                          Icons.call,
-                          color: kPrimaryColor,
-                          size: 24,
-                        ),
-                        Icon(
-                          Icons.videocam_rounded,
-                          color: kPrimaryColor,
-                          size: 24,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          )
-        ],
-      ),
-    );
- */
