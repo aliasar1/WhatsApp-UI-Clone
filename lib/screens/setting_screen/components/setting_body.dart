@@ -44,7 +44,10 @@ class SettingScreenBody extends StatelessWidget {
               ),
             ),
           ),
-          title: const Text('Account'),
+          title: const Text(
+            'Account',
+            style: TextStyle(fontWeight: FontWeight.w400),
+          ),
           subtitle: const Text('Privacy, security, change number'),
         ),
         tileBuilder(Icons.chat, 'Chats', 'Theme, wallpapers, chat history'),

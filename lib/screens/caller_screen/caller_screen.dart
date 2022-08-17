@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/constants.dart';
 
@@ -12,6 +14,8 @@ class _CallerScreenState extends State<CallerScreen> {
   @override
   Widget build(BuildContext context) {
     bool micOff = true;
+
+    Timer _timer;
 
     return SafeArea(
       child: Container(
@@ -101,29 +105,42 @@ class _CallerScreenState extends State<CallerScreen> {
                                     const Icon(
                                       Icons.videocam_rounded,
                                       size: 28,
-                                      color: kBackgroundColor,
+                                      color: kIconColor,
                                     ),
-                                    IconButton(
-                                      icon: Icon(
-                                        micOff ? Icons.mic_off : Icons.mic,
-                                      ),
-                                      onPressed: () {
+                                    InkWell(
+                                      onTap: () {
                                         setState(() {
                                           micOff = !micOff;
                                         });
                                       },
+                                      child: micOff
+                                          ? const Icon(
+                                              Icons.mic_off,
+                                              size: 28,
+                                              color: kBackgroundColor,
+                                            )
+                                          : const Icon(
+                                              Icons.mic,
+                                              size: 28,
+                                              color: kBackgroundColor,
+                                            ),
                                     ),
-                                    Container(
-                                      height: 40,
-                                      width: 40,
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: kRedColor.withOpacity(0.7),
-                                      ),
-                                      child: const Icon(
-                                        Icons.call_end_rounded,
-                                        size: 28,
-                                        color: kBackgroundColor,
+                                    InkWell(
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: Container(
+                                        height: 40,
+                                        width: 40,
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: kRedColor.withOpacity(0.7),
+                                        ),
+                                        child: const Icon(
+                                          Icons.call_end_rounded,
+                                          size: 28,
+                                          color: kBackgroundColor,
+                                        ),
                                       ),
                                     ),
                                   ],
