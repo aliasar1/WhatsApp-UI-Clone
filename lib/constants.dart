@@ -17,6 +17,7 @@ const kReceiverMessageColor = Color.fromARGB(255, 205, 241, 198);
 const kHighlightColor = Color.fromARGB(255, 40, 153, 65);
 const kDarkGreyColor = Color.fromARGB(255, 106, 110, 112);
 const kYellowColor = Color.fromARGB(255, 235, 221, 183);
+const kDraggableSheetColor = Color.fromARGB(255, 104, 111, 122);
 
 const kSmallPadding = 8.0;
 const kMedPadding = 12.0;
