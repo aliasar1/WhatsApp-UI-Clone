@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone/screens/call_screen/components/call_info.dart';
+import 'package:whatsapp_clone/screens/call_history_screen/components/call_info.dart';
+import 'package:whatsapp_clone/screens/caller_screen/caller_screen.dart';
 import 'package:whatsapp_clone/screens/inbox_screen/components/profile_view.dart';
 
 import '../../../constants.dart';
@@ -67,14 +68,24 @@ class CallBuilder extends StatelessWidget {
         ),
         trailing: callLog.isVideoCall
             ? InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const CallerScreen()));
+                },
                 child: const Icon(
                   Icons.videocam_rounded,
                   color: kPrimaryColor,
                 ),
               )
             : InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const CallerScreen()));
+                },
                 child: const Icon(
                   Icons.call_sharp,
                   color: kPrimaryColor,

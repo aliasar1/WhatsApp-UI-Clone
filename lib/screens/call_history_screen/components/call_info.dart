@@ -138,11 +138,11 @@ class CallInfoScreen extends StatelessWidget {
                         children: [
                           Text(
                             callLog.duration,
-                            style: TextStyle(color: kDarkGreyColor),
+                            style: const TextStyle(color: kDarkGreyColor),
                           ),
                           Text(
                             callLog.size,
-                            style: TextStyle(color: kDarkGreyColor),
+                            style: const TextStyle(color: kDarkGreyColor),
                           ),
                         ],
                       )),

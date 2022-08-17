@@ -6,7 +6,7 @@ import 'package:whatsapp_clone/screens/inbox_screen/components/linkdevice_screen
 import 'package:whatsapp_clone/screens/inbox_screen/components/starred_messages.dart';
 import 'package:whatsapp_clone/screens/status_screen/status_screen.dart';
 
-import '../call_screen/call_screen.dart';
+import '../call_history_screen/call_screen.dart';
 import 'components/newgroup_screen.dart';
 import '../contact_screen/contact_screen.dart';
 import '../setting_screen/setting_screen.dart';

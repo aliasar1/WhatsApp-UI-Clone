@@ -23,14 +23,6 @@ class _ImageViewerState extends State<ImageViewer> {
   Widget build(BuildContext context) {
     bool isStarred = false;
     return GestureDetector(
-      onHorizontalDragUpdate: (details) {
-        int sensitivity = 8;
-        if (details.delta.dx > sensitivity) {
-          Navigator.pop(context);
-        } else if (details.delta.dx < -sensitivity) {
-          Navigator.pop(context);
-        }
-      },
       onVerticalDragUpdate: (details) {
         int sensitivity = 8;
         if (details.delta.dy > sensitivity) {
@@ -81,7 +73,27 @@ class _ImageViewerState extends State<ImageViewer> {
             ),
             PopupMenuButton<String>(
               onSelected: (value) {
-                // TO-DO
+                if (value == "Set") {
+                  PopupMenuButton<String>(
+                    onSelected: (value) {},
+                    itemBuilder: (BuildContext contesxt) {
+                      return [
+                        const PopupMenuItem(
+                          value: "My profile photo",
+                          child: Text("My profile photo"),
+                        ),
+                        const PopupMenuItem(
+                          value: "Group icon",
+                          child: Text("Group icon"),
+                        ),
+                        const PopupMenuItem(
+                          value: "Wallpaper",
+                          child: Text("Wallpaper"),
+                        ),
+                      ];
+                    },
+                  );
+                }
               },
               itemBuilder: (BuildContext contesxt) {
                 return [
@@ -106,7 +118,7 @@ class _ImageViewerState extends State<ImageViewer> {
                     child: Text("Save"),
                   ),
                   PopupMenuItem(
-                    value: "Set as...",
+                    value: "Set",
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: const [
