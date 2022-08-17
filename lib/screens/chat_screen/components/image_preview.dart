@@ -79,9 +79,60 @@ class _ImageViewerState extends State<ImageViewer> {
               icon: const Icon(Icons.forward, color: kBackgroundColor),
               onPressed: () {},
             ),
-            IconButton(
-              icon: const Icon(Icons.more_vert, color: kBackgroundColor),
-              onPressed: () {},
+            PopupMenuButton<String>(
+              onSelected: (value) {
+                // TO-DO
+              },
+              itemBuilder: (BuildContext contesxt) {
+                return [
+                  const PopupMenuItem(
+                    value: "Edit",
+                    child: Text("Edit"),
+                  ),
+                  const PopupMenuItem(
+                    value: "All media",
+                    child: Text("All media"),
+                  ),
+                  const PopupMenuItem(
+                    value: "Show in chat",
+                    child: Text("Show in chat"),
+                  ),
+                  const PopupMenuItem(
+                    value: "Share",
+                    child: Text("Share"),
+                  ),
+                  const PopupMenuItem(
+                    value: "Save",
+                    child: Text("Save"),
+                  ),
+                  PopupMenuItem(
+                    value: "Set as...",
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text("Set as..."),
+                        Icon(
+                          Icons.arrow_right,
+                          color: kTextColor,
+                          size: 30,
+                        ),
+                      ],
+                    ),
+                  ),
+                  const PopupMenuItem(
+                    value: "View in gallery",
+                    child: Text("View in gallery"),
+                  ),
+                  const PopupMenuItem(
+                    value: "Rotate",
+                    child: Text("Rotate"),
+                  ),
+                  const PopupMenuItem(
+                    value: "Delete",
+                    child: Text("Delete"),
+                  ),
+                ];
+              },
             ),
           ],
         ),
