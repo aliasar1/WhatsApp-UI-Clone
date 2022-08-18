@@ -1,10 +1,14 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/constants.dart';
 
 class CallerScreen extends StatefulWidget {
-  const CallerScreen({Key? key}) : super(key: key);
+  const CallerScreen(
+      {Key? key, required this.name, required this.image, required this.status})
+      : super(key: key);
+
+  final String name;
+  final String image;
+  final String status;
 
   @override
   State<CallerScreen> createState() => _CallerScreenState();
@@ -15,13 +19,11 @@ class _CallerScreenState extends State<CallerScreen> {
   Widget build(BuildContext context) {
     bool micOff = true;
 
-    Timer _timer;
-
     return SafeArea(
       child: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-              opacity: 0.45,
+              opacity: 0.35,
               image: AssetImage('assets/images/dark background.png'),
               fit: BoxFit.cover),
         ),
@@ -40,14 +42,14 @@ class _CallerScreenState extends State<CallerScreen> {
                   height: MediaQuery.of(context).size.height * 0.24,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: const [
+                    children: [
                       CircleAvatar(
                         radius: 40,
-                        backgroundImage: AssetImage("assets/images/bill.jpg"),
+                        backgroundImage: AssetImage(widget.image),
                       ),
                       Text(
-                        "Ali Asar",
-                        style: TextStyle(
+                        widget.name,
+                        style: const TextStyle(
                             color: kBackgroundColor,
                             fontSize: 22,
                             fontWeight: FontWeight.bold),
@@ -55,8 +57,10 @@ class _CallerScreenState extends State<CallerScreen> {
                       Opacity(
                         opacity: 0.7,
                         child: Text(
-                          "Ringing",
-                          style: TextStyle(
+                          widget.status == "Unavailable"
+                              ? "Calling"
+                              : "Ringing",
+                          style: const TextStyle(
                             color: kBackgroundColor,
                             fontSize: 14,
                           ),
@@ -68,8 +72,8 @@ class _CallerScreenState extends State<CallerScreen> {
               ),
               Expanded(
                 child: DraggableScrollableSheet(
-                  initialChildSize: 0.22,
-                  minChildSize: 0.22,
+                  initialChildSize: 0.2,
+                  minChildSize: 0.2,
                   maxChildSize: 0.6,
                   builder: (BuildContext context, myscrollController) {
                     return Container(
@@ -172,18 +176,17 @@ class _CallerScreenState extends State<CallerScreen> {
                                       fontWeight: FontWeight.w500),
                                 ),
                               ),
-                              const ListTile(
+                              ListTile(
                                 leading: CircleAvatar(
                                   radius: 18,
-                                  backgroundImage:
-                                      AssetImage("assets/images/bill.jpg"),
+                                  backgroundImage: AssetImage(widget.image),
                                 ),
                                 title: Text(
-                                  "Ali Asar",
-                                  style: TextStyle(
+                                  widget.name,
+                                  style: const TextStyle(
                                       color: kSeenColor, fontSize: 16),
                                 ),
-                                trailing: Icon(
+                                trailing: const Icon(
                                   Icons.more_horiz,
                                   size: 26,
                                   color: kSeenColor,

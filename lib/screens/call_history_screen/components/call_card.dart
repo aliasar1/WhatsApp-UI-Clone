@@ -72,7 +72,11 @@ class CallBuilder extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const CallerScreen()));
+                          builder: (context) => CallerScreen(
+                                image: callLog.image,
+                                name: callLog.name,
+                                status: callLog.duration,
+                              )));
                 },
                 child: const Icon(
                   Icons.videocam_rounded,
@@ -84,7 +88,11 @@ class CallBuilder extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const CallerScreen()));
+                          builder: (context) => CallerScreen(
+                                image: callLog.image,
+                                name: callLog.name,
+                                status: callLog.duration,
+                              )));
                 },
                 child: const Icon(
                   Icons.call_sharp,
