@@ -187,6 +187,7 @@ class _InboxScreenState extends State<InboxScreen>
             children: [
               const Text(""),
               ListView.builder(
+                padding: const EdgeInsets.only(top: kLargePadding),
                 itemCount: chatsData.length + 1,
                 itemBuilder: ((context, index) => (index != chatsData.length)
                     ? ChatCard(

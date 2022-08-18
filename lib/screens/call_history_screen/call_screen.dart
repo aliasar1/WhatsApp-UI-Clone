@@ -17,6 +17,7 @@ class _CallScreenState extends State<CallScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.builder(
+        padding: const EdgeInsets.only(top: kSmallPadding / 2),
         itemCount: callsData.length,
         itemBuilder: ((context, index) =>
             CallBuilder(callLog: callsData[index])),

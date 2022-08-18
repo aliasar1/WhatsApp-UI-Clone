@@ -26,6 +26,7 @@ class _StatusScreenState extends State<StatusScreen> {
           SizedBox(
             height: 125,
             child: ListView.builder(
+              padding: const EdgeInsets.only(top: kSmallPadding / 3),
               itemCount: statusData.length,
               itemBuilder: ((context, index) => statusData[index].isSeen == true
                   ? PublicStatusCard(
@@ -40,6 +41,7 @@ class _StatusScreenState extends State<StatusScreen> {
           SizedBox(
             height: 250,
             child: ListView.builder(
+              padding: const EdgeInsets.only(top: kSmallPadding / 3),
               itemCount: statusData.length,
               itemBuilder: ((context, index) =>
                   statusData[index].isSeen == false
