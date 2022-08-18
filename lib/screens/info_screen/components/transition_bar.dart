@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/constants.dart';
 
 import '../../../models/Chat.dart';
+import '../../caller_screen/caller_screen.dart';
 import '../../chat_screen/chat_screen.dart';
 
 class TransitionAppBar extends StatelessWidget {
@@ -179,8 +180,35 @@ class _TransitionAppBarDelegate extends SliverPersistentHeaderDelegate {
                                         )));
                           },
                           child: buildButton(Icons.chat, 'Message', context)),
-                      buildButton(Icons.call, 'Audio', context),
-                      buildButton(Icons.videocam_rounded, 'Video', context),
+                      InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => CallerScreen(
+                                          image: chat.image,
+                                          name: chat.name,
+                                          status: chat.isActive == true
+                                              ? "Available"
+                                              : "Unavailable",
+                                        )));
+                          },
+                          child: buildButton(Icons.call, 'Audio', context)),
+                      InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => CallerScreen(
+                                          image: chat.image,
+                                          name: chat.name,
+                                          status: chat.isActive == true
+                                              ? "Available"
+                                              : "Unavailable",
+                                        )));
+                          },
+                          child: buildButton(
+                              Icons.videocam_rounded, 'Video', context)),
                     ],
                   ),
                 ),

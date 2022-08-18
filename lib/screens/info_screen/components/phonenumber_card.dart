@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
+import '../../caller_screen/caller_screen.dart';
 import '../../chat_screen/chat_screen.dart';
 import '../info_screen.dart';
 
@@ -86,18 +87,46 @@ class PhoneNumberCard extends StatelessWidget {
                     const SizedBox(
                       width: 16,
                     ),
-                    const Icon(
-                      Icons.call,
-                      size: 23,
-                      color: kPrimaryColor,
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => CallerScreen(
+                                      image: widget.chat.image,
+                                      name: widget.chat.name,
+                                      status: widget.chat.isActive == true
+                                          ? "Available"
+                                          : "Unavailable",
+                                    )));
+                      },
+                      child: const Icon(
+                        Icons.call,
+                        size: 23,
+                        color: kPrimaryColor,
+                      ),
                     ),
                     const SizedBox(
                       width: 16,
                     ),
-                    const Icon(
-                      Icons.videocam_rounded,
-                      size: 26,
-                      color: kPrimaryColor,
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => CallerScreen(
+                                      image: widget.chat.image,
+                                      name: widget.chat.name,
+                                      status: widget.chat.isActive == true
+                                          ? "Available"
+                                          : "Unavailable",
+                                    )));
+                      },
+                      child: const Icon(
+                        Icons.videocam_rounded,
+                        size: 26,
+                        color: kPrimaryColor,
+                      ),
                     ),
                   ],
                 ),

@@ -4,6 +4,8 @@ import 'package:whatsapp_clone/models/Chat.dart';
 import 'package:whatsapp_clone/screens/chat_screen/components/chat_body.dart';
 import 'package:whatsapp_clone/screens/info_screen/info_screen.dart';
 
+import '../caller_screen/caller_screen.dart';
+
 class ChatScreen extends StatefulWidget {
   const ChatScreen(
       {Key? key,
@@ -94,11 +96,33 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
             actions: [
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CallerScreen(
+                                image: widget.image,
+                                name: widget.name,
+                                status: widget.chat.isActive == true
+                                    ? "Available"
+                                    : "Unavailable",
+                              )));
+                },
                 icon: const Icon(Icons.videocam_rounded, size: 24),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CallerScreen(
+                                image: widget.image,
+                                name: widget.name,
+                                status: widget.chat.isActive == true
+                                    ? "Available"
+                                    : "Unavailable",
+                              )));
+                },
                 icon: const Icon(Icons.call_rounded, size: 24),
               ),
               PopupMenuButton<String>(

@@ -3,6 +3,7 @@ import 'package:whatsapp_clone/constants.dart';
 import 'package:whatsapp_clone/models/CallsLog.dart';
 import 'package:whatsapp_clone/screens/chat_screen/chat_screen.dart';
 
+import '../../caller_screen/caller_screen.dart';
 import '../../inbox_screen/components/hero_dialogue.dart';
 import '../../inbox_screen/components/profile_view.dart';
 
@@ -72,18 +73,32 @@ class CallInfoScreen extends StatelessWidget {
             ),
             trailing: SizedBox(
               width: 80,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  Icon(
-                    Icons.call,
-                    color: kPrimaryColor,
-                  ),
-                  Icon(
-                    Icons.videocam_rounded,
-                    color: kPrimaryColor,
-                  ),
-                ],
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CallerScreen(
+                                image: callLog.image,
+                                name: callLog.name,
+                                status: callLog.duration == "Unavailable"
+                                    ? "Unavailable"
+                                    : "Available",
+                              )));
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const [
+                    Icon(
+                      Icons.call,
+                      color: kPrimaryColor,
+                    ),
+                    Icon(
+                      Icons.videocam_rounded,
+                      color: kPrimaryColor,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

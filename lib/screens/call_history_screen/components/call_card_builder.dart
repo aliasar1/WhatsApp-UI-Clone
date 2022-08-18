@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
 import '../../../models/Chat.dart';
+import '../../caller_screen/caller_screen.dart';
 
 class CallContactBuilder extends StatelessWidget {
   const CallContactBuilder({
@@ -36,16 +37,44 @@ class CallContactBuilder extends StatelessWidget {
         width: 80,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: const [
-            Icon(
-              Icons.call,
-              color: kPrimaryColor,
-              size: 24,
+          children: [
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => CallerScreen(
+                              image: chat.image,
+                              name: chat.name,
+                              status: chat.isActive == true
+                                  ? "Available"
+                                  : "Unavailable",
+                            )));
+              },
+              child: const Icon(
+                Icons.call,
+                color: kPrimaryColor,
+                size: 24,
+              ),
             ),
-            Icon(
-              Icons.videocam_rounded,
-              color: kPrimaryColor,
-              size: 24,
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => CallerScreen(
+                              image: chat.image,
+                              name: chat.name,
+                              status: chat.isActive == true
+                                  ? "Available"
+                                  : "Unavailable",
+                            )));
+              },
+              child: const Icon(
+                Icons.videocam_rounded,
+                color: kPrimaryColor,
+                size: 24,
+              ),
             ),
           ],
         ),

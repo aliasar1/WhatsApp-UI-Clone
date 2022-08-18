@@ -4,6 +4,7 @@ import 'package:whatsapp_clone/screens/info_screen/info_screen.dart';
 
 import '../../../constants.dart';
 import '../../../models/Chat.dart';
+import '../../caller_screen/caller_screen.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({Key? key, required this.chat}) : super(key: key);
@@ -81,13 +82,41 @@ class ProfileView extends StatelessWidget {
                                 color: kPrimaryColor,
                               ),
                             ),
-                            const Icon(
-                              Icons.call,
-                              color: kPrimaryColor,
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => CallerScreen(
+                                              image: chat.image,
+                                              name: chat.name,
+                                              status: chat.isActive == true
+                                                  ? "Available"
+                                                  : "Unavailable",
+                                            )));
+                              },
+                              child: const Icon(
+                                Icons.call,
+                                color: kPrimaryColor,
+                              ),
                             ),
-                            const Icon(
-                              Icons.videocam_rounded,
-                              color: kPrimaryColor,
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => CallerScreen(
+                                              image: chat.image,
+                                              name: chat.name,
+                                              status: chat.isActive == true
+                                                  ? "Available"
+                                                  : "Unavailable",
+                                            )));
+                              },
+                              child: const Icon(
+                                Icons.videocam_rounded,
+                                color: kPrimaryColor,
+                              ),
                             ),
                             InkWell(
                               onTap: () {
