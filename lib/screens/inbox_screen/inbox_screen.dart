@@ -36,175 +36,184 @@ class _InboxScreenState extends State<InboxScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: kPrimaryColor,
-          elevation: 0,
-          title: const Text(
-            'WhatsApp',
-          ),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.search, color: kBackgroundColor),
-              onPressed: () {
-                showSearch(context: context, delegate: CustomSearch());
-              },
-            ),
-            if (_tabController.index == 1)
-              PopupMenuButton<String>(
-                onSelected: (value) {
-                  if (value == "Settings") {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const SettingScreen()),
-                    );
-                  } else if (value == "New group") {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const NewGroupScreen()),
-                    );
-                  } else if (value == "New broadcast") {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const BroadcastScreen()),
-                    );
-                  } else if (value == "Linked Devices") {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const LinkDeviceScreen()),
-                    );
-                  } else if (value == "Starred messages") {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const StarredMessagesScreen()),
-                    );
-                  }
-                },
-                itemBuilder: (BuildContext context) {
-                  return [
-                    const PopupMenuItem(
-                      value: "New group",
-                      child: Text("New group"),
-                    ),
-                    const PopupMenuItem(
-                      value: "New broadcast",
-                      child: Text("New broadcast"),
-                    ),
-                    const PopupMenuItem(
-                      value: "Linked Devices",
-                      child: Text("Linked devices"),
-                    ),
-                    const PopupMenuItem(
-                      value: "Starred messages",
-                      child: Text("Starred messages"),
-                    ),
-                    const PopupMenuItem(
-                      value: "Settings",
-                      child: Text("Settings"),
-                    ),
-                  ];
-                },
-              )
-            else if (_tabController.index == 2)
-              PopupMenuButton<String>(
-                onSelected: (value) {},
-                itemBuilder: (BuildContext context) {
-                  return [
-                    const PopupMenuItem(
-                      value: "Status privacy",
-                      child: Text("Status privacy"),
-                    ),
-                    const PopupMenuItem(
-                      value: "Settings",
-                      child: Text("Settings"),
-                    ),
-                  ];
-                },
-              )
-            else
-              PopupMenuButton<String>(
-                onSelected: (value) {},
-                itemBuilder: (BuildContext context) {
-                  return [
-                    const PopupMenuItem(
-                      value: "Clear call log",
-                      child: Text("Clear call log"),
-                    ),
-                    const PopupMenuItem(
-                      value: "Settings",
-                      child: Text("Settings"),
-                    ),
-                  ];
-                },
-              ),
-          ],
-          bottom: TabBar(
-            controller: _tabController,
-            isScrollable: true,
-            tabs: <Widget>[
-              Tab(
-                icon: Icon(Icons.camera_alt,
-                    color: kBackgroundColor.withOpacity(0.7)),
-              ),
-              const SizedBox(
-                width: 86,
-                child: Tab(
-                  text: 'CHATS',
+        body: NestedScrollView(
+          headerSliverBuilder: (context, value) {
+            return [
+              SliverAppBar(
+                backgroundColor: kPrimaryColor,
+                pinned: true,
+                floating: true,
+                title: const Text(
+                  'WhatsApp',
                 ),
-              ),
-              const SizedBox(
-                width: 86,
-                child: Tab(
-                  text: 'STATUS',
-                ),
-              ),
-              const SizedBox(
-                width: 86,
-                child: Tab(
-                  text: 'CALLS',
-                ),
-              ),
-            ],
-            labelColor: kBackgroundColor,
-            indicatorColor: kBackgroundColor,
-            indicatorWeight: 4,
-          ),
-        ),
-        body: TabBarView(
-          controller: _tabController,
-          children: [
-            const Text(""),
-            ListView.builder(
-              itemCount: chatsData.length + 1,
-              itemBuilder: ((context, index) => (index != chatsData.length)
-                  ? ChatCard(
-                      chat: chatsData[index],
-                      press: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const InboxScreen()),
-                      ),
+                elevation: 0,
+                actions: [
+                  IconButton(
+                    icon: const Icon(Icons.search, color: kBackgroundColor),
+                    onPressed: () {
+                      showSearch(context: context, delegate: CustomSearch());
+                    },
+                  ),
+                  if (_tabController.index == 1)
+                    PopupMenuButton<String>(
+                      onSelected: (value) {
+                        if (value == "Settings") {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SettingScreen()),
+                          );
+                        } else if (value == "New group") {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const NewGroupScreen()),
+                          );
+                        } else if (value == "New broadcast") {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const BroadcastScreen()),
+                          );
+                        } else if (value == "Linked Devices") {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const LinkDeviceScreen()),
+                          );
+                        } else if (value == "Starred messages") {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const StarredMessagesScreen()),
+                          );
+                        }
+                      },
+                      itemBuilder: (BuildContext context) {
+                        return [
+                          const PopupMenuItem(
+                            value: "New group",
+                            child: Text("New group"),
+                          ),
+                          const PopupMenuItem(
+                            value: "New broadcast",
+                            child: Text("New broadcast"),
+                          ),
+                          const PopupMenuItem(
+                            value: "Linked Devices",
+                            child: Text("Linked devices"),
+                          ),
+                          const PopupMenuItem(
+                            value: "Starred messages",
+                            child: Text("Starred messages"),
+                          ),
+                          const PopupMenuItem(
+                            value: "Settings",
+                            child: Text("Settings"),
+                          ),
+                        ];
+                      },
                     )
-                  : const Padding(
-                      padding: EdgeInsets.only(
-                          top: kMedPadding, bottom: kLargePadding * 5),
-                      child: Text(
-                        "Tap and hold on a chat for more options",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 12,
-                            color: kIconColor),
+                  else if (_tabController.index == 2)
+                    PopupMenuButton<String>(
+                      onSelected: (value) {},
+                      itemBuilder: (BuildContext context) {
+                        return [
+                          const PopupMenuItem(
+                            value: "Status privacy",
+                            child: Text("Status privacy"),
+                          ),
+                          const PopupMenuItem(
+                            value: "Settings",
+                            child: Text("Settings"),
+                          ),
+                        ];
+                      },
+                    )
+                  else
+                    PopupMenuButton<String>(
+                      onSelected: (value) {},
+                      itemBuilder: (BuildContext context) {
+                        return [
+                          const PopupMenuItem(
+                            value: "Clear call log",
+                            child: Text("Clear call log"),
+                          ),
+                          const PopupMenuItem(
+                            value: "Settings",
+                            child: Text("Settings"),
+                          ),
+                        ];
+                      },
+                    ),
+                ],
+                bottom: TabBar(
+                  controller: _tabController,
+                  isScrollable: true,
+                  tabs: <Widget>[
+                    Tab(
+                      icon: Icon(Icons.camera_alt,
+                          color: kBackgroundColor.withOpacity(0.7)),
+                    ),
+                    const SizedBox(
+                      width: 86,
+                      child: Tab(
+                        text: 'CHATS',
                       ),
-                    )),
-            ),
-            const StatusScreen(),
-            const CallScreen(),
-          ],
+                    ),
+                    const SizedBox(
+                      width: 86,
+                      child: Tab(
+                        text: 'STATUS',
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 86,
+                      child: Tab(
+                        text: 'CALLS',
+                      ),
+                    ),
+                  ],
+                  labelColor: kBackgroundColor,
+                  indicatorColor: kBackgroundColor,
+                  indicatorWeight: 4,
+                ),
+              ),
+            ];
+          },
+          body: TabBarView(
+            controller: _tabController,
+            children: [
+              const Text(""),
+              ListView.builder(
+                itemCount: chatsData.length + 1,
+                itemBuilder: ((context, index) => (index != chatsData.length)
+                    ? ChatCard(
+                        chat: chatsData[index],
+                        press: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const InboxScreen()),
+                        ),
+                      )
+                    : const Padding(
+                        padding: EdgeInsets.only(
+                            top: kMedPadding, bottom: kLargePadding * 5),
+                        child: Text(
+                          "Tap and hold on a chat for more options",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 12,
+                              color: kIconColor),
+                        ),
+                      )),
+              ),
+              const StatusScreen(),
+              const CallScreen(),
+            ],
+          ),
         ),
         floatingActionButton: _tabController.index == 1
             ? FloatingActionButton(

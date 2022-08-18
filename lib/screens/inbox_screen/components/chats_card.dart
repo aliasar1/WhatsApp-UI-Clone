@@ -32,8 +32,11 @@ class ChatCard extends StatelessWidget {
         );
       },
       child: Padding(
-        padding: const EdgeInsets.symmetric(
-            horizontal: kSmallPadding * 1.5, vertical: kMedPadding),
+        padding: const EdgeInsets.only(
+          left: kSmallPadding * 1.5,
+          right: kSmallPadding * 1.5,
+          bottom: kLargePadding * 1.3,
+        ),
         child: Row(
           children: [
             InkWell(
