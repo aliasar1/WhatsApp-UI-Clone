@@ -1,7 +1,12 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/screens/splash_screen/splash_screen.dart';
 
-void main() {
+late List<CameraDescription> _cameras;
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  _cameras = await availableCameras();
   runApp(const MyApp());
 }
 
