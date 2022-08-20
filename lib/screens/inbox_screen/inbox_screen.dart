@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/constants.dart';
 import 'package:whatsapp_clone/models/Chat.dart';
-import 'package:whatsapp_clone/screens/camera_screen/camera_screen.dart';
 import 'package:whatsapp_clone/screens/inbox_screen/components/broadcast_screen.dart';
 import 'package:whatsapp_clone/screens/inbox_screen/components/linkdevice_screen.dart';
 import 'package:whatsapp_clone/screens/inbox_screen/components/starred_messages.dart';
@@ -186,9 +185,9 @@ class _InboxScreenState extends State<InboxScreen>
           body: TabBarView(
             controller: _tabController,
             children: [
-              const CameraScreen(),
+              const Text(""),
               ListView.builder(
-                padding: const EdgeInsets.only(top: kLargePadding),
+                padding: const EdgeInsets.only(top: kMedPadding),
                 itemCount: chatsData.length + 1,
                 itemBuilder: ((context, index) => (index != chatsData.length)
                     ? ChatCard(
