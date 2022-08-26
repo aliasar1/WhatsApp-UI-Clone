@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/constants.dart';
 import 'package:whatsapp_clone/models/Chat.dart';
+import 'package:whatsapp_clone/screens/camera_screen/camera_screen.dart';
 import 'package:whatsapp_clone/screens/inbox_screen/components/broadcast_screen.dart';
 import 'package:whatsapp_clone/screens/inbox_screen/components/linkdevice_screen.dart';
 import 'package:whatsapp_clone/screens/inbox_screen/components/starred_messages.dart';
@@ -22,6 +23,7 @@ class InboxScreen extends StatefulWidget {
 class _InboxScreenState extends State<InboxScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  var hideAppBar = false;
 
   @override
   void initState() {
@@ -30,7 +32,6 @@ class _InboxScreenState extends State<InboxScreen>
       ..addListener(() {
         setState(() {});
       });
-    ;
   }
 
   @override
@@ -39,153 +40,169 @@ class _InboxScreenState extends State<InboxScreen>
         body: NestedScrollView(
           headerSliverBuilder: (context, value) {
             return [
-              SliverAppBar(
-                backgroundColor: kPrimaryColor,
-                pinned: true,
-                floating: true,
-                title: const Text(
-                  'WhatsApp',
-                ),
-                elevation: 0,
-                actions: [
-                  IconButton(
-                    icon: const Icon(Icons.search, color: kBackgroundColor),
-                    onPressed: () {
-                      showSearch(context: context, delegate: CustomSearch());
-                    },
-                  ),
-                  if (_tabController.index == 1)
-                    PopupMenuButton<String>(
-                      onSelected: (value) {
-                        if (value == "Settings") {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const SettingScreen()),
-                          );
-                        } else if (value == "New group") {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const NewGroupScreen()),
-                          );
-                        } else if (value == "New broadcast") {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const BroadcastScreen()),
-                          );
-                        } else if (value == "Linked Devices") {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const LinkDeviceScreen()),
-                          );
-                        } else if (value == "Starred messages") {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const StarredMessagesScreen()),
-                          );
-                        }
-                      },
-                      itemBuilder: (BuildContext context) {
-                        return [
-                          const PopupMenuItem(
-                            value: "New group",
-                            child: Text("New group"),
-                          ),
-                          const PopupMenuItem(
-                            value: "New broadcast",
-                            child: Text("New broadcast"),
-                          ),
-                          const PopupMenuItem(
-                            value: "Linked Devices",
-                            child: Text("Linked devices"),
-                          ),
-                          const PopupMenuItem(
-                            value: "Starred messages",
-                            child: Text("Starred messages"),
-                          ),
-                          const PopupMenuItem(
-                            value: "Settings",
-                            child: Text("Settings"),
-                          ),
-                        ];
-                      },
+              hideAppBar
+                  ? SliverAppBar(
+                      toolbarHeight: 0,
                     )
-                  else if (_tabController.index == 2)
-                    PopupMenuButton<String>(
-                      onSelected: (value) {},
-                      itemBuilder: (BuildContext context) {
-                        return [
-                          const PopupMenuItem(
-                            value: "Status privacy",
-                            child: Text("Status privacy"),
+                  : SliverAppBar(
+                      backgroundColor: kPrimaryColor,
+                      pinned: true,
+                      floating: true,
+                      title: const Text(
+                        'WhatsApp',
+                      ),
+                      elevation: 0,
+                      actions: [
+                        IconButton(
+                          icon:
+                              const Icon(Icons.search, color: kBackgroundColor),
+                          onPressed: () {
+                            showSearch(
+                                context: context, delegate: CustomSearch());
+                          },
+                        ),
+                        if (_tabController.index == 1)
+                          PopupMenuButton<String>(
+                            onSelected: (value) {
+                              if (value == "Settings") {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const SettingScreen()),
+                                );
+                              } else if (value == "New group") {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const NewGroupScreen()),
+                                );
+                              } else if (value == "New broadcast") {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const BroadcastScreen()),
+                                );
+                              } else if (value == "Linked Devices") {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const LinkDeviceScreen()),
+                                );
+                              } else if (value == "Starred messages") {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const StarredMessagesScreen()),
+                                );
+                              }
+                            },
+                            itemBuilder: (BuildContext context) {
+                              return [
+                                const PopupMenuItem(
+                                  value: "New group",
+                                  child: Text("New group"),
+                                ),
+                                const PopupMenuItem(
+                                  value: "New broadcast",
+                                  child: Text("New broadcast"),
+                                ),
+                                const PopupMenuItem(
+                                  value: "Linked Devices",
+                                  child: Text("Linked devices"),
+                                ),
+                                const PopupMenuItem(
+                                  value: "Starred messages",
+                                  child: Text("Starred messages"),
+                                ),
+                                const PopupMenuItem(
+                                  value: "Settings",
+                                  child: Text("Settings"),
+                                ),
+                              ];
+                            },
+                          )
+                        else if (_tabController.index == 2)
+                          PopupMenuButton<String>(
+                            onSelected: (value) {},
+                            itemBuilder: (BuildContext context) {
+                              return [
+                                const PopupMenuItem(
+                                  value: "Status privacy",
+                                  child: Text("Status privacy"),
+                                ),
+                                const PopupMenuItem(
+                                  value: "Settings",
+                                  child: Text("Settings"),
+                                ),
+                              ];
+                            },
+                          )
+                        else
+                          PopupMenuButton<String>(
+                            onSelected: (value) {},
+                            itemBuilder: (BuildContext context) {
+                              return [
+                                const PopupMenuItem(
+                                  value: "Clear call log",
+                                  child: Text("Clear call log"),
+                                ),
+                                const PopupMenuItem(
+                                  value: "Settings",
+                                  child: Text("Settings"),
+                                ),
+                              ];
+                            },
                           ),
-                          const PopupMenuItem(
-                            value: "Settings",
-                            child: Text("Settings"),
+                      ],
+                      bottom: TabBar(
+                        controller: _tabController,
+                        isScrollable: true,
+                        tabs: <Widget>[
+                          Tab(
+                            icon: Icon(Icons.camera_alt,
+                                color: kBackgroundColor.withOpacity(0.7)),
                           ),
-                        ];
-                      },
-                    )
-                  else
-                    PopupMenuButton<String>(
-                      onSelected: (value) {},
-                      itemBuilder: (BuildContext context) {
-                        return [
-                          const PopupMenuItem(
-                            value: "Clear call log",
-                            child: Text("Clear call log"),
+                          const SizedBox(
+                            width: 86,
+                            child: Tab(
+                              text: 'CHATS',
+                            ),
                           ),
-                          const PopupMenuItem(
-                            value: "Settings",
-                            child: Text("Settings"),
+                          const SizedBox(
+                            width: 86,
+                            child: Tab(
+                              text: 'STATUS',
+                            ),
                           ),
-                        ];
-                      },
-                    ),
-                ],
-                bottom: TabBar(
-                  controller: _tabController,
-                  isScrollable: true,
-                  tabs: <Widget>[
-                    Tab(
-                      icon: Icon(Icons.camera_alt,
-                          color: kBackgroundColor.withOpacity(0.7)),
-                    ),
-                    const SizedBox(
-                      width: 86,
-                      child: Tab(
-                        text: 'CHATS',
+                          const SizedBox(
+                            width: 86,
+                            child: Tab(
+                              text: 'CALLS',
+                            ),
+                          ),
+                        ],
+                        labelColor: kBackgroundColor,
+                        indicatorColor: kBackgroundColor,
+                        indicatorWeight: 4,
                       ),
                     ),
-                    const SizedBox(
-                      width: 86,
-                      child: Tab(
-                        text: 'STATUS',
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 86,
-                      child: Tab(
-                        text: 'CALLS',
-                      ),
-                    ),
-                  ],
-                  labelColor: kBackgroundColor,
-                  indicatorColor: kBackgroundColor,
-                  indicatorWeight: 4,
-                ),
-              ),
             ];
           },
           body: TabBarView(
             controller: _tabController,
             children: [
-              const Text(""),
+              InkWell(
+                  onTap: () {
+                    setState(() {
+                      hideAppBar = !hideAppBar;
+                    });
+                  },
+                  child: const CameraScreen()),
               ListView.builder(
                 padding: const EdgeInsets.only(top: kMedPadding),
                 itemCount: chatsData.length + 1,
@@ -230,6 +247,10 @@ class _InboxScreenState extends State<InboxScreen>
                 child: const Icon(Icons.chat),
               )
             : null);
+  }
+
+  bool getIsTabCamera(TabController tabController) {
+    return tabController.animation!.value < 0.7;
   }
 }
 
