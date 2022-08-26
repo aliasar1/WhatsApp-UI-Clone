@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/constants.dart';
@@ -17,6 +15,8 @@ class CameraScreen extends StatefulWidget {
 class _CameraScreenState extends State<CameraScreen> {
   late CameraController controller;
   var _cameraIndex = 0;
+  bool flash = false;
+  bool isRecording = false;
 
   @override
   void initState() {
@@ -53,18 +53,17 @@ class _CameraScreenState extends State<CameraScreen> {
     }
     controller = CameraController(cameras[index], ResolutionPreset.high);
 
-    // If the controller is updated then update the UI.
     controller.addListener(() {
       if (mounted) setState(() {});
       if (controller.value.hasError) {
-        //_showInSnackBar('Camera error ${controller.value.errorDescription}');
+        print(controller.value.errorDescription);
       }
     });
 
     try {
       await controller.initialize();
     } on CameraException catch (e) {
-      //_showCameraException(e);
+      print(e);
     }
 
     if (mounted) {
@@ -75,9 +74,7 @@ class _CameraScreenState extends State<CameraScreen> {
   }
 
   void _onSwitchCamera() {
-    if (controller == null ||
-        !controller.value.isInitialized ||
-        controller.value.isTakingPicture) {
+    if (!controller.value.isInitialized || controller.value.isTakingPicture) {
       return;
     }
     final newIndex = _cameraIndex + 1 == cameras.length ? 0 : _cameraIndex + 1;
@@ -106,28 +103,48 @@ class _CameraScreenState extends State<CameraScreen> {
         Align(
           alignment: Alignment.bottomCenter,
           child: Padding(
-            padding: const EdgeInsets.only(bottom: kLargePadding * 1.6),
+            padding: const EdgeInsets.only(bottom: kLargePadding * 1.1),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
                 IconButton(
-                  color: Colors.white,
-                  icon: const Icon(Icons.flash_auto),
-                  onPressed: () {},
-                ),
-                GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    height: 60.0,
-                    width: 60.0,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: Colors.white,
-                        width: 5.0,
-                      ),
+                    icon: Icon(
+                      flash ? Icons.flash_on : Icons.flash_off,
+                      color: Colors.white,
+                      size: 28,
                     ),
-                  ),
+                    onPressed: () {
+                      setState(() {
+                        flash = !flash;
+                      });
+                      flash
+                          ? controller.setFlashMode(FlashMode.torch)
+                          : controller.setFlashMode(FlashMode.off);
+                    }),
+                GestureDetector(
+                  onLongPress: () async {
+                    await controller.startVideoRecording();
+                    setState(() {
+                      isRecording = true;
+                    });
+                  },
+                  onLongPressUp: () async {
+                    XFile videopath = await controller.stopVideoRecording();
+                    setState(() {
+                      isRecording = false;
+                    });
+                  },
+                  child: isRecording
+                      ? Icon(
+                          Icons.radio_button_on,
+                          color: Colors.red,
+                          size: 80,
+                        )
+                      : Icon(
+                          Icons.panorama_fish_eye,
+                          color: Colors.white,
+                          size: 70,
+                        ),
                 ),
                 IconButton(
                   color: Colors.white,
