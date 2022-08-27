@@ -92,7 +92,7 @@ class _ChatBodyState extends State<ChatBody> {
                       alignment: Alignment.bottomLeft,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: kSenderMessageColor,
+                        color: Theme.of(context).highlightColor,
                       ),
                       child: Padding(
                         padding: const EdgeInsets.only(

@@ -8,9 +8,12 @@ ThemeData lightThemeData(BuildContext context) {
     indicatorColor: kBackgroundColor,
     backgroundColor: kBackgroundColor,
     canvasColor: kDarkBgColor,
+    focusColor: kBlackShadowBgColor,
     scaffoldBackgroundColor: Colors.white,
     appBarTheme: lightAppBarTheme,
+    highlightColor: kSenderMessageColor,
     splashColor: kBackgroundColor,
+    cardColor: kSenderMessageColor,
     shadowColor: kShadeColor,
     iconTheme: const IconThemeData(color: kIconColor),
   );
@@ -20,7 +23,10 @@ ThemeData darkThemeData(BuildContext context) {
   return ThemeData.dark().copyWith(
     primaryColor: kBlackShadowBgColor,
     backgroundColor: kDarkBgColor,
+    cardColor: kBlackShadowBgColor,
+    focusColor: kFreshPrimaryColor,
     canvasColor: kBackgroundColor,
+    highlightColor: kBlackShadowBgColor,
     splashColor: kBlackShadowBgColor,
     indicatorColor: kFreshPrimaryColor,
     scaffoldBackgroundColor: Colors.black,

@@ -98,8 +98,9 @@ class ChatBubbleBuilder extends StatelessWidget {
             left: kMedPadding * 0.8,
           ),
           decoration: BoxDecoration(
-            color:
-                message.isSender ? kReceiverMessageColor : kSenderMessageColor,
+            color: message.isSender
+                ? Theme.of(context).focusColor
+                : Theme.of(context).cardColor,
             borderRadius: BorderRadius.circular(kMedSize * 1.4),
           ),
           child: messageType(

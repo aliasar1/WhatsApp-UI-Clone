@@ -24,11 +24,15 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return SafeArea(
       child: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('assets/images/backgorund.png'),
+              opacity: isDarkMode ? 0.5 : 1,
+              image: isDarkMode
+                  ? const AssetImage('assets/images/dark background.png')
+                  : const AssetImage('assets/images/backgorund.png'),
               fit: BoxFit.cover),
         ),
         child: Scaffold(
@@ -39,7 +43,7 @@ class _ChatScreenState extends State<ChatScreen> {
             toolbarHeight: 60,
             leadingWidth: 75,
             titleSpacing: 5,
-            backgroundColor: kPrimaryColor,
+            backgroundColor: isDarkMode ? kBlackShadowBgColor : kPrimaryColor,
             leading: InkWell(
               onTap: () => Navigator.pop(context),
               child: Row(
