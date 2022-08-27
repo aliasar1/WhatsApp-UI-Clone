@@ -30,7 +30,10 @@ class _CallScreenState extends State<CallScreen> {
                   builder: (context) => const ContactCallScreen()));
         },
         backgroundColor: kPrimaryColor,
-        child: const Icon(Icons.add_call),
+        child: const Icon(
+          Icons.add_call,
+          color: kBackgroundColor,
+        ),
       ),
     );
   }

@@ -32,7 +32,7 @@ class SplashBody extends StatelessWidget {
                 Text(
                   "from",
                   style: TextStyle(
-                      color: kTextColor.withOpacity(0.6),
+                      color: Theme.of(context).canvasColor,
                       wordSpacing: 1,
                       fontSize: 14),
                 ),

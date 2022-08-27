@@ -18,7 +18,7 @@ class StatusBuilder extends StatelessWidget {
           alignment: Alignment.centerLeft,
           width: double.infinity,
           height: 35,
-          color: kShadeColor,
+          color: Theme.of(context).shadowColor,
           child: Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: kSmallPadding * 1.5,

@@ -36,11 +36,12 @@ class _InboxScreenState extends State<InboxScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Theme.of(context).backgroundColor,
         body: NestedScrollView(
           headerSliverBuilder: (context, value) {
             return [
               SliverAppBar(
-                backgroundColor: kPrimaryColor,
+                backgroundColor: Theme.of(context).primaryColor,
                 pinned: true,
                 floating: true,
                 title: const Text(
@@ -175,8 +176,9 @@ class _InboxScreenState extends State<InboxScreen>
                       ),
                     ),
                   ],
-                  labelColor: kBackgroundColor,
-                  indicatorColor: kBackgroundColor,
+                  labelColor: Theme.of(context).indicatorColor,
+                  unselectedLabelColor: kShadeColor.withOpacity(0.5),
+                  indicatorColor: Theme.of(context).indicatorColor,
                   indicatorWeight: 4,
                 ),
               ),
@@ -229,7 +231,10 @@ class _InboxScreenState extends State<InboxScreen>
                   );
                 },
                 backgroundColor: kPrimaryColor,
-                child: const Icon(Icons.chat),
+                child: const Icon(
+                  Icons.chat,
+                  color: kBackgroundColor,
+                ),
               )
             : null);
   }

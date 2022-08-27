@@ -18,6 +18,7 @@ class _StatusScreenState extends State<StatusScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
       body: Column(
         children: [
           const ProfileCard(),
@@ -81,7 +82,10 @@ class _StatusScreenState extends State<StatusScreen> {
                           )));
             },
             backgroundColor: kPrimaryColor,
-            child: const Icon(Icons.camera_alt),
+            child: const Icon(
+              Icons.camera_alt,
+              color: kBackgroundColor,
+            ),
           ),
         ],
       ),

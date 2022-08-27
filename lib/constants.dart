@@ -18,6 +18,9 @@ const kHighlightColor = Color.fromARGB(255, 40, 153, 65);
 const kDarkGreyColor = Color.fromARGB(255, 106, 110, 112);
 const kYellowColor = Color.fromARGB(255, 235, 221, 183);
 const kDraggableSheetColor = Color.fromARGB(255, 50, 57, 66);
+const kDarkBgColor = Color.fromARGB(255, 30, 32, 36);
+const kBlackShadowBgColor = Color.fromARGB(255, 61, 62, 68);
+const kFreshPrimaryColor = Color.fromARGB(195, 43, 150, 96);
 
 const kSmallPadding = 8.0;
 const kMedPadding = 12.0;
