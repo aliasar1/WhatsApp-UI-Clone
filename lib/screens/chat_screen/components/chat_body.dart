@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
 import '../../../models/ChatMessage.dart';
+import '../../camera_screen/camera_screen.dart';
 import 'chat_card.dart';
 
 class ChatBody extends StatefulWidget {
@@ -135,7 +136,15 @@ class _ChatBodyState extends State<ChatBody> {
                                   ),
                                 ),
                                 IconButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const CameraScreen(
+                                                  isCamTab: false,
+                                                )));
+                                  },
                                   icon: const Icon(Icons.camera_alt, size: 24),
                                   color: kIconColor.withOpacity(0.9),
                                 ),

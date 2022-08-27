@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/constants.dart';
+import 'package:whatsapp_clone/screens/camera_screen/camera_screen.dart';
 
 import '../../models/Status.dart';
 import 'components/profile_card.dart';
@@ -71,7 +72,14 @@ class _StatusScreenState extends State<StatusScreen> {
           ),
           FloatingActionButton(
             heroTag: 'Camera',
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const CameraScreen(
+                            isCamTab: false,
+                          )));
+            },
             backgroundColor: kPrimaryColor,
             child: const Icon(Icons.camera_alt),
           ),

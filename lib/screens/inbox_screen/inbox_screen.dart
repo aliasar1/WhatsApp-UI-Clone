@@ -185,7 +185,9 @@ class _InboxScreenState extends State<InboxScreen>
           body: TabBarView(
             controller: _tabController,
             children: [
-              const CameraScreen(),
+              const CameraScreen(
+                isCamTab: true,
+              ),
               ListView.builder(
                 padding: const EdgeInsets.only(top: kMedPadding),
                 itemCount: chatsData.length + 1,

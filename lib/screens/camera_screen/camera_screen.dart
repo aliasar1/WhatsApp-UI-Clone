@@ -6,7 +6,8 @@ import 'package:whatsapp_clone/screens/camera_screen/random_image.dart';
 late List<CameraDescription> cameras;
 
 class CameraScreen extends StatefulWidget {
-  const CameraScreen({Key? key}) : super(key: key);
+  final bool isCamTab;
+  const CameraScreen({Key? key, required this.isCamTab}) : super(key: key);
 
   @override
   State<CameraScreen> createState() => _CameraScreenState();
@@ -86,86 +87,103 @@ class _CameraScreenState extends State<CameraScreen> {
     if (!controller.value.isInitialized) {
       return Container();
     }
-    return Stack(
-      children: [
-        SizedBox(
-          height: double.infinity,
-          width: double.infinity,
-          child: CameraPreview(controller),
-        ),
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: kLargePadding * 6),
-            child: _buildGallery(),
+    return Scaffold(
+      body: Stack(
+        children: [
+          SizedBox(
+            height: double.infinity,
+            width: double.infinity,
+            child: CameraPreview(controller),
           ),
-        ),
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: kLargePadding * 1.1),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                IconButton(
-                    icon: Icon(
-                      flash ? Icons.flash_on : Icons.flash_off,
-                      color: Colors.white,
-                      size: 28,
-                    ),
-                    onPressed: () {
+          Padding(
+            padding: const EdgeInsets.only(
+                top: kLargePadding * 2, right: kMedPadding),
+            child: Align(
+              alignment: Alignment.topRight,
+              child: widget.isCamTab == false
+                  ? InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Icon(Icons.close,
+                          size: 28, color: kBackgroundColor))
+                  : null,
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: kLargePadding * 6),
+              child: _buildGallery(),
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: kLargePadding * 1.1),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  IconButton(
+                      icon: Icon(
+                        flash ? Icons.flash_on : Icons.flash_off,
+                        color: Colors.white,
+                        size: 28,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          flash = !flash;
+                        });
+                        flash
+                            ? controller.setFlashMode(FlashMode.torch)
+                            : controller.setFlashMode(FlashMode.off);
+                      }),
+                  GestureDetector(
+                    onLongPress: () async {
+                      await controller.startVideoRecording();
                       setState(() {
-                        flash = !flash;
+                        isRecording = true;
                       });
-                      flash
-                          ? controller.setFlashMode(FlashMode.torch)
-                          : controller.setFlashMode(FlashMode.off);
-                    }),
-                GestureDetector(
-                  onLongPress: () async {
-                    await controller.startVideoRecording();
-                    setState(() {
-                      isRecording = true;
-                    });
-                  },
-                  onLongPressUp: () async {
-                    XFile videopath = await controller.stopVideoRecording();
-                    setState(() {
-                      isRecording = false;
-                    });
-                  },
-                  child: isRecording
-                      ? Icon(
-                          Icons.radio_button_on,
-                          color: Colors.red,
-                          size: 80,
-                        )
-                      : Icon(
-                          Icons.panorama_fish_eye,
-                          color: Colors.white,
-                          size: 70,
-                        ),
-                ),
-                IconButton(
-                  color: Colors.white,
-                  icon: const Icon(Icons.switch_camera),
-                  onPressed: _onSwitchCamera,
-                ),
-              ],
+                    },
+                    onLongPressUp: () async {
+                      XFile videopath = await controller.stopVideoRecording();
+                      setState(() {
+                        isRecording = false;
+                      });
+                    },
+                    child: isRecording
+                        ? const Icon(
+                            Icons.radio_button_on,
+                            color: Colors.red,
+                            size: 80,
+                          )
+                        : const Icon(
+                            Icons.panorama_fish_eye,
+                            color: Colors.white,
+                            size: 70,
+                          ),
+                  ),
+                  IconButton(
+                    color: Colors.white,
+                    icon: const Icon(Icons.switch_camera),
+                    onPressed: _onSwitchCamera,
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
-        const Align(
-          alignment: Alignment.bottomCenter,
-          child: Padding(
-            padding: EdgeInsets.only(bottom: kSmallPadding / 2),
-            child: Text(
-              "Hold for video, tap for photo",
-              style: TextStyle(color: kBackgroundColor),
+          const Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: EdgeInsets.only(bottom: kSmallPadding / 2),
+              child: Text(
+                "Hold for video, tap for photo",
+                style: TextStyle(color: kBackgroundColor),
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
