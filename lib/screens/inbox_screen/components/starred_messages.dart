@@ -18,13 +18,13 @@ class StarredMessagesScreen extends StatelessWidget {
         children: [
           Stack(
             alignment: Alignment.center,
-            children: const [
+            children: [
               Icon(
                 Icons.circle,
-                color: kPrimaryColor,
+                color: Theme.of(context).primaryColorLight,
                 size: 200,
               ),
-              Icon(
+              const Icon(
                 Icons.star_rounded,
                 color: kBackgroundColor,
                 size: 90,
@@ -42,7 +42,10 @@ class StarredMessagesScreen extends StatelessWidget {
               child: Text(
                 'Tap and hold on any message in any chat to star it, so you can easily find it later.',
                 textAlign: TextAlign.center,
-                style: TextStyle(letterSpacing: 0.5, color: kDarkGreyColor),
+                style: TextStyle(
+                    letterSpacing: 0.5,
+                    color: kDarkGreyColor,
+                    fontWeight: FontWeight.w500),
               ),
             ),
           )

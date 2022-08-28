@@ -14,6 +14,7 @@ class PublicStatusCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return InkWell(
       onTap: () {
         Navigator.push(
@@ -33,14 +34,15 @@ class PublicStatusCard extends StatelessWidget {
                   ? BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(
-                        color: kSecondaryColor,
-                        width: 3,
+                        color:
+                            isDarkMode ? kFreshPrimaryColor : kSecondaryColor,
+                        width: 2,
                       ))
                   : BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(
                         color: kSeenColor,
-                        width: 3,
+                        width: 2,
                       )),
               child: Container(
                 padding: const EdgeInsets.all(1.5),

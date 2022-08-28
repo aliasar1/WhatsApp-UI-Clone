@@ -81,7 +81,7 @@ class _StatusScreenState extends State<StatusScreen> {
                             isCamTab: false,
                           )));
             },
-            backgroundColor: kPrimaryColor,
+            backgroundColor: Theme.of(context).primaryColorLight,
             child: const Icon(
               Icons.camera_alt,
               color: kBackgroundColor,

@@ -78,10 +78,10 @@ class PhoneNumberCard extends StatelessWidget {
                                       chat: widget.chat,
                                     )));
                       },
-                      child: const Icon(
+                      child: Icon(
                         Icons.chat,
                         size: 23,
-                        color: kPrimaryColor,
+                        color: Theme.of(context).primaryColorLight,
                       ),
                     ),
                     const SizedBox(
@@ -100,10 +100,10 @@ class PhoneNumberCard extends StatelessWidget {
                                           : "Unavailable",
                                     )));
                       },
-                      child: const Icon(
+                      child: Icon(
                         Icons.call,
                         size: 23,
-                        color: kPrimaryColor,
+                        color: Theme.of(context).primaryColorLight,
                       ),
                     ),
                     const SizedBox(
@@ -122,10 +122,10 @@ class PhoneNumberCard extends StatelessWidget {
                                           : "Unavailable",
                                     )));
                       },
-                      child: const Icon(
+                      child: Icon(
                         Icons.videocam_rounded,
                         size: 26,
-                        color: kPrimaryColor,
+                        color: Theme.of(context).primaryColorLight,
                       ),
                     ),
                   ],

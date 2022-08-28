@@ -27,6 +27,7 @@ class CallBuilder extends StatelessWidget {
                     )));
       },
       child: ListTile(
+        tileColor: Theme.of(context).backgroundColor,
         leading: InkWell(
           onTap: () {
             Navigator.of(context).push(HeroDialogRoute(builder: (context) {
@@ -78,9 +79,9 @@ class CallBuilder extends StatelessWidget {
                                 status: callLog.duration,
                               )));
                 },
-                child: const Icon(
+                child: Icon(
                   Icons.videocam_rounded,
-                  color: kPrimaryColor,
+                  color: Theme.of(context).primaryColorLight,
                 ),
               )
             : InkWell(
@@ -94,9 +95,9 @@ class CallBuilder extends StatelessWidget {
                                 status: callLog.duration,
                               )));
                 },
-                child: const Icon(
+                child: Icon(
                   Icons.call_sharp,
-                  color: kPrimaryColor,
+                  color: Theme.of(context).primaryColorLight,
                 ),
               ),
       ),

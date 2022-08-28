@@ -22,6 +22,7 @@ class _ChatBodyState extends State<ChatBody> {
   final TextEditingController _textController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).requestFocus(FocusNode());
@@ -163,9 +164,9 @@ class _ChatBodyState extends State<ChatBody> {
                     padding: const EdgeInsets.only(left: kSmallPadding * 0.3),
                     child: Container(
                       height: MediaQuery.of(context).size.height * 0.06,
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: kPrimaryColor,
+                        color: isDarkMode ? kFreshPrimaryColor : kPrimaryColor,
                       ),
                       child: IconButton(
                         onPressed: () {},

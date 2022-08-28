@@ -16,6 +16,7 @@ class _CallScreenState extends State<CallScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
       body: ListView.builder(
         padding: const EdgeInsets.only(top: kSmallPadding / 2),
         itemCount: callsData.length,
@@ -29,7 +30,7 @@ class _CallScreenState extends State<CallScreen> {
               MaterialPageRoute(
                   builder: (context) => const ContactCallScreen()));
         },
-        backgroundColor: kPrimaryColor,
+        backgroundColor: Theme.of(context).primaryColorLight,
         child: const Icon(
           Icons.add_call,
           color: kBackgroundColor,

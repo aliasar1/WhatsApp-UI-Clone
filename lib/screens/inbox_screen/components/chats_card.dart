@@ -18,6 +18,7 @@ class ChatCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return Container(
       color: Theme.of(context).backgroundColor,
       child: InkWell(
@@ -110,11 +111,14 @@ class ChatCard extends StatelessWidget {
                     child: Text(
                       '${chat.time}\n',
                       style: TextStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w500,
-                          color: chat.msgTotal == 0
-                              ? kTextColor
-                              : kSecondaryColor),
+                        fontSize: 13,
+                        fontWeight: FontWeight.w500,
+                        color: chat.msgTotal == 0
+                            ? kTextColor
+                            : isDarkMode
+                                ? kFreshPrimaryColor
+                                : kSecondaryColor,
+                      ),
                     ),
                   ),
                   if (chat.msgTotal != 0)
@@ -122,7 +126,8 @@ class ChatCard extends StatelessWidget {
                       height: 20,
                       width: 29,
                       child: CircleAvatar(
-                        backgroundColor: kSecondaryColor,
+                        backgroundColor:
+                            isDarkMode ? kFreshPrimaryColor : kSecondaryColor,
                         radius: 12,
                         child: Text(
                           chat.msgTotal.toString(),

@@ -82,9 +82,9 @@ class ProfileView extends StatelessWidget {
                                           )),
                                 );
                               },
-                              child: const Icon(
+                              child: Icon(
                                 Icons.chat,
-                                color: kPrimaryColor,
+                                color: Theme.of(context).primaryColorLight,
                               ),
                             ),
                             InkWell(
@@ -100,9 +100,9 @@ class ProfileView extends StatelessWidget {
                                                   : "Unavailable",
                                             )));
                               },
-                              child: const Icon(
+                              child: Icon(
                                 Icons.call,
-                                color: kPrimaryColor,
+                                color: Theme.of(context).primaryColorLight,
                               ),
                             ),
                             InkWell(
@@ -118,9 +118,9 @@ class ProfileView extends StatelessWidget {
                                                   : "Unavailable",
                                             )));
                               },
-                              child: const Icon(
+                              child: Icon(
                                 Icons.videocam_rounded,
-                                color: kPrimaryColor,
+                                color: Theme.of(context).primaryColorLight,
                               ),
                             ),
                             InkWell(
@@ -133,9 +133,9 @@ class ProfileView extends StatelessWidget {
                                           )),
                                 );
                               },
-                              child: const Icon(
+                              child: Icon(
                                 Icons.info,
-                                color: kPrimaryColor,
+                                color: Theme.of(context).primaryColorLight,
                               ),
                             ),
                           ],

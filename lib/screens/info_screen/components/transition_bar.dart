@@ -280,15 +280,15 @@ class _TransitionAppBarDelegate extends SliverPersistentHeaderDelegate {
         children: [
           Icon(
             icon,
-            color: kPrimaryColor,
+            color: Theme.of(context).primaryColorLight,
             size: 26,
           ),
           Text(
             text,
-            style: const TextStyle(
+            style: TextStyle(
               fontWeight: FontWeight.w500,
               fontSize: 14,
-              color: kPrimaryColor,
+              color: Theme.of(context).primaryColorLight,
             ),
           ),
         ],

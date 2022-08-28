@@ -16,7 +16,7 @@ class CallInfoScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: kPrimaryColor,
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         title: const Text("Call info"),
         actions: [
           InkWell(
@@ -88,14 +88,14 @@ class CallInfoScreen extends StatelessWidget {
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
+                  children: [
                     Icon(
                       Icons.call,
-                      color: kPrimaryColor,
+                      color: Theme.of(context).primaryColorLight,
                     ),
                     Icon(
                       Icons.videocam_rounded,
-                      color: kPrimaryColor,
+                      color: Theme.of(context).primaryColorLight,
                     ),
                   ],
                 ),

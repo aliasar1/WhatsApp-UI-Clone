@@ -42,9 +42,9 @@ class LinkDeviceScreen extends StatelessWidget {
               child: Container(
                 width: double.infinity,
                 height: 34,
-                decoration: const BoxDecoration(
-                  color: kPrimaryColor,
-                  borderRadius: BorderRadius.all(Radius.circular(5)),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).primaryColorLight,
+                  borderRadius: const BorderRadius.all(Radius.circular(5)),
                 ),
                 child: TextButton(
                   onPressed: () {},

@@ -35,6 +35,7 @@ class _InboxScreenState extends State<InboxScreen>
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
         body: NestedScrollView(
@@ -57,6 +58,8 @@ class _InboxScreenState extends State<InboxScreen>
                   ),
                   if (_tabController.index == 1)
                     PopupMenuButton<String>(
+                      color:
+                          isDarkMode ? kBlackShadowBgColor : kBackgroundColor,
                       onSelected: (value) {
                         if (value == "Settings") {
                           Navigator.push(
@@ -118,6 +121,8 @@ class _InboxScreenState extends State<InboxScreen>
                     )
                   else if (_tabController.index == 2)
                     PopupMenuButton<String>(
+                      color:
+                          isDarkMode ? kBlackShadowBgColor : kBackgroundColor,
                       onSelected: (value) {},
                       itemBuilder: (BuildContext context) {
                         return [
@@ -134,6 +139,8 @@ class _InboxScreenState extends State<InboxScreen>
                     )
                   else
                     PopupMenuButton<String>(
+                      color:
+                          isDarkMode ? kBlackShadowBgColor : kBackgroundColor,
                       onSelected: (value) {},
                       itemBuilder: (BuildContext context) {
                         return [
@@ -230,7 +237,7 @@ class _InboxScreenState extends State<InboxScreen>
                         builder: (context) => const ContactScreen()),
                   );
                 },
-                backgroundColor: kPrimaryColor,
+                backgroundColor: Theme.of(context).primaryColorLight,
                 child: const Icon(
                   Icons.chat,
                   color: kBackgroundColor,
