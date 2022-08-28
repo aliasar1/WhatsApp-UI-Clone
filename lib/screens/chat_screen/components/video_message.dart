@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone/screens/chat_screen/components/image_message.dart';
-
 import '../../../constants.dart';
 import '../../../models/ChatMessage.dart';
 
@@ -16,16 +14,17 @@ class _VideoMessageState extends State<VideoMessage> {
   bool isPlaying = false;
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return Stack(
       children: [
         VideoTemplate(message: widget.message),
         Positioned(
-          top: 60,
-          left: 85,
+          top: 56,
+          left: 80,
           child: Container(
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              color: kIconColor.withOpacity(0.8),
+              color: isDarkMode ? kDarkGreyColor : kIconColor.withOpacity(0.8),
               shape: BoxShape.circle,
             ),
             child: IconButton(
@@ -35,13 +34,17 @@ class _VideoMessageState extends State<VideoMessage> {
                 });
               },
               icon: isPlaying
-                  ? const Icon(
+                  ? Icon(
                       Icons.pause,
                       size: 35,
+                      // ignore: deprecated_member_use
+                      color: Theme.of(context).buttonColor,
                     )
-                  : const Icon(
+                  : Icon(
                       Icons.play_arrow,
                       size: 35,
+                      // ignore: deprecated_member_use
+                      color: Theme.of(context).buttonColor,
                     ),
             ),
           ),

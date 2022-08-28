@@ -40,14 +40,14 @@ class _ChatBodyState extends State<ChatBody> {
                         padding: const EdgeInsets.only(top: kLargePadding),
                         child: Center(
                           child: Container(
-                            decoration: const BoxDecoration(
-                                color: kYellowColor,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10))),
+                            decoration: BoxDecoration(
+                                color: Theme.of(context).disabledColor,
+                                borderRadius: const BorderRadius.all(
+                                    Radius.circular(10))),
                             height: MediaQuery.of(context).size.height * 0.1,
                             width: MediaQuery.of(context).size.width * 0.8,
-                            child: const Padding(
-                                padding: EdgeInsets.all(8.0),
+                            child: Padding(
+                                padding: const EdgeInsets.all(8.0),
                                 child: Align(
                                   alignment: Alignment.center,
                                   child: Text.rich(
@@ -57,12 +57,16 @@ class _ChatBodyState extends State<ChatBody> {
                                         WidgetSpan(
                                             child: Icon(
                                           Icons.lock,
-                                          color: kDarkGreyColor,
+                                          color: Theme.of(context)
+                                              // ignore: deprecated_member_use
+                                              .textSelectionColor,
                                           size: 14,
                                         )),
                                         TextSpan(
                                             style: TextStyle(
-                                              color: kDarkGreyColor,
+                                              color: Theme.of(context)
+                                                  // ignore: deprecated_member_use
+                                                  .textSelectionColor,
                                             ),
                                             text:
                                                 " Messages and calls are end-to-end encrypted. No one outside of this chat, not even WhatsApp, can read or listen to them. Tap to learn more."),
