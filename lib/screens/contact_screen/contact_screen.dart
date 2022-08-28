@@ -20,7 +20,7 @@ class _ContactScreenState extends State<ContactScreen> {
         toolbarHeight: 60,
         leadingWidth: 55,
         titleSpacing: 5,
-        backgroundColor: kPrimaryColor,
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         title: const Padding(
           padding: EdgeInsets.only(left: kMedPadding),
           child: Text("Select contact"),

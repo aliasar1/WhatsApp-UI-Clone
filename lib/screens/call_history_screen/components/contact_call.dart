@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/screens/call_history_screen/components/call_card_builder.dart';
-import 'package:whatsapp_clone/screens/caller_screen/caller_screen.dart';
 
 import '../../../constants.dart';
 import '../../../models/Chat.dart';
@@ -22,7 +21,7 @@ class _ContactCallScreenState extends State<ContactCallScreen> {
         toolbarHeight: 60,
         leadingWidth: 55,
         titleSpacing: 5,
-        backgroundColor: kPrimaryColor,
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         title: Padding(
           padding: const EdgeInsets.only(left: kMedPadding),
           child: Column(

@@ -17,7 +17,7 @@ class MediaBuilderCard extends StatelessWidget {
         height: MediaQuery.of(context).size.height * 0.21,
         width: double.infinity,
         decoration: BoxDecoration(
-          color: kBackgroundColor,
+          color: Theme.of(context).hoverColor,
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.5),

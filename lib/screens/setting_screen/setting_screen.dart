@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone/constants.dart';
 
 import 'components/setting_body.dart';
 

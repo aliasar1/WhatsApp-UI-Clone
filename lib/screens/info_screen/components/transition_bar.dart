@@ -65,7 +65,7 @@ class _TransitionAppBarDelegate extends SliverPersistentHeaderDelegate {
 
         return Container(
           decoration: BoxDecoration(
-            color: kBackgroundColor,
+            color: Theme.of(context).hoverColor,
             boxShadow: [
               BoxShadow(
                 color: Colors.grey.withOpacity(0.5),
@@ -81,7 +81,9 @@ class _TransitionAppBarDelegate extends SliverPersistentHeaderDelegate {
                 duration: const Duration(milliseconds: 100),
                 height: 60,
                 constraints: BoxConstraints(maxHeight: minExtent),
-                color: top <= 140 ? kPrimaryColor : kBackgroundColor,
+                color: top <= 140
+                    ? Theme.of(context).primaryColor
+                    : Theme.of(context).hintColor,
               ),
               Align(
                 alignment: Alignment.topLeft,
@@ -135,10 +137,11 @@ class _TransitionAppBarDelegate extends SliverPersistentHeaderDelegate {
                     opacity: top <= 244 ? 0.2 : 1.0,
                     child: Text(
                       chat.name,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 20,
-                          color: kTextColor),
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 20,
+                        color: Theme.of(context).canvasColor,
+                      ),
                     ),
                   ),
                 ),
@@ -152,10 +155,11 @@ class _TransitionAppBarDelegate extends SliverPersistentHeaderDelegate {
                     opacity: top <= 204 ? 0.2 : 0.7,
                     child: Text(
                       chat.number,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 14,
-                          color: kTextColor),
+                      style: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 14,
+                        color: Theme.of(context).canvasColor,
+                      ),
                     ),
                   ),
                 ),

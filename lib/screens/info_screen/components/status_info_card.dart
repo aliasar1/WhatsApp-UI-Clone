@@ -16,7 +16,7 @@ class StatusInfoCard extends StatelessWidget {
         width: double.infinity,
         height: 60,
         decoration: BoxDecoration(
-          color: kBackgroundColor,
+          color: Theme.of(context).hoverColor,
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.5),

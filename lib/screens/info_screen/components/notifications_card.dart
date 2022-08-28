@@ -32,7 +32,7 @@ class _NotificationsCardState extends State<NotificationsCard> {
       padding: const EdgeInsets.only(top: kMedPadding),
       child: Container(
         decoration: BoxDecoration(
-          color: kBackgroundColor,
+          color: Theme.of(context).hoverColor,
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.5),

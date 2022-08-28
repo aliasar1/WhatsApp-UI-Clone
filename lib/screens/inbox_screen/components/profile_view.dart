@@ -24,7 +24,9 @@ class ProfileView extends StatelessWidget {
               children: [
                 Stack(
                   children: [
-                    SizedBox(
+                    Container(
+                      color:
+                          isDarkMode ? kBlackShadowBgColor : kBackgroundColor,
                       height: 320,
                       width: 260,
                       child: FittedBox(
