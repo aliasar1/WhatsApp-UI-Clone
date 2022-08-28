@@ -11,6 +11,7 @@ class ProfileView extends StatelessWidget {
   final Chat chat;
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return Center(
       child: Hero(
         tag: 'profile',
@@ -58,8 +59,10 @@ class ProfileView extends StatelessWidget {
                       child: Container(
                         width: 260,
                         height: 50,
-                        decoration: const BoxDecoration(
-                          color: kBackgroundColor,
+                        decoration: BoxDecoration(
+                          color: isDarkMode
+                              ? kBlackShadowBgColor
+                              : kBackgroundColor,
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,

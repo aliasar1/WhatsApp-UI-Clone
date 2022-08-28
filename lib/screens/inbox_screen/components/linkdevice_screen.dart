@@ -8,7 +8,7 @@ class LinkDeviceScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: kPrimaryColor,
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         title: const Text('Linked devices'),
         elevation: 0,
       ),

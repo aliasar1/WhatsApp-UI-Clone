@@ -26,7 +26,7 @@ class _InfoScreenState extends State<InfoScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: kShadeColor,
+        backgroundColor: Theme.of(context).backgroundColor,
         resizeToAvoidBottomInset: false,
         body: CustomScrollView(
           slivers: <Widget>[

@@ -9,7 +9,7 @@ class StarredMessagesScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: kPrimaryColor,
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         title: const Text('Starred messages'),
       ),
       body: Column(
