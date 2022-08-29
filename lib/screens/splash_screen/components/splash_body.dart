@@ -9,6 +9,7 @@ class SplashBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -17,9 +18,11 @@ class SplashBody extends StatelessWidget {
             flex: 3,
           ),
           Image.asset(
-            'assets/images/logo.png',
-            height: 70,
-            width: 70,
+            isDarkMode
+                ? 'assets/images/dark logo.png'
+                : 'assets/images/logo.png',
+            height: 100,
+            width: 100,
           ),
           const Spacer(
             flex: 3,
@@ -32,7 +35,7 @@ class SplashBody extends StatelessWidget {
                 Text(
                   "from",
                   style: TextStyle(
-                      color: Theme.of(context).canvasColor,
+                      color: isDarkMode ? kDarkGreyColor : kShadeColor,
                       wordSpacing: 1,
                       fontSize: 14),
                 ),
@@ -42,14 +45,15 @@ class SplashBody extends StatelessWidget {
                     children: [
                       Image.asset(
                         'assets/images/meta.png',
-                        color: kSecondaryColor,
+                        color: isDarkMode ? kBackgroundColor : kSecondaryColor,
                         height: 25,
                         width: 25,
                       ),
-                      const Text(
+                      Text(
                         " Meta",
                         style: TextStyle(
-                            color: kSecondaryColor,
+                            color:
+                                isDarkMode ? kBackgroundColor : kSecondaryColor,
                             fontSize: 18,
                             fontFamily: 'PT Sans'),
                       ),
