@@ -123,7 +123,15 @@ class _InboxScreenState extends State<InboxScreen>
                     PopupMenuButton<String>(
                       color:
                           isDarkMode ? kBlackShadowBgColor : kBackgroundColor,
-                      onSelected: (value) {},
+                      onSelected: (value) {
+                        if (value == "Settings") {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SettingScreen()),
+                          );
+                        }
+                      },
                       itemBuilder: (BuildContext context) {
                         return [
                           const PopupMenuItem(
@@ -141,7 +149,15 @@ class _InboxScreenState extends State<InboxScreen>
                     PopupMenuButton<String>(
                       color:
                           isDarkMode ? kBlackShadowBgColor : kBackgroundColor,
-                      onSelected: (value) {},
+                      onSelected: (value) {
+                        if (value == "Settings") {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SettingScreen()),
+                          );
+                        }
+                      },
                       itemBuilder: (BuildContext context) {
                         return [
                           const PopupMenuItem(

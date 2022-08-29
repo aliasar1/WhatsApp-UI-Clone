@@ -21,8 +21,10 @@ class ContactBody extends StatelessWidget {
                 Container(
                   width: 40,
                   height: 40,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.circle, color: kPrimaryColor),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Theme.of(context).primaryColorLight,
+                  ),
                   child: const Icon(
                     Icons.group,
                     size: 22,
@@ -48,8 +50,10 @@ class ContactBody extends StatelessWidget {
                   Container(
                     width: 40,
                     height: 40,
-                    decoration: const BoxDecoration(
-                        shape: BoxShape.circle, color: kPrimaryColor),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Theme.of(context).primaryColorLight,
+                    ),
                     child: const Icon(
                       Icons.person_add,
                       size: 22,
@@ -112,7 +116,7 @@ class ContactBody extends StatelessWidget {
                     child: const Icon(
                       Icons.share,
                       size: 22,
-                      color: kIconColor,
+                      color: kDarkGreyColor,
                     ),
                   ),
                   const Padding(
@@ -142,7 +146,7 @@ class ContactBody extends StatelessWidget {
                     child: const Icon(
                       Icons.question_mark,
                       size: 22,
-                      color: kIconColor,
+                      color: kDarkGreyColor,
                     ),
                   ),
                   const Padding(

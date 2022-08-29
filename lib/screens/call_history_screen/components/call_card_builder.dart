@@ -51,9 +51,9 @@ class CallContactBuilder extends StatelessWidget {
                                   : "Unavailable",
                             )));
               },
-              child: const Icon(
+              child: Icon(
                 Icons.call,
-                color: kPrimaryColor,
+                color: Theme.of(context).primaryColorLight,
                 size: 24,
               ),
             ),
@@ -70,9 +70,9 @@ class CallContactBuilder extends StatelessWidget {
                                   : "Unavailable",
                             )));
               },
-              child: const Icon(
+              child: Icon(
                 Icons.videocam_rounded,
-                color: kPrimaryColor,
+                color: Theme.of(context).primaryColorLight,
                 size: 24,
               ),
             ),
