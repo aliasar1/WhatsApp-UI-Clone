@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/constants.dart';
+import 'package:whatsapp_clone/screens/inbox_screen/components/scanner_screen.dart';
 
 class LinkDeviceScreen extends StatelessWidget {
   const LinkDeviceScreen({Key? key}) : super(key: key);
@@ -47,7 +48,12 @@ class LinkDeviceScreen extends StatelessWidget {
                   borderRadius: const BorderRadius.all(Radius.circular(5)),
                 ),
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ScannerScreen()));
+                  },
                   child: const Text(
                     'LINK A DEVICE',
                     style: TextStyle(color: kBackgroundColor),

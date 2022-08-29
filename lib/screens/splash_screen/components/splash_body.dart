@@ -35,7 +35,7 @@ class SplashBody extends StatelessWidget {
                 Text(
                   "from",
                   style: TextStyle(
-                      color: isDarkMode ? kDarkGreyColor : kShadeColor,
+                      color: isDarkMode ? kDarkGreyColor : kDarkGreyColor,
                       wordSpacing: 1,
                       fontSize: 14),
                 ),

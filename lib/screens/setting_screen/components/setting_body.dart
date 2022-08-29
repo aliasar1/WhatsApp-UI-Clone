@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clone/screens/setting_screen/components/themes_data_screen.dart';
 
 import '../../../constants.dart';
 
@@ -50,7 +51,16 @@ class SettingScreenBody extends StatelessWidget {
           ),
           subtitle: const Text('Privacy, security, change number'),
         ),
-        tileBuilder(Icons.chat, 'Chats', 'Theme, wallpapers, chat history'),
+        InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const ChatThemesScreen()),
+              );
+            },
+            child: tileBuilder(
+                Icons.chat, 'Chats', 'Theme, wallpapers, chat history')),
         tileBuilder(Icons.notifications, 'Notifications',
             'Message, group & call tones'),
         tileBuilder(Icons.circle_outlined, 'Storage and daata',
