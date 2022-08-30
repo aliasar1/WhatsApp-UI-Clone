@@ -13,15 +13,25 @@ class _ChatThemesScreenState extends State<ChatThemesScreen> {
   bool isSwitched = false;
 
   void toggleSwitch(bool value) {
-    if (isSwitched == false) {
-      setState(() {
-        isSwitched = true;
-      });
-    } else {
-      setState(() {
-        isSwitched = false;
-      });
-    }
+    setState(() {
+      isSwitched = !isSwitched;
+    });
+  }
+
+  bool isSwitched2 = false;
+
+  void toggleSwitch2(bool value) {
+    setState(() {
+      isSwitched2 = !isSwitched2;
+    });
+  }
+
+  bool isSwitched3 = false;
+
+  void toggleSwitch3(bool value) {
+    setState(() {
+      isSwitched3 = !isSwitched3;
+    });
   }
 
   @override
@@ -204,8 +214,8 @@ class _ChatThemesScreenState extends State<ChatThemesScreen> {
                     Transform.scale(
                       scale: 1,
                       child: Switch(
-                        onChanged: toggleSwitch,
-                        value: isSwitched,
+                        onChanged: toggleSwitch2,
+                        value: isSwitched2,
                         activeColor: kPrimaryColor,
                         activeTrackColor: kPrimaryColor.withOpacity(0.5),
                         inactiveThumbColor: kDarkGreyColor,
@@ -297,8 +307,8 @@ class _ChatThemesScreenState extends State<ChatThemesScreen> {
                     Transform.scale(
                       scale: 1,
                       child: Switch(
-                        onChanged: toggleSwitch,
-                        value: isSwitched,
+                        onChanged: toggleSwitch3,
+                        value: isSwitched3,
                         activeColor: kPrimaryColor,
                         activeTrackColor: kPrimaryColor.withOpacity(0.5),
                         inactiveThumbColor: kDarkGreyColor,
