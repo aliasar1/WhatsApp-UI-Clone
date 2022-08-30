@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../constants.dart';
+
 class ChatThemesScreen extends StatefulWidget {
   const ChatThemesScreen({Key? key}) : super(key: key);
 
@@ -8,8 +10,372 @@ class ChatThemesScreen extends StatefulWidget {
 }
 
 class _ChatThemesScreenState extends State<ChatThemesScreen> {
+  bool isSwitched = false;
+
+  void toggleSwitch(bool value) {
+    if (isSwitched == false) {
+      setState(() {
+        isSwitched = true;
+      });
+    } else {
+      setState(() {
+        isSwitched = false;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+        title: const Text('Chats'),
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding:
+              const EdgeInsets.only(top: kLargePadding, left: kLargePadding),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                "Display",
+                style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold,
+                    color: kDarkGreyColor),
+                textAlign: TextAlign.left,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: kLargePadding),
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.brightness_medium,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: kLargePadding * 1.4),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text(
+                            "Theme",
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400,
+                            ),
+                            textAlign: TextAlign.left,
+                          ),
+                          Opacity(
+                            opacity: 0.5,
+                            child: Text(
+                              "Light",
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: kLargePadding),
+                child: Row(
+                  children: const [
+                    Icon(Icons.wallpaper),
+                    Padding(
+                      padding: EdgeInsets.only(left: kLargePadding * 1.4),
+                      child: Text(
+                        "Wallpaper",
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w400,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const Padding(
+                padding:
+                    EdgeInsets.only(top: kLargePadding, bottom: kLargePadding),
+                child: Divider(
+                  height: 2,
+                  endIndent: 20,
+                ),
+              ),
+              const Text(
+                "Chat settings",
+                style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold,
+                    color: kDarkGreyColor),
+                textAlign: TextAlign.left,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: kLargePadding * 3, top: kLargePadding),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Text(
+                          "Enter is send",
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w400,
+                          ),
+                          textAlign: TextAlign.left,
+                        ),
+                        Opacity(
+                          opacity: 0.5,
+                          child: Text(
+                            "Enter key will send your message",
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      width: 75,
+                    ),
+                    Transform.scale(
+                      scale: 1,
+                      child: Switch(
+                        onChanged: toggleSwitch,
+                        value: isSwitched,
+                        activeColor: kPrimaryColor,
+                        activeTrackColor: kPrimaryColor.withOpacity(0.5),
+                        inactiveThumbColor: kDarkGreyColor,
+                        inactiveTrackColor: kIconColor,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: kLargePadding * 3, top: kLargePadding),
+                child: Row(
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Text(
+                          "Media visibility",
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w400,
+                          ),
+                          textAlign: TextAlign.left,
+                        ),
+                        Opacity(
+                          opacity: 0.5,
+                          child: SizedBox(
+                            height: 35,
+                            width: 280,
+                            child: Text(
+                              "Show newly downloaded media in your phone's gallery.",
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              maxLines: 2,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Transform.scale(
+                      scale: 1,
+                      child: Switch(
+                        onChanged: toggleSwitch,
+                        value: isSwitched,
+                        activeColor: kPrimaryColor,
+                        activeTrackColor: kPrimaryColor.withOpacity(0.5),
+                        inactiveThumbColor: kDarkGreyColor,
+                        inactiveTrackColor: kIconColor,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: kLargePadding * 3, top: kLargePadding),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    Text(
+                      "Font size",
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w400,
+                      ),
+                      textAlign: TextAlign.left,
+                    ),
+                    Opacity(
+                      opacity: 0.5,
+                      child: Text(
+                        "Medium",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const Padding(
+                padding:
+                    EdgeInsets.only(top: kLargePadding, bottom: kLargePadding),
+                child: Divider(
+                  height: 2,
+                  endIndent: 20,
+                ),
+              ),
+              const Text(
+                "Archieved chats",
+                style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold,
+                    color: kDarkGreyColor),
+                textAlign: TextAlign.left,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: kLargePadding * 3, top: kLargePadding),
+                child: Row(
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Text(
+                          "Keep chats archieved",
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w400,
+                          ),
+                          textAlign: TextAlign.left,
+                        ),
+                        SizedBox(
+                          height: 35,
+                          width: 280,
+                          child: Opacity(
+                            opacity: 0.5,
+                            child: Text(
+                              "Archeived chats will remain archieved when you receive a new message.",
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Transform.scale(
+                      scale: 1,
+                      child: Switch(
+                        onChanged: toggleSwitch,
+                        value: isSwitched,
+                        activeColor: kPrimaryColor,
+                        activeTrackColor: kPrimaryColor.withOpacity(0.5),
+                        inactiveThumbColor: kDarkGreyColor,
+                        inactiveTrackColor: kIconColor,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const Padding(
+                padding:
+                    EdgeInsets.only(top: kLargePadding, bottom: kLargePadding),
+                child: Divider(
+                  height: 2,
+                  endIndent: 20,
+                ),
+              ),
+              Row(
+                children: [
+                  const Icon(Icons.language),
+                  Padding(
+                    padding: const EdgeInsets.only(left: kLargePadding * 1.4),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Text(
+                          "App language",
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w400,
+                          ),
+                          textAlign: TextAlign.left,
+                        ),
+                        Opacity(
+                          opacity: 0.5,
+                          child: Text(
+                            "Phone's language (English)",
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    top: kLargePadding, bottom: kLargePadding),
+                child: Row(
+                  children: const [
+                    Icon(Icons.backup),
+                    Padding(
+                      padding: EdgeInsets.only(left: kLargePadding * 1.4),
+                      child: Text("Chat backup"),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: kLargePadding),
+                child: Row(
+                  children: const [
+                    Icon(Icons.history),
+                    Padding(
+                      padding: EdgeInsets.only(left: kLargePadding * 1.4),
+                      child: Text("Chat history"),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
