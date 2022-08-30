@@ -36,6 +36,7 @@ class _ChatThemesScreenState extends State<ChatThemesScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -69,8 +70,8 @@ class _ChatThemesScreenState extends State<ChatThemesScreen> {
                       padding: const EdgeInsets.only(left: kLargePadding * 1.4),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text(
+                        children: [
+                          const Text(
                             "Theme",
                             style: TextStyle(
                               fontSize: 15,
@@ -81,8 +82,8 @@ class _ChatThemesScreenState extends State<ChatThemesScreen> {
                           Opacity(
                             opacity: 0.5,
                             child: Text(
-                              "Light",
-                              style: TextStyle(
+                              isDarkMode ? "Dark" : "Light",
+                              style: const TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,
                               ),
@@ -167,7 +168,7 @@ class _ChatThemesScreenState extends State<ChatThemesScreen> {
                       child: Switch(
                         onChanged: toggleSwitch,
                         value: isSwitched,
-                        activeColor: kPrimaryColor,
+                        activeColor: Theme.of(context).primaryColorLight,
                         activeTrackColor: kPrimaryColor.withOpacity(0.5),
                         inactiveThumbColor: kDarkGreyColor,
                         inactiveTrackColor: kIconColor,
@@ -216,7 +217,7 @@ class _ChatThemesScreenState extends State<ChatThemesScreen> {
                       child: Switch(
                         onChanged: toggleSwitch2,
                         value: isSwitched2,
-                        activeColor: kPrimaryColor,
+                        activeColor: Theme.of(context).primaryColorLight,
                         activeTrackColor: kPrimaryColor.withOpacity(0.5),
                         inactiveThumbColor: kDarkGreyColor,
                         inactiveTrackColor: kIconColor,
@@ -309,7 +310,7 @@ class _ChatThemesScreenState extends State<ChatThemesScreen> {
                       child: Switch(
                         onChanged: toggleSwitch3,
                         value: isSwitched3,
-                        activeColor: kPrimaryColor,
+                        activeColor: Theme.of(context).primaryColorLight,
                         activeTrackColor: kPrimaryColor.withOpacity(0.5),
                         inactiveThumbColor: kDarkGreyColor,
                         inactiveTrackColor: kIconColor,
