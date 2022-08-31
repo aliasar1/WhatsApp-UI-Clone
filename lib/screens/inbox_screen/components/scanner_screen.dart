@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:whatsapp_clone/constants.dart';
 
 class ScannerScreen extends StatefulWidget {
@@ -9,6 +10,17 @@ class ScannerScreen extends StatefulWidget {
 }
 
 class _ScannerScreenState extends State<ScannerScreen> {
+  final GlobalKey _gLobalkey = GlobalKey();
+
+  QRViewController? controller;
+  Barcode? result;
+
+  @override
+  void dispose() {
+    controller?.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -23,14 +35,19 @@ class _ScannerScreenState extends State<ScannerScreen> {
             const Padding(
               padding: EdgeInsets.all(kMedPadding),
               child: SizedBox(
-                height: 60,
+                height: 55,
                 width: double.infinity,
                 child: Opacity(
                   opacity: 0.5,
-                  child: Text(
-                    "To use WhatsApp Web, go to web.whatsapp.com in your computer.",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 19, wordSpacing: 2.0),
+                  child: Center(
+                    child: Text(
+                      "To use WhatsApp Web, go to web.whatsapp.com in your computer.",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 19,
+                        wordSpacing: 2.0,
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -38,10 +55,17 @@ class _ScannerScreenState extends State<ScannerScreen> {
             Stack(
               alignment: Alignment.center,
               children: <Widget>[
-                Container(
-                  height: MediaQuery.of(context).size.height * 0.76,
-                  width: double.infinity,
-                  color: Colors.black,
+                Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.767,
+                        width: double.infinity,
+                        child: buildQrView(context),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -49,5 +73,23 @@ class _ScannerScreenState extends State<ScannerScreen> {
         ),
       ),
     );
+  }
+
+  Widget buildQrView(BuildContext context) => QRView(
+        key: _gLobalkey,
+        onQRViewCreated: onQRViewCreated,
+        overlay: QrScannerOverlayShape(
+            cutOutWidth: MediaQuery.of(context).size.width * 0.75,
+            cutOutHeight: MediaQuery.of(context).size.height * 0.45,
+            borderColor: kSecondaryColor,
+            borderRadius: 5,
+            borderLength: 25,
+            borderWidth: 8),
+      );
+
+  void onQRViewCreated(QRViewController controller) {
+    setState(() {
+      this.controller = controller;
+    });
   }
 }
