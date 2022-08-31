@@ -1,5 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:whatsapp_clone/screens/splash_screen/splash_screen.dart';
 import 'package:whatsapp_clone/theme.dart';
 import './screens/camera_screen/camera_screen.dart';
@@ -15,12 +16,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'WhatsApp Clone',
-      theme: lightThemeData(context),
-      darkTheme: darkThemeData(context),
-      home: const SplashScreen(),
+    return ChangeNotifierProvider(
+      create: (context) => ThemeProvider(),
+      builder: (context, child) {
+        final themeProvider = Provider.of<ThemeProvider>(context);
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          themeMode: themeProvider.themeMode,
+          title: 'WhatsApp Clone',
+          theme: lightThemeData(context),
+          darkTheme: darkThemeData(context),
+          home: const SplashScreen(),
+        );
+      },
     );
   }
 }

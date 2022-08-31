@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clone/screens/setting_screen/components/toggle_button.dart';
 
 import '../../../constants.dart';
 
@@ -10,11 +11,11 @@ class ChatThemesScreen extends StatefulWidget {
 }
 
 class _ChatThemesScreenState extends State<ChatThemesScreen> {
-  bool isSwitched = false;
+  bool isSwitched1 = false;
 
-  void toggleSwitch(bool value) {
+  void toggleSwitch1(bool value) {
     setState(() {
-      isSwitched = !isSwitched;
+      isSwitched1 = !isSwitched1;
     });
   }
 
@@ -62,6 +63,7 @@ class _ChatThemesScreenState extends State<ChatThemesScreen> {
               Padding(
                 padding: const EdgeInsets.only(top: kLargePadding),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     const Icon(
                       Icons.brightness_medium,
@@ -91,7 +93,11 @@ class _ChatThemesScreenState extends State<ChatThemesScreen> {
                           ),
                         ],
                       ),
-                    )
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.565,
+                    ),
+                    const ChangeThemeButtonWidget(),
                   ],
                 ),
               ),
@@ -166,10 +172,10 @@ class _ChatThemesScreenState extends State<ChatThemesScreen> {
                     Transform.scale(
                       scale: 1,
                       child: Switch(
-                        onChanged: toggleSwitch,
-                        value: isSwitched,
+                        onChanged: toggleSwitch1,
+                        value: isSwitched1,
                         activeColor: Theme.of(context).primaryColorLight,
-                        activeTrackColor: kPrimaryColor.withOpacity(0.5),
+                        activeTrackColor: kSecondaryColor.withOpacity(0.4),
                         inactiveThumbColor: kDarkGreyColor,
                         inactiveTrackColor: kIconColor,
                       ),
@@ -218,7 +224,7 @@ class _ChatThemesScreenState extends State<ChatThemesScreen> {
                         onChanged: toggleSwitch2,
                         value: isSwitched2,
                         activeColor: Theme.of(context).primaryColorLight,
-                        activeTrackColor: kPrimaryColor.withOpacity(0.5),
+                        activeTrackColor: kSecondaryColor.withOpacity(0.4),
                         inactiveThumbColor: kDarkGreyColor,
                         inactiveTrackColor: kIconColor,
                       ),
@@ -311,7 +317,7 @@ class _ChatThemesScreenState extends State<ChatThemesScreen> {
                         onChanged: toggleSwitch3,
                         value: isSwitched3,
                         activeColor: Theme.of(context).primaryColorLight,
-                        activeTrackColor: kPrimaryColor.withOpacity(0.5),
+                        activeTrackColor: kSecondaryColor.withOpacity(0.4),
                         inactiveThumbColor: kDarkGreyColor,
                         inactiveTrackColor: kIconColor,
                       ),
