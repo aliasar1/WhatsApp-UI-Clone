@@ -21,7 +21,7 @@ class Chat {
 
 List chatsData = [
   Chat(
-    name: "Jenny Wilson",
+    name: "John Wilson",
     lastMessage: "Hope you are doing well.",
     image: "assets/images/user1.jpg",
     time: "3m ago",
@@ -40,7 +40,7 @@ List chatsData = [
     ],
   ),
   Chat(
-    name: "Esther Howard",
+    name: "Amy Howard",
     lastMessage: "Hello Ali!",
     image: "assets/images/user4.jpg",
     time: "8m ago",
@@ -59,7 +59,7 @@ List chatsData = [
     ],
   ),
   Chat(
-    name: "Ralph Edwards",
+    name: "Edward Ray",
     lastMessage: "Do you have update about the project?",
     image: "assets/images/user2.jpg",
     time: "5d ago",
@@ -116,9 +116,9 @@ List chatsData = [
     ],
   ),
   Chat(
-    name: "Jenny Wilson",
+    name: "Olivia Kobe",
     lastMessage: "Kindly let me know when you are free.",
-    image: "assets/images/user1.jpg",
+    image: "assets/images/user6.jpg",
     time: "3m ago",
     isActive: false,
     isSeen: true,
@@ -135,9 +135,9 @@ List chatsData = [
     ],
   ),
   Chat(
-    name: "Usama Khan",
+    name: "Diana Warner",
     lastMessage: "Hello! Ali here.",
-    image: "assets/images/user2.jpg",
+    image: "assets/images/user7.jpg",
     time: "8m ago",
     isActive: true,
     isSeen: false,
@@ -154,9 +154,9 @@ List chatsData = [
     ],
   ),
   Chat(
-    name: "Ralph Edwards",
+    name: "Tim Scout",
     lastMessage: "Do remind me about the meeting.",
-    image: "assets/images/user4.jpg",
+    image: "assets/images/user8.jpg",
     time: "5d ago",
     isActive: false,
     isSeen: true,
@@ -164,6 +164,25 @@ List chatsData = [
     status: 'Hey there! I am using WhatsApp.',
     number: '+92 335 9918125',
     joinDate: '12 April 2021',
+    images: [
+      "assets/images/mount1.jpg",
+      "assets/images/sea1.jpg",
+      "assets/images/mount2.jpg",
+      "assets/images/sea2.jpeg",
+      "assets/images/sea3.jpeg",
+    ],
+  ),
+  Chat(
+    name: "Emma Jane",
+    lastMessage: "Yeah! That will work.",
+    image: "assets/images/user9.jpg",
+    time: "3d ago",
+    isActive: false,
+    isSeen: true,
+    msgTotal: 2,
+    status: 'Available.',
+    number: '+92 335 9914315',
+    joinDate: '04 April 2021',
     images: [
       "assets/images/mount1.jpg",
       "assets/images/sea1.jpg",
