@@ -19,7 +19,25 @@ class ChatBody extends StatefulWidget {
 }
 
 class _ChatBodyState extends State<ChatBody> {
-  final TextEditingController _textController = TextEditingController();
+  final TextEditingController _controller = TextEditingController();
+  final ScrollController _scrollController = ScrollController();
+  bool show = false;
+  FocusNode focusNode = FocusNode();
+  bool sendButton = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    focusNode.addListener(() {
+      if (focusNode.hasFocus) {
+        setState(() {
+          show = false;
+        });
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
@@ -31,7 +49,7 @@ class _ChatBodyState extends State<ChatBody> {
         child: Column(
           children: [
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.8,
+              height: MediaQuery.of(context).size.height * 0.79,
               child: ListView.builder(
                 reverse: true,
                 itemCount: chatMessagesData.length,
@@ -86,100 +104,131 @@ class _ChatBodyState extends State<ChatBody> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 5, left: 5),
-              child: Row(
-                children: [
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Container(
-                      height: MediaQuery.of(context).size.height * 0.06,
-                      width: MediaQuery.of(context).size.height * 0.52,
-                      alignment: Alignment.bottomLeft,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Theme.of(context).highlightColor,
+              padding: const EdgeInsets.only(top: 8, left: 5),
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.076,
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width - 60,
+                        child: Card(
+                          margin: const EdgeInsets.only(
+                              left: 2, right: 2, bottom: 8),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(25),
+                          ),
+                          child: TextFormField(
+                            controller: _controller,
+                            focusNode: focusNode,
+                            textAlignVertical: TextAlignVertical.center,
+                            keyboardType: TextInputType.multiline,
+                            maxLines: 5,
+                            minLines: 1,
+                            onChanged: (value) {
+                              if (value.isNotEmpty) {
+                                setState(() {
+                                  sendButton = true;
+                                });
+                              } else {
+                                setState(() {
+                                  sendButton = false;
+                                });
+                              }
+                            },
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: "Message",
+                              enabledBorder: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                              hintStyle: const TextStyle(
+                                color: Colors.grey,
+                              ),
+                              prefixIcon: IconButton(
+                                icon: Icon(
+                                  show
+                                      ? Icons.keyboard
+                                      : Icons.emoji_emotions_outlined,
+                                  color: kDarkGreyColor,
+                                ),
+                                onPressed: () {
+                                  if (!show) {
+                                    focusNode.unfocus();
+                                    focusNode.canRequestFocus = false;
+                                  }
+                                  setState(() {
+                                    show = !show;
+                                  });
+                                },
+                              ),
+                              suffixIcon: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Transform.rotate(
+                                    angle: -2.3,
+                                    child: IconButton(
+                                      onPressed: () {},
+                                      icon: const Icon(
+                                        Icons.attachment,
+                                        size: 26,
+                                        color: kDarkGreyColor,
+                                      ),
+                                    ),
+                                  ),
+                                  IconButton(
+                                    icon: const Icon(
+                                      Icons.camera_alt,
+                                      color: kDarkGreyColor,
+                                    ),
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const CameraScreen(
+                                                    isCamTab: false,
+                                                  )));
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
-                      child: Padding(
+                      Padding(
                         padding: const EdgeInsets.only(
-                            left: kSmallPadding, right: kSmallPadding),
-                        child: Row(
-                          children: [
-                            InkWell(
-                              onTap: () {},
-                              child: Icon(
-                                Icons.mood,
-                                color: kIconColor.withOpacity(0.7),
-                              ),
+                          bottom: 8,
+                          right: 2,
+                          left: 2,
+                        ),
+                        child: CircleAvatar(
+                          radius: 25,
+                          backgroundColor:
+                              isDarkMode ? kFreshPrimaryColor : kPrimaryColor,
+                          child: IconButton(
+                            icon: Icon(
+                              sendButton ? Icons.send : Icons.mic,
+                              color: Colors.white,
                             ),
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                    left: kSmallPadding, right: kSmallPadding),
-                                child: TextField(
-                                  controller: _textController,
-                                  cursorColor: kPrimaryColor,
-                                  autocorrect: false,
-                                  decoration: InputDecoration(
-                                    hintText: "Message",
-                                    hintStyle: TextStyle(
-                                        color: kIconColor.withOpacity(0.9)),
-                                    enabledBorder: InputBorder.none,
-                                    focusedBorder: InputBorder.none,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Row(
-                              children: [
-                                Transform.rotate(
-                                  angle: -2.3,
-                                  child: IconButton(
-                                    onPressed: () {},
-                                    icon:
-                                        const Icon(Icons.attachment, size: 26),
-                                    color: kIconColor.withOpacity(0.9),
-                                  ),
-                                ),
-                                IconButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const CameraScreen(
-                                                  isCamTab: false,
-                                                )));
-                                  },
-                                  icon: const Icon(Icons.camera_alt, size: 24),
-                                  color: kIconColor.withOpacity(0.9),
-                                ),
-                              ],
-                            ),
-                          ],
+                            onPressed: () {
+                              if (sendButton) {
+                                _scrollController.animateTo(
+                                    _scrollController.position.maxScrollExtent,
+                                    duration: const Duration(milliseconds: 300),
+                                    curve: Curves.easeOut);
+                                setState(() {
+                                  sendButton = false;
+                                });
+                              }
+                            },
+                          ),
                         ),
                       ),
-                    ),
+                    ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: kSmallPadding * 0.3),
-                    child: Container(
-                      height: MediaQuery.of(context).size.height * 0.06,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: isDarkMode ? kFreshPrimaryColor : kPrimaryColor,
-                      ),
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          _textController.text == "" ? Icons.mic : Icons.send,
-                          size: 22,
-                          color: kBackgroundColor,
-                        ),
-                        color: kIconColor.withOpacity(0.9),
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
             ),
           ],
