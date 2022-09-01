@@ -1,7 +1,7 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/constants.dart';
-import 'package:whatsapp_clone/screens/camera_screen/random_image.dart';
+import 'package:whatsapp_clone/models/Images.dart';
 
 late List<CameraDescription> cameras;
 
@@ -49,9 +49,7 @@ class _CameraScreenState extends State<CameraScreen> {
   }
 
   void _initCamera(int index) async {
-    if (controller != null) {
-      await controller.dispose();
-    }
+    await controller.dispose();
     controller = CameraController(cameras[index], ResolutionPreset.high);
 
     controller.addListener(() {
@@ -193,7 +191,7 @@ class _CameraScreenState extends State<CameraScreen> {
       height: kLargeSize * 3,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: 10,
+          itemCount: imgData.length,
           itemBuilder: ((context, index) {
             return Padding(
               padding: const EdgeInsets.all(kSmallPadding / 4),
@@ -201,12 +199,20 @@ class _CameraScreenState extends State<CameraScreen> {
                 height: 40,
                 width: 60,
                 child: Image(
-                  image: randomImageUrl(),
+                  image: randomImageUrl(index + 1),
                   fit: BoxFit.cover,
                 ),
               ),
             );
           })),
     );
+  }
+
+  ImageProvider randomImageUrl(int index) {
+    if (index > 5) {
+      int a = index - 5;
+      index = a;
+    }
+    return AssetImage("assets/images/mount$index.jpg");
   }
 }

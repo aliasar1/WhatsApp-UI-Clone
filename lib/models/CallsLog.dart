@@ -20,7 +20,7 @@ class CallLog {
 
 List callsData = [
   CallLog(
-    name: "Jenny Wilson",
+    name: "John Wilson",
     image: "assets/images/user1.jpg",
     date: 'Today, 12:19 am',
     callStatus: 'Incoming',
@@ -30,7 +30,7 @@ List callsData = [
     size: '104 kB',
   ),
   CallLog(
-    name: "Esther Howard",
+    name: "Amy Howard",
     image: "assets/images/user4.jpg",
     date: 'Yesterday, 11:45 pm',
     callStatus: 'Incoming',
@@ -40,7 +40,7 @@ List callsData = [
     size: '',
   ),
   CallLog(
-    name: "Ralph Edwards",
+    name: "Edward Ray",
     image: "assets/images/user2.jpg",
     date: 'Yesterday, 11:57 pm',
     callStatus: 'Outgoing',
@@ -70,7 +70,7 @@ List callsData = [
     size: '',
   ),
   CallLog(
-    name: "Jenny Wilson",
+    name: "John Wilson",
     image: "assets/images/user1.jpg",
     date: '13 July, 11:50 pm',
     callStatus: 'Outgoing',
@@ -80,7 +80,7 @@ List callsData = [
     size: '',
   ),
   CallLog(
-    name: "Esther Howard",
+    name: "Amy Howard",
     image: "assets/images/user4.jpg",
     date: '11 July, 10:19 am',
     callStatus: 'Incoming',
@@ -90,7 +90,7 @@ List callsData = [
     size: '',
   ),
   CallLog(
-    name: "Ralph Edwards",
+    name: "Edward Ray",
     image: "assets/images/user2.jpg",
     date: '10 July, 1:19 pm',
     callStatus: 'Outgoing',
@@ -120,7 +120,7 @@ List callsData = [
     size: '',
   ),
   CallLog(
-    name: "Jenny Wilson",
+    name: "John Wilson",
     image: "assets/images/user1.jpg",
     date: '03 July, 11:50 am',
     callStatus: 'Outgoing',
@@ -130,7 +130,7 @@ List callsData = [
     size: '82 kB',
   ),
   CallLog(
-    name: "Esther Howard",
+    name: "Amy Howard",
     image: "assets/images/user4.jpg",
     date: '01 July, 10:19 am',
     callStatus: 'Incoming',
@@ -140,7 +140,7 @@ List callsData = [
     size: '',
   ),
   CallLog(
-    name: "Ralph Edwards",
+    name: "Edward Ray",
     image: "assets/images/user2.jpg",
     date: '01 July, 09:19 am',
     callStatus: 'Outgoing',

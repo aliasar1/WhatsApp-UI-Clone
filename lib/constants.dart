@@ -19,7 +19,7 @@ const kDarkGreyColor = Color.fromARGB(255, 106, 110, 112);
 const kYellowColor = Color.fromARGB(255, 235, 221, 183);
 const kDraggableSheetColor = Color.fromARGB(255, 50, 57, 66);
 const kDarkBgColor = Color.fromARGB(255, 30, 32, 36);
-const kBlackShadowBgColor = Color.fromARGB(255, 69, 69, 78);
+const kBlackShadowBgColor = Color.fromARGB(255, 55, 55, 65);
 const kLightGreyColor = Color.fromARGB(255, 52, 52, 58);
 const kFreshPrimaryColor = Color.fromARGB(255, 50, 153, 110);
 

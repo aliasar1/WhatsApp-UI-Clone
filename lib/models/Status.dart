@@ -13,21 +13,21 @@ class Status {
 
 List statusData = [
   Status(
-    name: "Jenny Wilson",
+    name: "John Wilson",
     image: "assets/images/mount1.jpg",
     time: "3m ago",
     isSeen: true,
     profile: "assets/images/user1.jpg",
   ),
   Status(
-    name: "Esther Howard",
+    name: "Amy Howard",
     image: "assets/images/sea1.jpg",
     time: "8m ago",
     isSeen: false,
     profile: "assets/images/user4.jpg",
   ),
   Status(
-    name: "Ralph Edwards",
+    name: "Edward Ray",
     image: "assets/images/mount2.jpg",
     time: "8h ago",
     isSeen: true,
