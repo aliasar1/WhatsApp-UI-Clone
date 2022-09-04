@@ -63,7 +63,7 @@ class SettingScreenBody extends StatelessWidget {
                 Icons.chat, 'Chats', 'Theme, wallpapers, chat history')),
         tileBuilder(Icons.notifications, 'Notifications',
             'Message, group & call tones'),
-        tileBuilder(Icons.circle_outlined, 'Storage and daata',
+        tileBuilder(Icons.circle_outlined, 'Storage and data',
             'Network usage, auto-download'),
         tileBuilder(
             Icons.help, 'Help', 'Help centre, contact us, privacy policy'),

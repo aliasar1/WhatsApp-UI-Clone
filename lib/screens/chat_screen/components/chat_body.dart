@@ -49,7 +49,7 @@ class _ChatBodyState extends State<ChatBody> {
         child: Column(
           children: [
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.79,
+              height: MediaQuery.of(context).size.height * 0.795,
               child: ListView.builder(
                 reverse: true,
                 itemCount: chatMessagesData.length,
@@ -103,13 +103,14 @@ class _ChatBodyState extends State<ChatBody> {
                       )),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 8, left: 5),
-              child: Align(
-                alignment: Alignment.bottomCenter,
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: const EdgeInsets.only(top: kSmallPadding / 1.3),
                 child: SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.076,
+                  height: MediaQuery.of(context).size.height * 0.072,
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(
                         width: MediaQuery.of(context).size.width - 60,
