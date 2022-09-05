@@ -18,7 +18,7 @@ class ChangeThemeButtonWidget extends StatelessWidget {
         provider.toggleTheme(value);
       },
       activeColor: Theme.of(context).primaryColorLight,
-      activeTrackColor: kSecondaryColor.withOpacity(0.4),
+      activeTrackColor: kFreshPrimaryColor.withOpacity(0.7),
       inactiveThumbColor: kDarkGreyColor,
       inactiveTrackColor: kIconColor,
     );

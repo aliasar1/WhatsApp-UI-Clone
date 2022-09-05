@@ -39,25 +39,30 @@ class SplashBody extends StatelessWidget {
                       wordSpacing: 1,
                       fontSize: 14),
                 ),
-                Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        'assets/images/meta.png',
-                        color: isDarkMode ? kBackgroundColor : kSecondaryColor,
-                        height: 25,
-                        width: 25,
-                      ),
-                      Text(
-                        " Meta",
-                        style: TextStyle(
-                            color:
-                                isDarkMode ? kBackgroundColor : kSecondaryColor,
-                            fontSize: 18,
-                            fontFamily: 'PT Sans'),
-                      ),
-                    ],
+                Padding(
+                  padding: const EdgeInsets.only(bottom: kLargePadding * 2),
+                  child: Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/images/meta.png',
+                          color:
+                              isDarkMode ? kBackgroundColor : kSecondaryColor,
+                          height: 25,
+                          width: 25,
+                        ),
+                        Text(
+                          " Meta",
+                          style: TextStyle(
+                              color: isDarkMode
+                                  ? kBackgroundColor
+                                  : kSecondaryColor,
+                              fontSize: 18,
+                              fontFamily: 'PT Sans'),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
