@@ -132,15 +132,18 @@ class _TransitionAppBarDelegate extends SliverPersistentHeaderDelegate {
                 visible: top <= 190 ? false : true,
                 child: Positioned(
                   bottom: 110,
-                  right: 140,
+                  right: 145,
                   child: Opacity(
                     opacity: top <= 244 ? 0.2 : 1.0,
-                    child: Text(
-                      chat.name,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 20,
-                        color: Theme.of(context).canvasColor,
+                    child: Container(
+                      alignment: Alignment.center,
+                      child: Text(
+                        chat.name,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 20,
+                          color: Theme.of(context).canvasColor,
+                        ),
                       ),
                     ),
                   ),

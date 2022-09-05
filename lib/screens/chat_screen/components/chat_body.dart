@@ -20,7 +20,7 @@ class ChatBody extends StatefulWidget {
 
 class _ChatBodyState extends State<ChatBody> {
   final TextEditingController _controller = TextEditingController();
-  final ScrollController _scrollController = ScrollController();
+
   bool show = false;
   FocusNode focusNode = FocusNode();
   bool sendButton = false;
@@ -169,7 +169,13 @@ class _ChatBodyState extends State<ChatBody> {
                                   Transform.rotate(
                                     angle: -2.3,
                                     child: IconButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        showModalBottomSheet(
+                                            backgroundColor: Colors.transparent,
+                                            context: context,
+                                            builder: (builder) =>
+                                                bottomSheet());
+                                      },
                                       icon: const Icon(
                                         Icons.attachment,
                                         size: 26,
@@ -232,6 +238,129 @@ class _ChatBodyState extends State<ChatBody> {
           ],
         ),
       ),
+    );
+  }
+
+  Widget bottomSheet() {
+    return Container(
+      margin: const EdgeInsets.only(
+          left: kSmallPadding,
+          right: kSmallPadding,
+          bottom: kLargePadding * 3.5),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15),
+        color: Theme.of(context).backgroundColor,
+      ),
+      height: 200,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+            horizontal: kLargePadding * 4.5, vertical: 20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: const [
+                AttachmentToolCard(
+                  name: 'Document',
+                  icon: Icons.description,
+                  colors: [
+                    Color.fromARGB(255, 72, 16, 105),
+                    Color.fromARGB(255, 140, 23, 207)
+                  ],
+                ),
+                AttachmentToolCard(
+                  name: 'Camera',
+                  icon: Icons.photo_camera,
+                  colors: [
+                    Color.fromARGB(255, 122, 47, 54),
+                    Color.fromARGB(255, 182, 83, 93),
+                  ],
+                ),
+                AttachmentToolCard(
+                  name: 'Gallery',
+                  icon: Icons.photo,
+                  colors: [
+                    Color.fromARGB(255, 144, 48, 161),
+                    Color.fromARGB(255, 218, 115, 236),
+                  ],
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: const [
+                AttachmentToolCard(
+                  name: 'Audio',
+                  icon: Icons.headphones,
+                  colors: [
+                    Color.fromARGB(255, 187, 89, 8),
+                    Color.fromARGB(255, 212, 117, 39),
+                  ],
+                ),
+                AttachmentToolCard(
+                  name: 'Location',
+                  icon: Icons.location_on,
+                  colors: [
+                    Color.fromARGB(255, 47, 102, 21),
+                    Color.fromARGB(255, 82, 150, 50),
+                  ],
+                ),
+                AttachmentToolCard(
+                  name: 'Contact',
+                  icon: Icons.person,
+                  colors: [
+                    Color.fromARGB(255, 19, 86, 141),
+                    Color.fromARGB(255, 47, 127, 192),
+                  ],
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class AttachmentToolCard extends StatelessWidget {
+  const AttachmentToolCard({
+    Key? key,
+    required this.name,
+    required this.icon,
+    required this.colors,
+  }) : super(key: key);
+
+  final String name;
+  final IconData icon;
+  final List<Color> colors;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          height: 50,
+          width: 50,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            gradient: LinearGradient(
+              colors: colors,
+              stops: const [0.5, 1],
+              end: Alignment.bottomCenter,
+              begin: Alignment.topCenter,
+            ),
+          ),
+          child: Icon(icon),
+        ),
+        const SizedBox(
+          height: 4,
+        ),
+        Text(
+          name,
+          style: const TextStyle(fontSize: 12),
+        ),
+      ],
     );
   }
 }

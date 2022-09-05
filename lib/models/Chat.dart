@@ -59,7 +59,7 @@ List chatsData = [
     ],
   ),
   Chat(
-    name: "Edward Ray",
+    name: "Edward Rayen",
     lastMessage: "Do you have update about the project?",
     image: "assets/images/user2.jpg",
     time: "5d ago",
@@ -116,7 +116,7 @@ List chatsData = [
     ],
   ),
   Chat(
-    name: "Olivia Kobe",
+    name: "Olivia Koben",
     lastMessage: "Kindly let me know when you are free.",
     image: "assets/images/user6.jpg",
     time: "3m ago",
@@ -154,7 +154,7 @@ List chatsData = [
     ],
   ),
   Chat(
-    name: "Tim Scout",
+    name: "Tim Scouter",
     lastMessage: "Do remind me about the meeting.",
     image: "assets/images/user8.jpg",
     time: "5d ago",
@@ -173,7 +173,7 @@ List chatsData = [
     ],
   ),
   Chat(
-    name: "Emma Jane",
+    name: "Emmaly Jane",
     lastMessage: "Yeah! That will work.",
     image: "assets/images/user9.jpg",
     time: "3d ago",
