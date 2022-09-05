@@ -18,6 +18,7 @@ class _CallerScreenState extends State<CallerScreen> {
   @override
   Widget build(BuildContext context) {
     bool micOff = true;
+    var dragController = DraggableScrollableController();
 
     return SafeArea(
       child: Container(
@@ -72,6 +73,7 @@ class _CallerScreenState extends State<CallerScreen> {
               ),
               Expanded(
                 child: DraggableScrollableSheet(
+                  controller: dragController,
                   initialChildSize: 0.2,
                   minChildSize: 0.2,
                   maxChildSize: 0.6,
@@ -89,8 +91,10 @@ class _CallerScreenState extends State<CallerScreen> {
                         itemBuilder: (BuildContext context, int index) {
                           return Column(
                             children: [
-                              const Icon(
-                                Icons.expand_less,
+                              Icon(
+                                dragController.size > 0.4
+                                    ? Icons.expand_more
+                                    : Icons.expand_less,
                                 size: 36,
                                 color: kBackgroundColor,
                               ),

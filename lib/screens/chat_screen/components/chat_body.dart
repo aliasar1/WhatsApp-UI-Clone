@@ -215,10 +215,7 @@ class _ChatBodyState extends State<ChatBody> {
                             ),
                             onPressed: () {
                               if (sendButton) {
-                                _scrollController.animateTo(
-                                    _scrollController.position.maxScrollExtent,
-                                    duration: const Duration(milliseconds: 300),
-                                    curve: Curves.easeOut);
+                                _controller.clear();
                                 setState(() {
                                   sendButton = false;
                                 });

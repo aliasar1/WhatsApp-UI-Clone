@@ -28,7 +28,7 @@ class _ChatScreenState extends State<ChatScreen> {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-            opacity: isDarkMode ? 0.35 : 1,
+            opacity: isDarkMode ? 0.32 : 1,
             image: isDarkMode
                 ? const AssetImage('assets/images/dark background.png')
                 : const AssetImage('assets/images/backgorund.png'),
