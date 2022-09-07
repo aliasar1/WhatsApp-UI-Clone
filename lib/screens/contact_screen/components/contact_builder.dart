@@ -18,76 +18,63 @@ class _ContactBuilderState extends State<ContactBuilder> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: kLargePadding),
-      child: InkWell(
-        onTap: () {
-          if (widget.chat.isSelect == false) {
-            setState(() {
-              widget.chat.isSelect = true;
-            });
-          } else {
-            setState(() {
-              widget.chat.isSelect = false;
-            });
-          }
-        },
-        child: Row(
-          children: [
-            SizedBox(
-              height: 45,
-              width: 45,
-              child: Stack(
-                children: [
-                  CircleAvatar(
-                    radius: 20,
-                    backgroundImage: AssetImage(widget.chat.image),
-                  ),
-                  widget.chat.isSelect
-                      ? const Positioned(
-                          bottom: 4,
-                          right: 5,
-                          child: CircleAvatar(
-                            backgroundColor: kPrimaryColor,
-                            radius: 8,
-                            child: Icon(
-                              Icons.check,
-                              color: Colors.white,
-                              size: 12,
-                            ),
+      padding: const EdgeInsets.only(bottom: kMedPadding),
+      child: Row(
+        children: [
+          SizedBox(
+            height: 45,
+            width: 45,
+            child: Stack(
+              children: [
+                CircleAvatar(
+                  radius: 20,
+                  backgroundImage: AssetImage(widget.chat.image),
+                ),
+                widget.chat.isSelect
+                    ? Positioned(
+                        bottom: 4,
+                        right: 5,
+                        child: CircleAvatar(
+                          backgroundColor: Theme.of(context).primaryColorLight,
+                          radius: 8,
+                          child: const Icon(
+                            Icons.check,
+                            color: Colors.white,
+                            size: 12,
                           ),
-                        )
-                      : Container(),
-                ],
-              ),
+                        ),
+                      )
+                    : Container(),
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: kMedPadding),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
-                    widget.chat.name,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: kMedPadding),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  widget.chat.name,
+                  style: const TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                Opacity(
+                  opacity: 0.7,
+                  child: Text(
+                    widget.chat.status,
                     style: const TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.w500,
+                      fontSize: 13,
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
-                  Opacity(
-                    opacity: 0.7,
-                    child: Text(
-                      widget.chat.status,
-                      style: const TextStyle(
-                        fontSize: 13,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            )
-          ],
-        ),
+                ),
+              ],
+            ),
+          )
+        ],
       ),
     );
   }
