@@ -17,64 +17,68 @@ class ContactBuilder extends StatefulWidget {
 class _ContactBuilderState extends State<ContactBuilder> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: kMedPadding),
-      child: Row(
-        children: [
-          SizedBox(
-            height: 45,
-            width: 45,
-            child: Stack(
-              children: [
-                CircleAvatar(
-                  radius: 20,
-                  backgroundImage: AssetImage(widget.chat.image),
-                ),
-                widget.chat.isSelect
-                    ? Positioned(
-                        bottom: 4,
-                        right: 5,
-                        child: CircleAvatar(
-                          backgroundColor: Theme.of(context).primaryColorLight,
-                          radius: 8,
-                          child: const Icon(
-                            Icons.check,
-                            color: Colors.white,
-                            size: 12,
-                          ),
-                        ),
-                      )
-                    : Container(),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: kMedPadding),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text(
-                  widget.chat.name,
-                  style: const TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.w500,
+    return Container(
+      color: Theme.of(context).backgroundColor,
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: kMedPadding / 1.8),
+        child: Row(
+          children: [
+            SizedBox(
+              height: 45,
+              width: 45,
+              child: Stack(
+                children: [
+                  CircleAvatar(
+                    radius: 20,
+                    backgroundImage: AssetImage(widget.chat.image),
                   ),
-                ),
-                Opacity(
-                  opacity: 0.7,
-                  child: Text(
-                    widget.chat.status,
+                  widget.chat.isSelect
+                      ? Positioned(
+                          bottom: 4,
+                          right: 5,
+                          child: CircleAvatar(
+                            backgroundColor:
+                                Theme.of(context).primaryColorLight,
+                            radius: 8,
+                            child: const Icon(
+                              Icons.check,
+                              color: Colors.white,
+                              size: 12,
+                            ),
+                          ),
+                        )
+                      : Container(),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: kMedPadding),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    widget.chat.name,
                     style: const TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w400,
+                      fontSize: 17,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
-                ),
-              ],
-            ),
-          )
-        ],
+                  Opacity(
+                    opacity: 0.7,
+                    child: Text(
+                      widget.chat.status,
+                      style: const TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

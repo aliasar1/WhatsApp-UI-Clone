@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../constants.dart';
 import '../../../models/chat.dart';
 
 class GroupMembersAvatar extends StatefulWidget {
