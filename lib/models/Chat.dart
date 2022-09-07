@@ -1,6 +1,7 @@
 class Chat {
   final String name, lastMessage, image, time, status, number, joinDate;
   final bool isActive, isSeen;
+  bool isSelect;
   final int msgTotal;
   final List<String> images;
 
@@ -15,6 +16,7 @@ class Chat {
     this.status = '',
     this.number = '',
     this.joinDate = '',
+    this.isSelect = false,
     required this.images,
   });
 }
@@ -31,6 +33,7 @@ List chatsData = [
     status: 'Available',
     number: '+92 331 2198312',
     joinDate: '10 August 2021',
+    isSelect: false,
     images: [
       "assets/images/mount1.jpg",
       "assets/images/sea1.jpg",
@@ -50,6 +53,7 @@ List chatsData = [
     status: 'Hey there! I am using WhatsApp.',
     number: '+92 336 2198909',
     joinDate: '19 May 2021',
+    isSelect: false,
     images: [
       "assets/images/mount1.jpg",
       "assets/images/sea1.jpg",
@@ -69,6 +73,7 @@ List chatsData = [
     status: 'In a meeting',
     number: '+92 332 2198707',
     joinDate: '22 March 2021',
+    isSelect: false,
     images: [
       "assets/images/mount1.jpg",
       "assets/images/sea1.jpg",
@@ -88,6 +93,7 @@ List chatsData = [
     status: 'Urgent calls only.',
     number: '+92 334 3243127',
     joinDate: '22 October 2021',
+    isSelect: false,
     images: [
       "assets/images/mount1.jpg",
       "assets/images/sea1.jpg",
@@ -107,6 +113,7 @@ List chatsData = [
     status: 'Available',
     number: '+92 332 2138913',
     joinDate: '19 September 2021',
+    isSelect: false,
     images: [
       "assets/images/mount1.jpg",
       "assets/images/sea1.jpg",
@@ -126,6 +133,7 @@ List chatsData = [
     status: 'Busy',
     number: '+92 331 1298213',
     joinDate: '11 December 2021',
+    isSelect: false,
     images: [
       "assets/images/mount1.jpg",
       "assets/images/sea1.jpg",
@@ -145,6 +153,7 @@ List chatsData = [
     status: 'Away',
     number: '+92 331 2198312',
     joinDate: '25 January 2021',
+    isSelect: false,
     images: [
       "assets/images/mount1.jpg",
       "assets/images/sea1.jpg",
@@ -164,6 +173,7 @@ List chatsData = [
     status: 'Hey there! I am using WhatsApp.',
     number: '+92 335 9918125',
     joinDate: '12 April 2021',
+    isSelect: false,
     images: [
       "assets/images/mount1.jpg",
       "assets/images/sea1.jpg",
@@ -183,6 +193,7 @@ List chatsData = [
     status: 'Available.',
     number: '+92 335 9914315',
     joinDate: '04 April 2021',
+    isSelect: false,
     images: [
       "assets/images/mount1.jpg",
       "assets/images/sea1.jpg",
