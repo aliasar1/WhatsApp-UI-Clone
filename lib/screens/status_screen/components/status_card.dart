@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/screens/status_screen/components/status_viewer.dart';
 
 import '../../../constants.dart';
-import '../../../models/Status.dart';
+import '../../../models/status.dart';
 
 class PublicStatusCard extends StatelessWidget {
   const PublicStatusCard({

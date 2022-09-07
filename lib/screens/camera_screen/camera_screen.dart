@@ -1,7 +1,7 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/constants.dart';
-import 'package:whatsapp_clone/models/Images.dart';
+import 'package:whatsapp_clone/models/images.dart';
 
 late List<CameraDescription> cameras;
 
@@ -32,10 +32,10 @@ class _CameraScreenState extends State<CameraScreen> {
       if (e is CameraException) {
         switch (e.code) {
           case 'CameraAccessDenied':
-            print('User denied camera access.');
+            //print('User denied camera access.');
             break;
           default:
-            print('Handle other errors.');
+            //print('Handle other errors.');
             break;
         }
       }
@@ -55,14 +55,14 @@ class _CameraScreenState extends State<CameraScreen> {
     controller.addListener(() {
       if (mounted) setState(() {});
       if (controller.value.hasError) {
-        print(controller.value.errorDescription);
+        //print(controller.value.errorDescription);
       }
     });
 
     try {
       await controller.initialize();
-    } on CameraException catch (e) {
-      print(e);
+    } on CameraException {
+      //print(e);
     }
 
     if (mounted) {
@@ -144,7 +144,6 @@ class _CameraScreenState extends State<CameraScreen> {
                       });
                     },
                     onLongPressUp: () async {
-                      XFile videopath = await controller.stopVideoRecording();
                       setState(() {
                         isRecording = false;
                       });

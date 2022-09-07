@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/constants.dart';
 
-import '../../../models/Chat.dart';
+import '../../../models/chat.dart';
 import '../../caller_screen/caller_screen.dart';
 import '../../chat_screen/chat_screen.dart';
 
@@ -45,8 +45,7 @@ class _TransitionAppBarDelegate extends SliverPersistentHeaderDelegate {
 
   _TransitionAppBarDelegate(
       {required this.avatar, this.extent = 250, required this.chat})
-      : assert(avatar != null),
-        assert(extent == null || extent >= 200);
+      : assert(extent >= 200);
 
   @override
   Widget build(

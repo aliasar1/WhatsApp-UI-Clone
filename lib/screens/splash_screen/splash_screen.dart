@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone/constants.dart';
 import 'package:whatsapp_clone/screens/inbox_screen/inbox_screen.dart';
 
 import 'components/splash_body.dart';

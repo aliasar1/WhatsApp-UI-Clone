@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
-import '../../../models/Status.dart';
+import '../../../models/status.dart';
 
 class StatusViewer extends StatefulWidget {
   const StatusViewer({Key? key, required this.status}) : super(key: key);

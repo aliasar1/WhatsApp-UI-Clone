@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:whatsapp_clone/constants.dart';
-import 'package:whatsapp_clone/screens/chat_screen/chat_screen.dart';
-import 'package:whatsapp_clone/screens/chat_screen/components/image_preview.dart';
 
-import '../../models/Chat.dart';
+import '../../models/chat.dart';
 import 'components/block_report_card.dart';
 import 'components/encryption_card.dart';
 import 'components/media_card.dart';

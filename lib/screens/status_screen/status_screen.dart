@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/constants.dart';
 import 'package:whatsapp_clone/screens/camera_screen/camera_screen.dart';
 
-import '../../models/Status.dart';
+import '../../models/status.dart';
 import 'components/profile_card.dart';
 import 'components/status_builder.dart';
 import 'components/status_card.dart';

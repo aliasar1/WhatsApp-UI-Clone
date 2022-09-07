@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../constants.dart';
-import '../../../models/Chat.dart';
+import '../../../models/chat.dart';
 import '../../caller_screen/caller_screen.dart';
 
 class CallContactBuilder extends StatelessWidget {

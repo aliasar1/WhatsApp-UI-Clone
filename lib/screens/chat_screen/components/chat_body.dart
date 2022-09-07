@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
-import '../../../models/ChatMessage.dart';
+import '../../../models/chat_message.dart';
 import '../../camera_screen/camera_screen.dart';
 import 'chat_card.dart';
 
@@ -105,133 +105,130 @@ class _ChatBodyState extends State<ChatBody> {
             ),
             Align(
               alignment: Alignment.bottomCenter,
-              child: Padding(
-                padding: const EdgeInsets.only(top: kSmallPadding / 1.3),
-                child: SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.072,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width - 60,
-                        child: Card(
-                          margin: const EdgeInsets.only(
-                              left: 2, right: 2, bottom: 8),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(25),
-                          ),
-                          child: TextFormField(
-                            controller: _controller,
-                            focusNode: focusNode,
-                            textAlignVertical: TextAlignVertical.center,
-                            keyboardType: TextInputType.multiline,
-                            maxLines: 5,
-                            minLines: 1,
-                            onChanged: (value) {
-                              if (value.isNotEmpty) {
-                                setState(() {
-                                  sendButton = true;
-                                });
-                              } else {
-                                setState(() {
-                                  sendButton = false;
-                                });
-                              }
-                            },
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: "Message",
-                              enabledBorder: InputBorder.none,
-                              focusedBorder: InputBorder.none,
-                              hintStyle: const TextStyle(
-                                color: Colors.grey,
+              child: Container(
+                margin: const EdgeInsets.only(top: kSmallPadding),
+                height: MediaQuery.of(context).size.height * 0.07,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width - 60,
+                      child: Card(
+                        margin:
+                            const EdgeInsets.only(left: 2, right: 2, bottom: 8),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        child: TextFormField(
+                          controller: _controller,
+                          focusNode: focusNode,
+                          textAlignVertical: TextAlignVertical.center,
+                          keyboardType: TextInputType.multiline,
+                          maxLines: 5,
+                          minLines: 1,
+                          onChanged: (value) {
+                            if (value.isNotEmpty) {
+                              setState(() {
+                                sendButton = true;
+                              });
+                            } else {
+                              setState(() {
+                                sendButton = false;
+                              });
+                            }
+                          },
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: "Message",
+                            enabledBorder: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                            hintStyle: const TextStyle(
+                              color: Colors.grey,
+                            ),
+                            prefixIcon: IconButton(
+                              icon: Icon(
+                                show
+                                    ? Icons.keyboard
+                                    : Icons.emoji_emotions_outlined,
+                                color: kDarkGreyColor,
                               ),
-                              prefixIcon: IconButton(
-                                icon: Icon(
-                                  show
-                                      ? Icons.keyboard
-                                      : Icons.emoji_emotions_outlined,
-                                  color: kDarkGreyColor,
-                                ),
-                                onPressed: () {
-                                  if (!show) {
-                                    focusNode.unfocus();
-                                    focusNode.canRequestFocus = false;
-                                  }
-                                  setState(() {
-                                    show = !show;
-                                  });
-                                },
-                              ),
-                              suffixIcon: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Transform.rotate(
-                                    angle: -2.3,
-                                    child: IconButton(
-                                      onPressed: () {
-                                        showModalBottomSheet(
-                                            backgroundColor: Colors.transparent,
-                                            context: context,
-                                            builder: (builder) =>
-                                                bottomSheet());
-                                      },
-                                      icon: const Icon(
-                                        Icons.attachment,
-                                        size: 26,
-                                        color: kDarkGreyColor,
-                                      ),
-                                    ),
-                                  ),
-                                  IconButton(
+                              onPressed: () {
+                                if (!show) {
+                                  focusNode.unfocus();
+                                  focusNode.canRequestFocus = false;
+                                }
+                                setState(() {
+                                  show = !show;
+                                });
+                              },
+                            ),
+                            suffixIcon: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Transform.rotate(
+                                  angle: -2.3,
+                                  child: IconButton(
+                                    onPressed: () {
+                                      showModalBottomSheet(
+                                          backgroundColor: Colors.transparent,
+                                          context: context,
+                                          builder: (builder) => bottomSheet());
+                                    },
                                     icon: const Icon(
-                                      Icons.camera_alt,
+                                      Icons.attachment,
+                                      size: 26,
                                       color: kDarkGreyColor,
                                     ),
-                                    onPressed: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const CameraScreen(
-                                                    isCamTab: false,
-                                                  )));
-                                    },
                                   ),
-                                ],
-                              ),
+                                ),
+                                IconButton(
+                                  icon: const Icon(
+                                    Icons.camera_alt,
+                                    color: kDarkGreyColor,
+                                  ),
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const CameraScreen(
+                                                  isCamTab: false,
+                                                )));
+                                  },
+                                ),
+                              ],
                             ),
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          bottom: 8,
-                          right: 2,
-                          left: 2,
-                        ),
-                        child: CircleAvatar(
-                          radius: 25,
-                          backgroundColor:
-                              isDarkMode ? kFreshPrimaryColor : kPrimaryColor,
-                          child: IconButton(
-                            icon: Icon(
-                              sendButton ? Icons.send : Icons.mic,
-                              color: Colors.white,
-                            ),
-                            onPressed: () {
-                              if (sendButton) {
-                                _controller.clear();
-                                setState(() {
-                                  sendButton = false;
-                                });
-                              }
-                            },
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        bottom: 8,
+                        right: 2,
+                        left: 2,
+                      ),
+                      child: CircleAvatar(
+                        radius: 25,
+                        backgroundColor:
+                            isDarkMode ? kFreshPrimaryColor : kPrimaryColor,
+                        child: IconButton(
+                          icon: Icon(
+                            sendButton ? Icons.send : Icons.mic,
+                            color: Colors.white,
                           ),
+                          onPressed: () {
+                            if (sendButton) {
+                              _controller.clear();
+                              setState(() {
+                                sendButton = false;
+                              });
+                            }
+                          },
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),

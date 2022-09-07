@@ -4,7 +4,7 @@ import 'package:whatsapp_clone/screens/caller_screen/caller_screen.dart';
 import 'package:whatsapp_clone/screens/inbox_screen/components/profile_view.dart';
 
 import '../../../constants.dart';
-import '../../../models/CallsLog.dart';
+import '../../../models/calls_log.dart';
 import '../../inbox_screen/components/hero_dialogue.dart';
 
 class CallBuilder extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
-import '../../../models/Chat.dart';
+import '../../../models/chat.dart';
 
 class ContactBuilder extends StatelessWidget {
   const ContactBuilder({

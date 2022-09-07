@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
-import '../../../models/ChatMessage.dart';
+import '../../../models/chat_message.dart';
 import 'audio_message.dart';
 import 'image_message.dart';
 import 'text_message.dart';

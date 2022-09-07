@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/constants.dart';
 
-import '../../../models/ChatMessage.dart';
+import '../../../models/chat_message.dart';
 
 enum AuidoStatus { play, pause }
 

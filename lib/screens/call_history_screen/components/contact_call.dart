@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/screens/call_history_screen/components/call_card_builder.dart';
 
 import '../../../constants.dart';
-import '../../../models/Chat.dart';
+import '../../../models/chat.dart';
 
 class ContactCallScreen extends StatefulWidget {
   const ContactCallScreen({Key? key}) : super(key: key);

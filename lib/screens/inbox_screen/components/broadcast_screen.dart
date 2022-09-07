@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
-import '../../../models/Chat.dart';
+import '../../../models/chat.dart';
 import '../../contact_screen/components/contact_builder.dart';
 
 class BroadcastScreen extends StatelessWidget {
@@ -10,6 +10,7 @@ class BroadcastScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Theme.of(context).appBarTheme.backgroundColor,

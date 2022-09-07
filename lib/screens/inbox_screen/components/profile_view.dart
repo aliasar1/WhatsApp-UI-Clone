@@ -3,7 +3,7 @@ import 'package:whatsapp_clone/screens/chat_screen/chat_screen.dart';
 import 'package:whatsapp_clone/screens/info_screen/info_screen.dart';
 
 import '../../../constants.dart';
-import '../../../models/Chat.dart';
+import '../../../models/chat.dart';
 import '../../caller_screen/caller_screen.dart';
 
 class ProfileView extends StatelessWidget {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/constants.dart';
 import 'package:whatsapp_clone/screens/chat_screen/components/image_preview.dart';
 
-import '../../../models/ChatMessage.dart';
+import '../../../models/chat_message.dart';
 
 class ImageMessage extends StatelessWidget {
   const ImageMessage({Key? key, required this.message, required this.name})

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/screens/chat_screen/chat_screen.dart';
 
 import '../../../constants.dart';
-import '../../../models/Chat.dart';
+import '../../../models/chat.dart';
 import 'hero_dialogue.dart';
 import 'profile_view.dart';
 
