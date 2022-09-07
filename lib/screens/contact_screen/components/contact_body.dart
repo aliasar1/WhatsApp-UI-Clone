@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clone/screens/inbox_screen/components/newgroup_screen.dart';
 
 import '../../../constants.dart';
 import '../../../models/chat.dart';
@@ -16,35 +17,43 @@ class ContactBody extends StatelessWidget {
         padding: const EdgeInsets.all(kLargePadding),
         child: Column(
           children: [
-            Row(
-              children: [
-                Container(
-                  width: 40,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Theme.of(context).primaryColorLight,
-                  ),
-                  child: const Icon(
-                    Icons.group,
-                    size: 22,
-                    color: kBackgroundColor,
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(left: kLargePadding),
-                  child: Text(
-                    "New group",
-                    style: TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.w500,
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const NewGroupScreen()));
+              },
+              child: Row(
+                children: [
+                  Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Theme.of(context).primaryColorLight,
+                    ),
+                    child: const Icon(
+                      Icons.group,
+                      size: 22,
+                      color: kBackgroundColor,
                     ),
                   ),
-                ),
-              ],
+                  const Padding(
+                    padding: EdgeInsets.only(left: kLargePadding),
+                    child: Text(
+                      "New group",
+                      style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: kLargePadding * 1.5),
+              padding: const EdgeInsets.only(top: kLargePadding),
               child: Row(
                 children: [
                   Container(
@@ -94,6 +103,9 @@ class ContactBody extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(
+              height: 15,
+            ),
             ListView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
@@ -103,15 +115,15 @@ class ContactBody extends StatelessWidget {
                   )),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: kLargePadding * 1.5),
+              padding: const EdgeInsets.only(top: kLargePadding),
               child: Row(
                 children: [
                   Container(
                     width: 40,
                     height: 40,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: kShadeColor,
+                      color: kDarkGreyColor.withOpacity(0.2),
                     ),
                     child: const Icon(
                       Icons.share,
@@ -133,15 +145,15 @@ class ContactBody extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: kLargePadding * 1.2),
+              padding: const EdgeInsets.only(top: kLargePadding * 1),
               child: Row(
                 children: [
                   Container(
                     width: 40,
                     height: 40,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: kShadeColor,
+                      color: kDarkGreyColor.withOpacity(0.2),
                     ),
                     child: const Icon(
                       Icons.question_mark,

@@ -136,36 +136,6 @@ class _BroadcastScreenState extends State<BroadcastScreen> {
               : Container(),
         ],
       ),
-      /*Column(
-        children: [
-          const Padding(
-            padding: EdgeInsets.only(
-                right: kSmallPadding,
-                left: kSmallPadding,
-                bottom: kLargePadding,
-                top: kLargePadding * 2),
-            child: Opacity(
-              opacity: 0.6,
-              child: Text(
-                "Only contacts with +92 331 3211231 in their address book will receive your broadcast message.",
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
-                textAlign: TextAlign.center,
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(
-                right: kMedPadding, left: kMedPadding, bottom: kMedPadding),
-            child: ListView.builder(
-              shrinkWrap: true,
-              itemCount: chatsData.length,
-              itemBuilder: ((context, index) => ContactBuilder(
-                    chat: chatsData[index],
-                  )),
-            ),
-          ),
-        ],
-      ),*/
       floatingActionButton: FloatingActionButton(
         heroTag: 'New group',
         onPressed: () {},

@@ -15,6 +15,7 @@ class _ContactCallScreenState extends State<ContactCallScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         elevation: 0,
