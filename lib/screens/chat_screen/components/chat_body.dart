@@ -49,7 +49,10 @@ class _ChatBodyState extends State<ChatBody> {
         child: Column(
           children: [
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.795,
+              height: (MediaQuery.of(context).size.height -
+                      MediaQuery.of(context).padding.top -
+                      MediaQuery.of(context).viewInsets.bottom) *
+                  0.795,
               child: ListView.builder(
                 reverse: true,
                 itemCount: chatMessagesData.length,
@@ -107,7 +110,10 @@ class _ChatBodyState extends State<ChatBody> {
               alignment: Alignment.bottomCenter,
               child: Container(
                 margin: const EdgeInsets.only(top: kSmallPadding),
-                height: MediaQuery.of(context).size.height * 0.07,
+                height: (MediaQuery.of(context).size.height -
+                        MediaQuery.of(context).padding.bottom -
+                        MediaQuery.of(context).viewInsets.bottom) *
+                    0.07,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
