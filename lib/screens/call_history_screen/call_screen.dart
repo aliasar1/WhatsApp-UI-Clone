@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone/models/calls_log.dart';
 
+import '/models/calls_log.dart';
 import '../../constants.dart';
 import 'components/call_card.dart';
 import 'components/contact_call.dart';

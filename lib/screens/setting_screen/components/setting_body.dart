@@ -10,6 +10,7 @@ class SettingScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return Column(
       children: [
         const ListTile(
@@ -75,11 +76,13 @@ class SettingScreenBody extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Opacity(
+              Opacity(
                 opacity: 0.7,
                 child: Text(
                   "from",
-                  style: TextStyle(color: kTextColor, fontSize: 14),
+                  style: TextStyle(
+                      color: isDarkMode ? kBackgroundColor : kTextColor,
+                      fontSize: 14),
                 ),
               ),
               Row(
@@ -87,14 +90,14 @@ class SettingScreenBody extends StatelessWidget {
                 children: [
                   Image.asset(
                     'assets/images/meta.png',
-                    color: kTextColor,
+                    color: isDarkMode ? kBackgroundColor : kTextColor,
                     height: 14,
                     width: 14,
                   ),
-                  const Text(
+                  Text(
                     " Meta",
                     style: TextStyle(
-                        color: kTextColor,
+                        color: isDarkMode ? kBackgroundColor : kTextColor,
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
                         fontFamily: 'PT Sans'),

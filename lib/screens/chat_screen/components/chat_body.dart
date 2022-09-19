@@ -80,15 +80,13 @@ class _ChatBodyState extends State<ChatBody> {
                                             child: Icon(
                                           Icons.lock,
                                           color: Theme.of(context)
-                                              // ignore: deprecated_member_use
-                                              .textSelectionColor,
+                                              .primaryColorDark,
                                           size: 14,
                                         )),
                                         TextSpan(
                                             style: TextStyle(
                                               color: Theme.of(context)
-                                                  // ignore: deprecated_member_use
-                                                  .textSelectionColor,
+                                                  .primaryColorDark,
                                             ),
                                             text:
                                                 " Messages and calls are end-to-end encrypted. No one outside of this chat, not even WhatsApp, can read or listen to them. Tap to learn more."),

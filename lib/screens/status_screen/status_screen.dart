@@ -17,6 +17,7 @@ class StatusScreen extends StatefulWidget {
 class _StatusScreenState extends State<StatusScreen> {
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       body: Column(
@@ -62,7 +63,7 @@ class _StatusScreenState extends State<StatusScreen> {
             heroTag: 'Edit',
             onPressed: () {},
             mini: true,
-            backgroundColor: kShadeColor,
+            backgroundColor: isDarkMode ? kDarkGreyColor : kShadeColor,
             child: const Icon(
               Icons.edit,
               color: kIconColor,

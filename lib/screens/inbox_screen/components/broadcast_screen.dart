@@ -90,7 +90,7 @@ class _BroadcastScreenState extends State<BroadcastScreen> {
                           setState(() {
                             chatsData[index].isSelect = false;
                             groupMembers.remove(chatsData[index]);
-                            count--;
+                            if (count != 0) count--;
                           });
                         }
                       },

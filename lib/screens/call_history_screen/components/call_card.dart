@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone/screens/call_history_screen/components/call_info.dart';
-import 'package:whatsapp_clone/screens/caller_screen/caller_screen.dart';
-import 'package:whatsapp_clone/screens/inbox_screen/components/profile_view.dart';
+import '/screens/call_history_screen/components/call_info.dart';
+import '/screens/caller_screen/caller_screen.dart';
+import '/screens/inbox_screen/components/profile_view.dart';
 
 import '../../../constants.dart';
 import '../../../models/calls_log.dart';
