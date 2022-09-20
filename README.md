@@ -1,6 +1,6 @@
 # WhatsApp UI Clone 📱
 
-This is WhatsApp UI Clone using Flutter with Dard Mode and Light Mode. 
+This is WhatsApp UI Clone using Flutter with Dark Mode and Light Mode. 
 
 ## Screenshots 📷
 
