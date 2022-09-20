@@ -64,6 +64,7 @@ This is WhatsApp UI Clone using Flutter with Dard Mode and Light Mode.
 
 ### Starred Messages Screen
 ![image](https://user-images.githubusercontent.com/74453775/190985257-543aa753-9424-4789-b028-22932a4663b2.png)
+![image](https://user-images.githubusercontent.com/74453775/191206906-2e3a3fc6-e322-450d-a180-f39c81b84d84.png)
 
 ### Setting Screen
 ![image](https://user-images.githubusercontent.com/74453775/190985339-1b46e615-74bd-4031-aeb8-17e2988ce819.png)
